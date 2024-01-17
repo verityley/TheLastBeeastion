@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="HexTile" load_steps=2 format=3 uid="uid://b3etuepsv51hd"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/HexTile.gd" id="1_rhpps"]
+
+[resource]
+script = ExtResource("1_rhpps")
+name = ""
+stackCount = 0
+stackMax = 0
+irreplacable = false
+soundScale = []
+tagDamp = false
+tagFlammable = false
+tagFertile = false

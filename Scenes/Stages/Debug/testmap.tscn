@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://uyi36a5ltqmk"]
+
+[ext_resource type="Script" path="res://Scripts/Debug/testmap.gd" id="1_rri4l"]
+[ext_resource type="TileSet" uid="uid://crkgg41cl657i" path="res://Scripts/Debug/testTileMap.tres" id="2_xh506"]
+
+[node name="Testmap" type="Node2D"]
+script = ExtResource("1_rri4l")
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+tile_set = ExtResource("2_xh506")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(262149, 196610, 0, 262148, 196610, 0, 196612, 196610, 0, 131077, 196610, 0, 196614, 196610, 0, 196613, 196610, 1, 262150, 196610, 0, 327685, 65538, 0, 327684, 65538, 0, 262147, 65538, 0, 196611, 65538, 0, 131075, 65538, 0, 131076, 65538, 0, 65541, 65538, 0, 131078, 65538, 0, 131079, 65538, 0, 196615, 65538, 0, 262151, 65538, 0, 327686, 65538, 0, 393221, 131074, 0, 393220, 131074, 0, 327683, 131074, 0, 327682, 131074, 0, 262146, 131074, 0, 196610, 131074, 0, 131074, 131074, 0, 65539, 131074, 0, 65540, 131074, 0, 5, 131074, 0, 65542, 131074, 0, 65543, 131074, 0, 131080, 131074, 0, 196616, 131074, 0, 262152, 131074, 0, 327688, 131074, 0, 327687, 131074, 0, 393222, 131074, 0)

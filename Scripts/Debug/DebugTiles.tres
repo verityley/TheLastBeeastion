@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://buxp44v0tb5tg"]
+
+[ext_resource type="Texture2D" uid="uid://bixbsln5hkk08" path="res://Assets/Tile Graphics/texthexesColor.png" id="1_70nux"]
+
+[resource]
+atlas = ExtResource("1_70nux")
+region = Rect2(0, 0, 1600, 800)

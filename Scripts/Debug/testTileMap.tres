@@ -1,0 +1,29 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://crkgg41cl657i"]
+
+[ext_resource type="Texture2D" uid="uid://bixbsln5hkk08" path="res://Assets/Tile Graphics/texthexesColor.png" id="1_olux4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2p4va"]
+texture = ExtResource("1_olux4")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 40)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 40)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 40)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 40)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 40)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 40)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 40)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 40)
+
+[resource]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(400, 300)
+sources/2 = SubResource("TileSetAtlasSource_2p4va")
