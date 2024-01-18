@@ -1,14 +1,22 @@
-[gd_resource type="Resource" script_class="HexTile" load_steps=2 format=3 uid="uid://dkhpclmeyvuho"]
+[gd_resource type="Resource" script_class="GardenRules" load_steps=3 format=3 uid="uid://clfxj003xh3i5"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/HexTile.gd" id="1_ktqag"]
+[ext_resource type="Script" path="res://Scripts/Resources/Tiles/GardenRules.gd" id="1_4pjjj"]
+[ext_resource type="Resource" uid="uid://b8h086opusold" path="res://Scripts/Resources/Tiles/Empty.tres" id="1_bv0k3"]
 
 [resource]
-script = ExtResource("1_ktqag")
-name = ""
-stackCount = 0
-stackMax = 0
-irreplacable = false
+script = ExtResource("1_4pjjj")
+emptyRules = ExtResource("1_bv0k3")
+name = "Garden"
+tileIndex = Vector2i(3, 0)
+stackMax = 3
 soundScale = []
-tagDamp = false
-tagFlammable = false
-tagFertile = false
+tagsDatabase = {
+"Blocking": false,
+"Damp": false,
+"Fertile": false,
+"Flammable": true,
+"Irreplacable": false
+}
+trigTag = ""
+trigTurns = 0
+trigFlowTile = Vector2i(0, 0)

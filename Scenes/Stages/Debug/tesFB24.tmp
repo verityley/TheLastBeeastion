@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://uyi36a5ltqmk"]
+
+[ext_resource type="Script" path="res://Scripts/Debug/testmap.gd" id="1_rri4l"]
+[ext_resource type="TileSet" uid="uid://crkgg41cl657i" path="res://Scripts/Debug/testTileMap.tres" id="2_xh506"]
+
+[node name="Testmap" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+tile_set = ExtResource("2_xh506")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(0, 196610, 1, -65535, 65538, 0, 1, 65538, 0, 65537, 131074, 0, 65538, 65538, 0, 2, 65538, 0, 65539, 65538, 0, 131072, 131074, 0, 131071, 131074, 0, 65535, 131074, 0, 65534, 131074, 0, 131070, 131074, 0, 131073, 131074, 0, 131074, 131074, 0, 65536, 131074, 0, -1, 196610, 0, -65536, 196610, 0, -65537, 196610, 0, -2, 196610, 0)
+script = ExtResource("1_rri4l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(58, 43)

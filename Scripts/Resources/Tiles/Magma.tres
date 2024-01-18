@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://bwy3f7ngcis6u"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/TileRuleset.gd" id="1_m6umu"]
+
+[resource]
+script = ExtResource("1_m6umu")
+name = "Magma"
+tileIndex = Vector2i(1, 1)
+stackMax = 3
+soundScale = []
+tagsDatabase = {
+"Blocking": false,
+"Damp": false,
+"Fertile": false,
+"Flammable": false,
+"Irreplacable": false
+}
+trigTag = ""
+trigTurns = 0
+trigFlowTile = Vector2i(0, 0)

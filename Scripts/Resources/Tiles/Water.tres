@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="HexTile" load_steps=2 format=3 uid="uid://dsia3f1udiajh"]
+[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://duttun53bdskb"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/HexTile.gd" id="1_04wwr"]
+[ext_resource type="Script" path="res://Scripts/Resources/TileRuleset.gd" id="1_fyudb"]
 
 [resource]
-script = ExtResource("1_04wwr")
-name = ""
-stackCount = 0
+script = ExtResource("1_fyudb")
+name = "Water"
+tileIndex = Vector2i(2, 0)
 stackMax = 0
-irreplacable = false
 soundScale = []
-tagDamp = false
-tagFlammable = false
-tagFertile = false
+tagsDatabase = {
+"Blocking": false,
+"Damp": true,
+"Fertile": false,
+"Flammable": false,
+"Irreplacable": false
+}
+trigTag = ""
+trigTurns = 0
+trigFlowTile = Vector2i(0, 0)

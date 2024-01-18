@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://580e33ow6rh8"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/TileRuleset.gd" id="1_i022t"]
+
+[resource]
+script = ExtResource("1_i022t")
+name = "Fire"
+tileIndex = Vector2i(2, 1)
+stackMax = 3
+soundScale = []
+tagsDatabase = {
+"Blocking": false,
+"Damp": false,
+"Fertile": false,
+"Flammable": false,
+"Irreplacable": false
+}
+trigTag = ""
+trigTurns = 0
+trigFlowTile = Vector2i(0, 0)

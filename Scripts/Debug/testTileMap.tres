@@ -1,29 +1,56 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://crkgg41cl657i"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://crkgg41cl657i"]
 
+[ext_resource type="Resource" uid="uid://b8h086opusold" path="res://Scripts/Resources/Tiles/Empty.tres" id="1_0nlav"]
 [ext_resource type="Texture2D" uid="uid://bixbsln5hkk08" path="res://Assets/Tile Graphics/texthexesColor.png" id="1_olux4"]
+[ext_resource type="Resource" uid="uid://cwv8cgt2dl634" path="res://Scripts/Resources/Tiles/Ash.tres" id="2_vr84a"]
+[ext_resource type="Resource" uid="uid://c1klfedgtqp8b" path="res://Scripts/Resources/Tiles/Forest.tres" id="3_tyddd"]
+[ext_resource type="Resource" uid="uid://bwy3f7ngcis6u" path="res://Scripts/Resources/Tiles/Magma.tres" id="4_8mh1i"]
+[ext_resource type="Resource" uid="uid://duttun53bdskb" path="res://Scripts/Resources/Tiles/Water.tres" id="5_ryiur"]
+[ext_resource type="Resource" uid="uid://580e33ow6rh8" path="res://Scripts/Resources/Tiles/Fire.tres" id="6_ouypb"]
+[ext_resource type="Resource" uid="uid://bfnfm8vnjq5ii" path="res://Scripts/Resources/Tiles/Garden.tres" id="7_1kx85"]
+[ext_resource type="Resource" uid="uid://cwoilk2uu57ww" path="res://Scripts/Resources/Tiles/Hive.tres" id="8_i32ti"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2p4va"]
 texture = ExtResource("1_olux4")
 texture_region_size = Vector2i(400, 400)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 40)
+0:0/0/custom_data_0 = ExtResource("1_0nlav")
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, 40)
+1:0/0/custom_data_0 = ExtResource("3_tyddd")
+1:0/0/custom_data_1 = 1
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 40)
+2:0/0/custom_data_0 = ExtResource("5_ryiur")
+2:0/0/custom_data_1 = 1
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, 40)
+3:0/0/custom_data_0 = ExtResource("7_1kx85")
+3:0/0/custom_data_1 = 1
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(0, 40)
+0:1/0/custom_data_0 = ExtResource("2_vr84a")
+0:1/0/custom_data_1 = 1
 1:1/0 = 0
 1:1/0/texture_origin = Vector2i(0, 40)
+1:1/0/custom_data_0 = ExtResource("4_8mh1i")
+1:1/0/custom_data_1 = 1
 2:1/0 = 0
 2:1/0/texture_origin = Vector2i(0, 40)
+2:1/0/custom_data_0 = ExtResource("6_ouypb")
+2:1/0/custom_data_1 = 1
 3:1/0 = 0
 3:1/0/texture_origin = Vector2i(0, 40)
+3:1/0/custom_data_0 = ExtResource("8_i32ti")
+3:1/0/custom_data_1 = 1
 
 [resource]
 tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(400, 300)
+custom_data_layer_0/name = "Tile Ruleset"
+custom_data_layer_0/type = 24
+custom_data_layer_1/name = "Stack Count"
+custom_data_layer_1/type = 2
 sources/2 = SubResource("TileSetAtlasSource_2p4va")
