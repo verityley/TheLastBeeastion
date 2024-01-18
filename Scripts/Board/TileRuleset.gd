@@ -5,6 +5,7 @@ class_name TileRuleset #This allows other scripts to look this up as a "type", m
 @export var name:String #This terrain tile's name, for other scripts to check for
 @export var tileIndex:Vector2i #This is the Atlas coordinate pair tied to the TileSet
 @export var stackMax:int #The maximum this tile type can stack up to
+@export var counterStart:int #This is what the hex's counter begins at when tile placed
 @export var soundScale:Array #The array of sounds this tile makes when interacted with.
 #The array above is used for randomly determined notes within a scale, to ensure audio stays in tune.
 
@@ -119,14 +120,14 @@ func MinMaxTrig(map:WorldMap, coords:Vector2i, minMax:bool) -> bool:
 			trigger = true
 	return trigger
 
-func TimeTrigger(map:WorldMap, coords:Vector2i):
+func TimeTrig(map:WorldMap, coords:Vector2i):
 	var targetTile:Hex = map.hexDatabase[coords]
 	var trigger:bool = false
-	if targetTile.counter >= 0:
+	if targetTile.counter == 0:
 		trigger = true
 	return trigger
 
-func EntityTrigger(map:WorldMap, coords:Vector2i, targetEntity:Entity) -> bool:
+func EntityTrig(map:WorldMap, coords:Vector2i, targetEntity:Entity) -> bool:
 	var targetTile:Hex = map.hexDatabase[coords]
 	var trigger:bool = false
 	if targetTile.entityOnTile == targetEntity:

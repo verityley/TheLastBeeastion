@@ -17,6 +17,7 @@ func WorldSetup():
 		newHex.tileType = hexData.get_custom_data("Tile Ruleset")
 		newHex.stackCount = hexData.get_custom_data("Stack Count")
 		newHex.tags = newHex.tileType.tagsDatabase
+		newHex.counter = newHex.tileType.counterStart
 		hexDatabase[tile] = newHex
 	
 	#print(hexDatabase)
@@ -30,7 +31,7 @@ func UpdateWorld(): #This is a loop that iterates through every hex, in priority
 	while updateOrder.size() > 0:
 		var tile = updateOrder.pop_front()
 		if hexDatabase.has(tile):
-			print("Current Updating Tile: ", tile, " Current Tile Type: ", hexDatabase[tile].tileType.name)
+			#print("Current Updating Tile: ", tile, " Current Tile Type: ", hexDatabase[tile].tileType.name)
 			hexDatabase[tile].tileType.UpdateHex(self, tile)
 	pass
 	#Make sure to skip any hex that has already updated, or been newly placed this turn
@@ -124,5 +125,8 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 			set_cell(0, coords, 2, type.tileIndex) #add stack count as alternate tile, needs RESEARCH
 			targetTile.tileType = type
 			targetTile.stackCount = stacks
+			targetTile.counter = type.counterStart
+			if targetTile.counter != -1:
+				print("Counter: ", targetTile.counter)
 			ChangeTags(coords, type.tagsDatabase, soft)
 

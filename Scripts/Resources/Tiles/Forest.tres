@@ -1,19 +1,21 @@
-[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://c1klfedgtqp8b"]
+[gd_resource type="Resource" script_class="ForestRules" load_steps=2 format=3 uid="uid://cnhc412kmnt7t"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/TileRuleset.gd" id="1_huydg"]
+[ext_resource type="Script" path="res://Scripts/Board/ForestRules.gd" id="1_wq34p"]
 
 [resource]
-script = ExtResource("1_huydg")
-name = "Forest"
+script = ExtResource("1_wq34p")
+name = ""
 tileIndex = Vector2i(1, 0)
-stackMax = 5
+stackMax = 1
+counterStart = 3
 soundScale = []
 tagsDatabase = {
-"Blocking": true,
+"Blocked": true,
 "Damp": false,
 "Fertile": false,
 "Flammable": true,
-"Irreplacable": false
+"Irreplacable": false,
+"Open": false
 }
 trigTag = ""
 trigTurns = 0

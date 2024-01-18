@@ -1,19 +1,21 @@
-[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://b8h086opusold"]
+[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://1h1y842hrk2"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/TileRuleset.gd" id="1_130fu"]
+[ext_resource type="Script" path="res://Scripts/Board/TileRuleset.gd" id="1_eaohy"]
 
 [resource]
-script = ExtResource("1_130fu")
-name = "Empty"
+script = ExtResource("1_eaohy")
+name = ""
 tileIndex = Vector2i(0, 0)
 stackMax = 0
+counterStart = -1
 soundScale = []
 tagsDatabase = {
-"Blocking": false,
+"Blocked": false,
 "Damp": false,
 "Fertile": false,
 "Flammable": false,
-"Irreplacable": false
+"Irreplacable": false,
+"Open": true
 }
 trigTag = ""
 trigTurns = 0
