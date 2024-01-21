@@ -38,4 +38,14 @@ func _input(event):
 				##prints(tile, hexDatabase[tile].tileType.name)
 	
 	if Input.is_action_just_pressed("ProgressTurn"):
-		WorldTurn()
+		if $Timer.is_stopped():
+			$Timer.start()
+			print("Timer Started")
+		else:
+			$Timer.stop()
+		
+		
+
+
+func _on_timer_timeout():
+	WorldTurn()
