@@ -1,6 +1,10 @@
-[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://1h1y842hrk2"]
+[gd_resource type="Resource" script_class="TileRuleset" load_steps=6 format=3 uid="uid://1h1y842hrk2"]
 
 [ext_resource type="Script" path="res://Scripts/Board/TileRuleset.gd" id="1_eaohy"]
+[ext_resource type="Resource" uid="uid://clubn5h66jt7y" path="res://Scripts/Resources/Tiles/Ash.tres" id="2_24aqc"]
+[ext_resource type="Resource" uid="uid://cnhc412kmnt7t" path="res://Scripts/Resources/Tiles/Forest.tres" id="3_yx6r3"]
+[ext_resource type="Resource" uid="uid://br26kxo8wc1ag" path="res://Scripts/Resources/Tiles/Garden.tres" id="4_6hfmi"]
+[ext_resource type="Resource" uid="uid://coq17e6cmhpvv" path="res://Scripts/Resources/Tiles/Stone.tres" id="5_r3s86"]
 
 [resource]
 script = ExtResource("1_eaohy")
@@ -16,6 +20,16 @@ tagsDatabase = {
 "Flammable": false,
 "Irreplacable": false,
 "Open": true
+}
+typeDatabase = {
+"Ash": ExtResource("2_24aqc"),
+"Brush": null,
+"Empty": null,
+"Fire": null,
+"Forest": ExtResource("3_yx6r3"),
+"Garden": ExtResource("4_6hfmi"),
+"Stone": ExtResource("5_r3s86"),
+"Water": null
 }
 trigTag = ""
 trigTurns = 0

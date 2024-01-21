@@ -18,6 +18,9 @@ func WorldSetup():
 		newHex.stackCount = hexData.get_custom_data("Stack Count")
 		newHex.tags = newHex.tileType.tagsDatabase
 		newHex.counter = newHex.tileType.counterStart
+		#if newHex.stackCount > 3: Might not need this edge case, but leaving it here anyways
+			#newHex.tags["Open"] = false
+			#newHex.tags["Blocked"] = true
 		hexDatabase[tile] = newHex
 	
 	#print(hexDatabase)
@@ -139,7 +142,9 @@ func ChangeTags(coords:Vector2i, tagsToAdd:Dictionary, soft:bool=false):
 
 func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false): 
 	#Swap out target tile. If "soft", adds tags to resulting tile's tags. Optionally set stack count, default 1.
+	print(type)
 	var targetTile:Hex = hexDatabase[coords]
+	print("Changing Tile ", coords, " to ", type.name)
 	#play random sound from targetTile.tileType.soundScale
 	if targetTile == null:
 		return

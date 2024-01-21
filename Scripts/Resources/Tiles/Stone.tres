@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="TileRuleset" load_steps=6 format=3 uid="uid://coq17e6cmhpvv"]
+
+[ext_resource type="Script" path="res://Scripts/Board/TileRuleset.gd" id="1_xmajt"]
+[ext_resource type="Resource" uid="uid://clubn5h66jt7y" path="res://Scripts/Resources/Tiles/Ash.tres" id="2_57v5u"]
+[ext_resource type="Resource" uid="uid://1h1y842hrk2" path="res://Scripts/Resources/Tiles/Empty.tres" id="3_djts3"]
+[ext_resource type="Resource" uid="uid://cnhc412kmnt7t" path="res://Scripts/Resources/Tiles/Forest.tres" id="4_pd6fl"]
+[ext_resource type="Resource" uid="uid://br26kxo8wc1ag" path="res://Scripts/Resources/Tiles/Garden.tres" id="5_xfrnb"]
+
+[resource]
+script = ExtResource("1_xmajt")
+name = "Stone"
+tileIndex = Vector2i(0, 7)
+stackMax = 3
+counterStart = -1
+soundScale = []
+tagsDatabase = {
+"Blocked": false,
+"Damp": false,
+"Fertile": false,
+"Flammable": false,
+"Irreplacable": false,
+"Open": true
+}
+typeDatabase = {
+"Ash": ExtResource("2_57v5u"),
+"Brush": null,
+"Empty": ExtResource("3_djts3"),
+"Fire": null,
+"Forest": ExtResource("4_pd6fl"),
+"Garden": ExtResource("5_xfrnb"),
+"Stone": null,
+"Water": null
+}
+trigTag = ""
+trigTurns = 0
+trigFlowTile = Vector2i(0, 0)

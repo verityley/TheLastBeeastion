@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="BrushRules" load_steps=3 format=3 uid="uid://dqtqfkytvnrg3"]
+[gd_resource type="Resource" script_class="BrushRules" load_steps=7 format=3 uid="uid://dqtqfkytvnrg3"]
 
 [ext_resource type="Resource" uid="uid://cnhc412kmnt7t" path="res://Scripts/Resources/Tiles/Forest.tres" id="1_0rosu"]
 [ext_resource type="Script" path="res://Scripts/Board/BrushRules.gd" id="1_r5mcl"]
+[ext_resource type="Resource" uid="uid://1h1y842hrk2" path="res://Scripts/Resources/Tiles/Empty.tres" id="2_yj5vb"]
+[ext_resource type="Resource" uid="uid://br26kxo8wc1ag" path="res://Scripts/Resources/Tiles/Garden.tres" id="4_umaye"]
+[ext_resource type="Resource" uid="uid://clubn5h66jt7y" path="res://Scripts/Resources/Tiles/Ash.tres" id="5_f1av3"]
+[ext_resource type="Resource" uid="uid://coq17e6cmhpvv" path="res://Scripts/Resources/Tiles/Stone.tres" id="6_knu1l"]
 
 [resource]
 script = ExtResource("1_r5mcl")
-forestRuleset = ExtResource("1_0rosu")
 name = "Grasslands"
 tileIndex = Vector2i(0, 0)
 stackMax = 3
-counterStart = 2
+counterStart = 6
 soundScale = []
 tagsDatabase = {
 "Blocked": false,
@@ -18,6 +21,16 @@ tagsDatabase = {
 "Flammable": true,
 "Irreplacable": false,
 "Open": true
+}
+typeDatabase = {
+"Ash": ExtResource("5_f1av3"),
+"Brush": null,
+"Empty": ExtResource("2_yj5vb"),
+"Fire": null,
+"Forest": ExtResource("1_0rosu"),
+"Garden": ExtResource("4_umaye"),
+"Stone": ExtResource("6_knu1l"),
+"Water": null
 }
 trigTag = ""
 trigTurns = 0
