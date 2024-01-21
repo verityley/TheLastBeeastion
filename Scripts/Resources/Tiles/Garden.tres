@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="GardenRules" load_steps=3 format=3 uid="uid://br26kxo8wc1ag"]
+[gd_resource type="Resource" script_class="GardenRules" load_steps=2 format=3 uid="uid://br26kxo8wc1ag"]
 
 [ext_resource type="Script" path="res://Scripts/Board/GardenRules.gd" id="1_iaf6g"]
-[ext_resource type="Resource" uid="uid://1h1y842hrk2" path="res://Scripts/Resources/Tiles/Empty.tres" id="1_q17b2"]
 
 [resource]
 script = ExtResource("1_iaf6g")
-emptyRules = ExtResource("1_q17b2")
 name = "Garden"
-tileIndex = Vector2i(3, 0)
+tileIndex = Vector2i(0, 2)
 stackMax = 3
 counterStart = -1
 soundScale = []
@@ -15,7 +13,7 @@ tagsDatabase = {
 "Blocked": false,
 "Damp": false,
 "Fertile": false,
-"Flammable": false,
+"Flammable": true,
 "Irreplacable": false,
 "Open": true
 }

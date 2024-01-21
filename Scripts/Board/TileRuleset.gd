@@ -96,6 +96,7 @@ func CompareTrig(map:WorldMap, coords:Vector2i, targetCoords:Vector2i, lowHigh:b
 	if lowHigh == false:
 		if currentTile.stackCount > targetTile.stackCount: #True if current higher than target
 			trigger = true
+			#print("Target lower in stacks")
 	else:
 		if currentTile.stackCount < targetTile.stackCount: #True if target higher than current
 			trigger = true
