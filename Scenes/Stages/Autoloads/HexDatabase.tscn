@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://gowwh5dt3n6i"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/Autoloads/HexDatabase.gd" id="1_bw4k7"]
+
+[node name="HexDatabase" type="Node"]
+script = ExtResource("1_bw4k7")
+type = {
+"Ash": null,
+"Brush": null,
+"Empty": null,
+"Fire": null,
+"Forest": null,
+"Garden": null,
+"Hive": null,
+"Stone": null,
+"Water": null
+}

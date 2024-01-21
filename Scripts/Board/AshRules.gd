@@ -9,11 +9,11 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	for tile in neighbors: #Try to spread to nearby fertile land every turn.
 		if !map.hexDatabase.has(tile):
 			continue
-		if TileTrig(map, tile, typeDatabase["Water"]): #Brush spreads to fertile
-			map.ChangeTile(coords, typeDatabase["Brush"])
+		if TileTrig(map, tile, HexTypes.type["Water"]): #Brush spreads to fertile
+			map.ChangeTile(coords, HexTypes.type["Brush"])
 			break
 	
 	if TimeTrig(map, coords):
-		map.ChangeTile(coords, typeDatabase["Stone"], map.hexDatabase[coords].stackCount)
+		map.ChangeTile(coords, HexTypes.type["Stone"], map.hexDatabase[coords].stackCount)
 	else:
 		map.hexDatabase[coords].counter = clampi(map.hexDatabase[coords].counter - 1, 0, self.counterStart)

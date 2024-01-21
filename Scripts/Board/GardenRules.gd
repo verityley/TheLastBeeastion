@@ -25,9 +25,9 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			#prints(tile, map.hexDatabase[tile].tileType.name)
 			if TagTrig(map, RNGtile, "Fertile"): #If fertile tile found, change tile to garden stack 1
 				#print("Found Fertile Land! Growing Garden.")
-				map.ChangeTile(RNGtile, self)
+				map.ChangeTile(RNGtile, HexTypes.type["Garden"])
 				map.updateOrder.erase(RNGtile)
-			elif TileTrig(map, RNGtile, self):
+			elif TileTrig(map, RNGtile, HexTypes.type["Garden"]):
 				print("Found Garden Tile, growing stacks on target.")
 				map.ChangeStack(RNGtile, 1)
 	

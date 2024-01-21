@@ -12,7 +12,7 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		if TagTrig(map, tile, "Fertile"): #Brush spreads to fertile
 			if CompareTrig(map, coords, tile, false): #Only if stack is lower
 				#print("Found Fertile Land!")
-				map.ChangeTile(tile, self)
+				map.ChangeTile(tile, HexTypes.type["Brush"])
 				map.updateOrder.erase(tile)
 	
 	if TimeTrig(map, coords):
@@ -20,9 +20,9 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			for tile in neighbors:
 				if !map.hexDatabase.has(tile):
 					continue
-				if TileTrig(map, tile, typeDatabase["Water"]):
-					map.ChangeTile(coords, typeDatabase["Forest"], 1)
-					map.ChangeTile(tile, typeDatabase["Stone"], 1)
+				if TileTrig(map, tile, HexTypes.type["Water"]):
+					map.ChangeTile(coords, HexTypes.type["Forest"], 1)
+					map.ChangeTile(tile, HexTypes.type["Stone"], 1)
 					map.updateOrder.erase(tile)
 		else:
 			map.ChangeStack(coords, 1)

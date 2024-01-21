@@ -1,13 +1,9 @@
-[gd_resource type="Resource" script_class="ForestRules" load_steps=6 format=3 uid="uid://cnhc412kmnt7t"]
+[gd_resource type="Resource" script_class="ForestRules" load_steps=2 format=3 uid="uid://dsd8phi1rvkwl"]
 
-[ext_resource type="Script" path="res://Scripts/Board/ForestRules.gd" id="1_wq34p"]
-[ext_resource type="Resource" uid="uid://clubn5h66jt7y" path="res://Scripts/Resources/Tiles/Ash.tres" id="2_v2p3d"]
-[ext_resource type="Resource" uid="uid://1h1y842hrk2" path="res://Scripts/Resources/Tiles/Empty.tres" id="3_dldvj"]
-[ext_resource type="Resource" uid="uid://br26kxo8wc1ag" path="res://Scripts/Resources/Tiles/Garden.tres" id="4_nqhtk"]
-[ext_resource type="Resource" uid="uid://coq17e6cmhpvv" path="res://Scripts/Resources/Tiles/Stone.tres" id="5_gwwj2"]
+[ext_resource type="Script" path="res://Scripts/Board/ForestRules.gd" id="1_ffhju"]
 
 [resource]
-script = ExtResource("1_wq34p")
+script = ExtResource("1_ffhju")
 name = "Forest"
 tileIndex = Vector2i(0, 1)
 stackMax = 4
@@ -20,16 +16,6 @@ tagsDatabase = {
 "Flammable": true,
 "Irreplacable": false,
 "Open": false
-}
-typeDatabase = {
-"Ash": ExtResource("2_v2p3d"),
-"Brush": null,
-"Empty": ExtResource("3_dldvj"),
-"Fire": null,
-"Forest": null,
-"Garden": ExtResource("4_nqhtk"),
-"Stone": ExtResource("5_gwwj2"),
-"Water": null
 }
 trigTag = ""
 trigTurns = 0

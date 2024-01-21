@@ -12,9 +12,6 @@ class_name TileRuleset #This allows other scripts to look this up as a "type", m
 @export_category("Tile Tags") #These are tags don't do anything on their own, they're used for trigger checks by tiles
 @export var tagsDatabase:Dictionary
 
-@export_category("Tile Types")
-@export var typeDatabase:Dictionary
-
 @export_category("Interaction Rules") #These are the fields to input triggers, and which tiles or tags fit them.
 #Unsure how to organize this yet, to make sure it calls the right functions if tiles or inputs are present
 #This may also be where resources are instead extended into subresources

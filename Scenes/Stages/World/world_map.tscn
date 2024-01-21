@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://cepuo6625f5j0"]
+
+[ext_resource type="Texture2D" uid="uid://bkhpfriatbcr3" path="res://Assets/Tile Graphics/minimalHexes.png" id="1_21n8k"]
+[ext_resource type="Script" path="res://Scripts/Debug/debugMap.gd" id="2_jc8hh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4knm"]
+texture = ExtResource("1_21n8k")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 40)
+0:0/0/custom_data_0 = 1
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 40)
+1:0/0/custom_data_0 = 2
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 40)
+2:0/0/custom_data_0 = 3
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 40)
+2:1/0/custom_data_0 = 3
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 40)
+1:1/0/custom_data_0 = 2
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 40)
+0:1/0/custom_data_0 = 1
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 40)
+0:2/0/custom_data_0 = 1
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, 40)
+0:3/0/custom_data_0 = 1
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, 40)
+0:4/0/custom_data_0 = 1
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(0, 40)
+0:5/0/custom_data_0 = 1
+0:6/0 = 0
+0:6/0/texture_origin = Vector2i(0, 40)
+0:6/0/custom_data_0 = 1
+0:7/0 = 0
+0:7/0/texture_origin = Vector2i(0, 40)
+0:7/0/custom_data_0 = 1
+1:7/0 = 0
+1:7/0/texture_origin = Vector2i(0, 40)
+1:7/0/custom_data_0 = 2
+2:7/0 = 0
+2:7/0/texture_origin = Vector2i(0, 40)
+2:7/0/custom_data_0 = 3
+2:6/0 = 0
+2:6/0/texture_origin = Vector2i(0, 40)
+2:6/0/custom_data_0 = 3
+2:5/0 = 0
+2:5/0/texture_origin = Vector2i(0, 40)
+2:5/0/custom_data_0 = 3
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, 40)
+2:4/0/custom_data_0 = 3
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, 40)
+2:3/0/custom_data_0 = 3
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, 40)
+2:2/0/custom_data_0 = 3
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 40)
+1:2/0/custom_data_0 = 2
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, 40)
+1:3/0/custom_data_0 = 2
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, 40)
+1:4/0/custom_data_0 = 2
+1:5/0 = 0
+1:5/0/texture_origin = Vector2i(0, 40)
+1:5/0/custom_data_0 = 2
+1:6/0 = 0
+1:6/0/texture_origin = Vector2i(0, 40)
+1:6/0/custom_data_0 = 2
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 40)
+3:1/0/custom_data_0 = 4
+
+[sub_resource type="TileSet" id="TileSet_20swi"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(400, 300)
+custom_data_layer_0/name = "Stack Count"
+custom_data_layer_0/type = 2
+custom_data_layer_1/name = "Tile Ruleset"
+custom_data_layer_1/type = 24
+sources/0 = SubResource("TileSetAtlasSource_h4knm")
+
+[node name="WorldMap" type="TileMap"]
+y_sort_enabled = true
+scale = Vector2(0.2, 0.2)
+tile_set = SubResource("TileSet_20swi")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(65535, 0, 0, 65534, 0, 0, -2, 0, 0, -65537, 0, 0, -65536, 0, 0, -1, 0, 0, 0, 0, 0)
+script = ExtResource("2_jc8hh")
+
+[node name="Camera2D" type="Camera2D" parent="."]

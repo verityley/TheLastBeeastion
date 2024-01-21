@@ -1,13 +1,14 @@
 extends WorldMap
 
-var setTile:TileRuleset = preload("res://Scripts/Resources/Tiles/Empty.tres")
+#var setTile:TileRuleset = preload("res://Scripts/Resources/Tiles/Empty.tres")
 
 func _ready():
 	WorldSetup()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
-	
+	pass
 	
 	#if Input.is_action_pressed("Menu1"):
 		#setTile = preload("res://Scripts/Resources/Tiles/Empty.tres")

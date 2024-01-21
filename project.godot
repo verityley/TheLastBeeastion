@@ -14,6 +14,10 @@ config/name="TheLastBeeastion"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Assets/Misc Graphics/icon.svg"
 
+[autoload]
+
+HexTypes="*res://Scenes/Stages/Autoloads/HexDatabase.tscn"
+
 [input]
 
 LeftClick={
