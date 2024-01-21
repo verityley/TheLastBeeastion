@@ -10,7 +10,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		if !map.hexDatabase.has(tile):
 			continue
 		if TileTrig(map, tile, HexTypes.type["Water"]): #Brush spreads to fertile
-			map.ChangeTile(coords, HexTypes.type["Brush"])
+			if MinMaxTrig(map, coords, false):
+				map.ChangeTile(coords, HexTypes.type["Brush"], 1)
+			else:
+				map.ChangeStack(coords, -1)
 			break
 	
 	if TimeTrig(map, coords):

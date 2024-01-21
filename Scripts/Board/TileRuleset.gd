@@ -110,7 +110,7 @@ func MinMaxTrig(map:WorldMap, coords:Vector2i, minMax:bool) -> bool:
 	var targetTile:Hex = map.hexDatabase[coords]
 	var trigger:bool
 	if minMax == false:
-		if targetTile.stackCount < 1:
+		if targetTile.stackCount <= 1:
 			trigger = true
 	else:
 		if targetTile.stackCount >= targetTile.tileType.stackMax: 
