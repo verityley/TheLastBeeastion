@@ -2,7 +2,7 @@ extends TileMap
 class_name WorldMap
 
 var hexDatabase:Dictionary
-var worldSize:int = 8 #current "stage/max map size in rings from center
+var worldSize:int = 10 #current "stage/max map size in rings from center
 
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
 #Use Array.has() to make sure it isnt added twice
@@ -11,8 +11,11 @@ func WorldSetup():
 	var worldHexes:Array[Vector2i] = GetAllHexes(worldSize)
 	
 	for tile in worldHexes:
-		var newHex:Hex = Hex.new()
 		var hexData:TileData = get_cell_tile_data(0, tile)
+		if hexData == null:
+			worldHexes.erase(tile)
+			print("No Cell")
+		var newHex:Hex = Hex.new()
 		newHex.gridCoords = tile
 		newHex.tileType = hexData.get_custom_data("Tile Ruleset")
 		newHex.stackCount = hexData.get_custom_data("Stack Count")
@@ -47,7 +50,7 @@ func GetDirection(coords:Vector2i, targetCoords:Vector2i) -> int:
 	while targetCoords != neighborCoords:
 		direction += 1
 		neighborCoords = GetAdjacent(coords, direction)
-		print("Direction Index: ", direction)
+		#print("Direction Index: ", direction)
 	return direction
 
 func GetAdjacent(coords:Vector2i, directionIndex:int) -> Vector2i:
@@ -68,12 +71,19 @@ func GetAdjacent(coords:Vector2i, directionIndex:int) -> Vector2i:
 
 func GetAllAdjacent(coords:Vector2i) -> Array:
 	var neighbors:Array[Vector2i]
-	neighbors.append(get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_SIDE))
-	neighbors.append(get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_RIGHT_SIDE))
-	neighbors.append(get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE))
-	neighbors.append(get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
-	neighbors.append(get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE))
-	neighbors.append(get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_LEFT_SIDE))
+	var TS = get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_SIDE)
+	if get_cell_tile_data(0, TS) != null:		neighbors.append(TS)
+	var TRS = get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_RIGHT_SIDE)
+	if get_cell_tile_data(0, TRS) != null:		neighbors.append(TRS)
+	var BRS = get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE)
+	if get_cell_tile_data(0, BRS) != null:		neighbors.append(BRS)
+	var BS = get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
+	if get_cell_tile_data(0, BS) != null:		neighbors.append(BS)
+	var BLS = get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE)
+	if get_cell_tile_data(0, BLS) != null:		neighbors.append(BLS)
+	var TLS = get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_LEFT_SIDE)
+	if get_cell_tile_data(0, TLS) != null:		neighbors.append(TLS)
+	#print(neighbors)
 	return neighbors
 
 func GetAllHexes(mapSize:int) -> Array:

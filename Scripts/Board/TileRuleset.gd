@@ -12,14 +12,10 @@ class_name TileRuleset #This allows other scripts to look this up as a "type", m
 @export_category("Tile Tags") #These are tags don't do anything on their own, they're used for trigger checks by tiles
 @export var tagsDatabase:Dictionary
 
-@export_category("Interaction Rules") #These are the fields to input triggers, and which tiles or tags fit them.
+@export_category("Interaction Extras") #These are the fields to input triggers, and which tiles or tags fit them.
 #Unsure how to organize this yet, to make sure it calls the right functions if tiles or inputs are present
 #This may also be where resources are instead extended into subresources
-@export var trigTile:TileRuleset #if null, skip tile type triggers
-@export var trigTag:String #if null, skip tag type triggers
-@export var trigTurns:int #How many turns to countdown from. if null, skip time triggers
 @export var trigFlowTile:Vector2i #The coords of the tile that affected this one. Used for Water and Magma.
-@export var trigWorker:Entity
 
 
 func UpdateHex(map:WorldMap, coords:Vector2i):

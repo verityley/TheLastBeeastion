@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cepuo6625f5j0"]
+[gd_scene load_steps=10 format=3 uid="uid://cepuo6625f5j0"]
 
 [ext_resource type="Texture2D" uid="uid://bkhpfriatbcr3" path="res://Assets/Tile Graphics/minimalHexes.png" id="1_21n8k"]
 [ext_resource type="Resource" uid="uid://dv4l2rsudo0eb" path="res://Scripts/Resources/Tiles/Brush.tres" id="1_lo43y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Debug/debugMap.gd" id="2_jc8hh"]
 [ext_resource type="Resource" uid="uid://be278mkdcaghn" path="res://Scripts/Resources/Tiles/Ash.tres" id="3_0wvqc"]
 [ext_resource type="Resource" uid="uid://byi2x38dlb0wo" path="res://Scripts/Resources/Tiles/Stone.tres" id="4_i4tqr"]
+[ext_resource type="Resource" uid="uid://cdba7e06nccya" path="res://Scripts/Resources/Tiles/Water.tres" id="4_xs311"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4knm"]
 texture = ExtResource("1_21n8k")
@@ -44,6 +45,7 @@ texture_region_size = Vector2i(400, 400)
 0:4/0 = 0
 0:4/0/texture_origin = Vector2i(0, 40)
 0:4/0/custom_data_0 = 1
+0:4/0/custom_data_1 = ExtResource("4_xs311")
 0:5/0 = 0
 0:5/0/texture_origin = Vector2i(0, 40)
 0:5/0/custom_data_0 = 1
@@ -71,6 +73,7 @@ texture_region_size = Vector2i(400, 400)
 2:4/0 = 0
 2:4/0/texture_origin = Vector2i(0, 40)
 2:4/0/custom_data_0 = 3
+2:4/0/custom_data_1 = ExtResource("4_xs311")
 2:3/0 = 0
 2:3/0/texture_origin = Vector2i(0, 40)
 2:3/0/custom_data_0 = 3
@@ -88,6 +91,7 @@ texture_region_size = Vector2i(400, 400)
 1:4/0 = 0
 1:4/0/texture_origin = Vector2i(0, 40)
 1:4/0/custom_data_0 = 2
+1:4/0/custom_data_1 = ExtResource("4_xs311")
 1:5/0 = 0
 1:5/0/texture_origin = Vector2i(0, 40)
 1:5/0/custom_data_0 = 2
@@ -114,7 +118,7 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_20swi")
 format = 2
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(-1, 0, 0, -2, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 1, -65536, 0, 0, -65537, 0, 0, -65535, 0, 0, 1, 0, 0, 65536, 0, 0, -65534, 0, 0, 2, 0, 3, 131071, 0, 3, -131071, 0, 0, 131070, 0, 0, -3, 0, 1, 65533, 0, 1, -65539, 0, 1, -65538, 0, 1, -131073, 0, 1, -131072, 0, 1, -196608, 0, 1, -196609, 0, 1, -131074, 65536, 1, -131075, 65536, 1, -4, 65536, 1, 65532, 0, 1, -65540, 65536, 1, 196606, 0, 3, 131072, 0, 3, 65537, 0, 3, 65538, 65536, 3, -65533, 65536, 3, 196607, 0, 3, 3, 65536, 3, 131074, 65536, 3, 131073, 65536, 3, 196608, 0, 3, 65539, 131072, 3, 4, 131072, 3, 65540, 131072, 3, 262142, 0, 3, 196605, 0, 3, 131069, 0, 3, 131068, 65536, 3, 196604, 65536, 3, 131067, 65536, 3, 65531, 131072, 3, 196602, 131072, 3, 131066, 131072, 3, 65530, 131072, 3, -5, 131072, 3)
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65538, 0, 4, -65534, 131072, 4, 2, 0, 4, 65537, 0, 4, 131072, 0, 4, 131071, 0, 4, 131070, 0, 4, 65534, 0, 4, -2, 0, 4, -65537, 0, 4, -65539, 0, 4, -131075, 0, 4, -131073, 0, 4, -196609, 0, 4, -196611, 0, 4, -131070, 131072, 4, -131069, 131072, 4, -131071, 131072, 4, -196607, 131072, 4, -196606, 131072, 4, -196605, 131072, 4)
 script = ExtResource("2_jc8hh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
