@@ -17,6 +17,4 @@ tagsDatabase = {
 "Irreplacable": false,
 "Open": true
 }
-trigTag = ""
-trigTurns = 0
 trigFlowTile = Vector2i(0, 0)

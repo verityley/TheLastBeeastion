@@ -19,8 +19,12 @@ func WorldSetup():
 		newHex.gridCoords = tile
 		newHex.tileType = hexData.get_custom_data("Tile Ruleset")
 		newHex.stackCount = hexData.get_custom_data("Stack Count")
-		newHex.tags = newHex.tileType.tagsDatabase
+		newHex.tags = newHex.tileType.tagsDatabase.duplicate()
 		newHex.counter = newHex.tileType.counterStart
+		var newTopper:Sprite2D = hexData.get_custom_data("Tile Ruleset")
+		newTopper.position = to_global(map_to_local(tile))
+		newHex.topper = newTopper
+		newHex.topperPosition = newTopper.position
 		#if newHex.stackCount > 3: Might not need this edge case, but leaving it here anyways
 			#newHex.tags["Open"] = false
 			#newHex.tags["Blocked"] = true
@@ -149,6 +153,12 @@ func ChangeTags(coords:Vector2i, tagsToAdd:Dictionary, soft:bool=false):
 				targetTile.tags[tag] = tagsToAdd[tag]
 			elif targetTile.tags.has(tag) and targetTile.tags[tag] == false:
 				targetTile.tags[tag] = true
+
+func AddRemoveTag(coords:Vector2i, tag:String, tagState:bool):
+	var targetTile:Hex = hexDatabase[coords]
+	if targetTile == null:
+		return
+	targetTile.tags[tag] = tagState
 
 func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false): 
 	#Swap out target tile. If "soft", adds tags to resulting tile's tags. Optionally set stack count, default 1.

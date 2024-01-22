@@ -19,11 +19,11 @@ func _input(event):
 		##setTile = preload("res://Scripts/Resources/Tiles/Water.tres")
 	#if Input.is_action_pressed("Menu4"):
 		#setTile = preload("res://Scripts/Resources/Tiles/Garden.tres")
-	#if Input.is_action_pressed("LeftClick"):
-		#var selected = local_to_map(get_global_mouse_position() / self.scale)
-		##prints(selected, setTile.name)
-		#if get_cell_tile_data(0, selected) != null: 
-			#ChangeTile(selected, setTile)
+	if Input.is_action_pressed("LeftClick"):
+		var selected = local_to_map(get_global_mouse_position() / self.scale)
+		#prints(selected, setTile.name)
+		if get_cell_tile_data(0, selected) != null: 
+			ChangeTile(selected, HexTypes.type["Water"], 3)
 		#for tile in GetAllAdjacent(selected):
 			#if get_cell_tile_data(0, tile) == null:
 				#await get_tree().create_timer(0.1).timeout

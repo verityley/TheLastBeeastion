@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_4764f")
+floodChance = 2
 name = "Water"
 tileIndex = Vector2i(0, 4)
 stackMax = 3

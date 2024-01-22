@@ -1,6 +1,8 @@
 extends TileRuleset
 class_name WaterRules
 
+@export var floodChance:int = 2
+
 func UpdateHex(map:WorldMap, coords:Vector2i):
 	var neighbors = map.GetAllAdjacent(coords)
 	
@@ -9,25 +11,45 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		var RNG = RandomNumberGenerator.new().randi_range(0, neighbors.size()-1)
 		var RNGtile = neighbors.pop_at(RNG)
 		#print("Flow: ", map.hexDatabase[currentTile].flowTile)
-		if !TileTrig(map, RNGtile, HexTypes.type["Water"]) and !TileTrig(map, RNGtile, HexTypes.type["Stone"]):
+		if !TileTrig(map, RNGtile, HexTypes.type["Water"]) and !TagTrig(map, RNGtile, "Damp"):
 		#!TagTrig(map, currentTile, "Damp"):
 			#print("Removing non-water, non-damp tile at ", currentTile)
 			continue
 		if !CompareTrig(map, coords, RNGtile, false):
 			#print("Removing equal or higher tiles at ", currentTile)
 			continue
+		if TagTrig(map, RNGtile, "Blocked"):
+			continue
 		if map.hexDatabase[coords].flowTile != null:
 			if map.hexDatabase[coords].flowTile == RNGtile:
 				#print("Removing Flow Tile")
 				continue
-		if TileTrig(map, RNGtile, HexTypes.type["Water"]):
+		
+		if TileTrig(map, RNGtile, HexTypes.type["Stone"]):
+			map.ChangeStack(coords, -1)
+			map.ChangeTile(RNGtile, HexTypes.type["Water"])
+			map.updateOrder.erase(RNGtile)
+			return
+		elif RandomNumberGenerator.new().randi_range(0, floodChance) == floodChance and (
+			!TileTrig(map, RNGtile, HexTypes.type["Water"])):
+			map.ChangeStack(coords, -1)
+			map.ChangeTile(RNGtile, HexTypes.type["Water"])
+			map.updateOrder.erase(RNGtile)
+			return
+		elif TileTrig(map, RNGtile, HexTypes.type["Water"]):
 			map.ChangeStack(coords, -1)
 			map.ChangeStack(RNGtile, 1)
 			map.hexDatabase[RNGtile].flowTile = coords
-		else:
-			map.ChangeTile(RNGtile, HexTypes.type["Water"])
-		map.updateOrder.erase(RNGtile)
-		return
+			map.updateOrder.erase(RNGtile)
+			return
+		
+	var dampTiles = map.GetAllAdjacent(coords)
+	var tagsToAdd:Dictionary
+	tagsToAdd["Damp"] = true
+	for tile in dampTiles:
+		if TagTrig(map, tile, "Damp"):
+			continue
+		map.ChangeTags(tile, tagsToAdd, true)
 	#print("Loop Broke, no tile to flow to.")
 	#var neighbors = map.GetAllAdjacent(coords)
 	#var filteredNeighbors:Array = neighbors.duplicate()

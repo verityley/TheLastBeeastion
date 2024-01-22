@@ -5,47 +5,42 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	var neighbors = map.GetAllAdjacent(coords)
 	var waterNeighbors:Array
 	var brushNeighbors:Array
-	
-	for tile in neighbors: #Try to spread to nearby fertile land every turn.
+	for tile in neighbors:
 		if !map.hexDatabase.has(tile):
 			continue
-		elif TileTrig(map, tile, HexTypes.type["Water"]): #Add nearby water to list
+		if TileTrig(map, tile, HexTypes.type["Water"]): #Add nearby water to list
 			waterNeighbors.append(tile)
 			continue
-		elif TileTrig(map, tile, HexTypes.type["Brush"]):  #Add nearby brush to list
-			if map.hexDatabase[coords].stackCount > map.hexDatabase[tile].stackCount+1:
-				map.ChangeStack(tile, 1) #Free water-less growth if 3:1
-				map.updateOrder.erase(tile)
-				continue
-			elif !MinMaxTrig(map, tile, true):
-				brushNeighbors.append(tile)
-				continue
-		if TagTrig(map, tile, "Fertile"): #Brush spreads to fertile
+		if TagTrig(map, tile, "Fertile") and TagTrig(map, tile, "Open"): #Brush spreads to fertile
 			if CompareTrig(map, coords, tile, false): #Only if stack is lower
-				#print("Found Fertile Land!")
 				map.ChangeTile(tile, HexTypes.type["Brush"])
 				map.updateOrder.erase(tile)
+				continue
+		if TileTrig(map, tile, HexTypes.type["Brush"]):
+			if map.hexDatabase[coords].stackCount > map.hexDatabase[tile].stackCount+1:
+				map.ChangeStack(tile, 1)
+				map.updateOrder.erase(tile)
+				continue
 	
+	#If not at max, increase stack if damp or fertile.
+	if !MinMaxTrig(map, coords, true):
+		if TagTrig(map, coords, "Damp"):
+			map.ChangeStack(coords, 1)
+		return
+	#Don't go further if no water to spend, or if not at max stacks.
 	if waterNeighbors.size() <= 0: #If I couldn't get water, I'll do nothing.
 		return
+	#Check random neighboring water tile, decrease stack or change to stone if empty.
 	var waterTile = waterNeighbors[RandomNumberGenerator.new().randi_range(0, waterNeighbors.size()-1)]
 	if MinMaxTrig(map, waterTile, false):
 		map.ChangeTile(waterTile, HexTypes.type["Stone"])
+		map.AddRemoveTag(waterTile, "Damp", true)
 		map.updateOrder.erase(waterTile)
 	else:
 		map.ChangeStack(waterTile, -1)
 		map.updateOrder.erase(waterTile)
-	
-	if brushNeighbors.size() <= 0: #If I got water and can't spread, I should grow!
-		if MinMaxTrig(map, coords, true):
-			map.ChangeTile(coords, HexTypes.type["Forest"], 1)
-		else:
-			map.ChangeStack(coords, 1)
-		return
-	var landTile = brushNeighbors[RandomNumberGenerator.new().randi_range(0, brushNeighbors.size()-1)]
-	#If I got water and CAN spread, I'll grow someone else smaller than me.
-	map.ChangeStack(landTile, 1)
-	map.updateOrder.erase(landTile)
+	#After spending water, grow to forest.
+	map.ChangeTile(coords, HexTypes.type["Forest"], 1)
 	
 	
 	#if TimeTrig(map, coords):
