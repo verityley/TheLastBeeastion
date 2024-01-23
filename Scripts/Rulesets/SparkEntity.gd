@@ -6,22 +6,31 @@ var sparkCount:int = 1
 
 func EntityActions(map:WorldMap, hex:Hex):
 	var tileType:TileRuleset = hex.tileType
-	var targetTile:Vector2i = map.hexDatabase[hex.gridCoords]
-	if hex.tags["Damp"]:
-		map.AddRemoveTag(targetTile, "Damp", false)
-		map.ChangeEntity(targetTile, null, true)
+	var tile:Vector2i = hex.gridCoords
+	map.updateOrder.erase(tile)
+	if hex.tags["Damp"] == true:
+		map.AddRemoveTag(tile, "Damp", false)
+		map.ChangeEntity(tile, null, true)
 		map.remove_child(entitySprite)
-		map.entityOrder.erase(self)
+		#map.entityOrder.erase(self)
 	
-	if sparkCount == 3:
-		map.ChangeTile(targetTile, HexTypes.type["Fire"])
-		map.ChangeEntity(targetTile, null, true)
-		map.remove_child(entitySprite)
-		map.entityOrder.erase(self)
-		return
-
-	if hex.tags["Flammable"]:
+	if hex.tags["Flammable"] == true:
 		sparkCount += 1
+		if sparkCount == 4:
+			map.hexDatabase[tile].priorStack = map.hexDatabase[tile].stackCount
+			map.ChangeTile(tile, HexTypes.type["Fire"])
+			map.ChangeEntity(tile, null, true)
+			map.remove_child(entitySprite)
+			map.entityOrder.erase(self)
+			return
 		entitySprite.texture = sparkResource[sparkCount-1]
-	
+	else:
+		sparkCount -= 1
+		if sparkCount <= 0:
+			map.ChangeEntity(tile, null, true)
+			map.remove_child(entitySprite)
+			map.entityOrder.erase(self)
+		entitySprite.texture = sparkResource[sparkCount-1]
+	map.hexDatabase[tile].tileType.UpdateHex(map, tile)
+	map.hexDatabase[tile].UpdateHexSprite(map)
 	#map.entityOrder.append(self)

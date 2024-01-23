@@ -6,11 +6,17 @@ var worldSize:int = 10 #current "stage/max map size in rings from center
 
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
 var entityOrder:Array[Entity]
+@export var wait:bool
+@export var turnIcon:Texture2D
+var turnTracker:Sprite2D
 #Use Array.has() to make sure it isnt added twice
 
 func WorldSetup():
 	var worldHexes:Array[Vector2i] = GetAllHexes(worldSize)
-	
+	turnTracker = Sprite2D.new()
+	add_child(turnTracker)
+	turnTracker.hide()
+	turnTracker.texture = turnIcon
 	for tile in worldHexes:
 		var hexData:TileData = get_cell_tile_data(0, tile)
 		if hexData == null:
@@ -22,6 +28,7 @@ func WorldSetup():
 		newHex.stackCount = hexData.get_custom_data("Stack Count")
 		newHex.tags = newHex.tileType.tagsDatabase.duplicate()
 		newHex.counter = newHex.tileType.counterStart
+		newHex.priorStack = newHex.stackCount
 		var newTopper:Sprite2D = Sprite2D.new()
 		add_child(newTopper)
 		newTopper.texture = hexData.get_custom_data("Topper")
@@ -42,6 +49,8 @@ func WorldSetup():
 func WorldTurn():
 	updateOrder = GetAllHexes(worldSize)
 	#print(updateOrder)
+	if wait:
+		turnTracker.show()
 	UpdateWorld()
 
 func UpdateWorld(): #This is a loop that iterates through every hex, in priority order
@@ -49,13 +58,20 @@ func UpdateWorld(): #This is a loop that iterates through every hex, in priority
 	while entityUpdates.size() > 0:
 		var entity:Entity = entityUpdates.pop_front()
 		entity.UpdateEntity(self)
+		if wait == true:
+			turnTracker.position = to_global(map_to_local(entity.entityPos))
+			await $Timer.timeout
 	while updateOrder.size() > 0:
 		var tile = updateOrder.pop_front()
 		if hexDatabase.has(tile):
 			#print("Current Updating Tile: ", tile, " Current Tile Type: ", hexDatabase[tile].tileType.name)
 			hexDatabase[tile].tileType.UpdateHex(self, tile)
 			hexDatabase[tile].UpdateHexSprite(self)
-	pass
+			if wait == true:
+				turnTracker.position = to_global(map_to_local(tile))
+				await $Timer.timeout
+	if wait:
+		turnTracker.hide()
 	#Make sure to skip any hex that has already updated, or been newly placed this turn
 	#Be sure to remove tile coords from updateOrder if they've been changed by anything in this function
 
@@ -167,7 +183,7 @@ func AddRemoveTag(coords:Vector2i, tag:String, tagState:bool):
 
 func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false): 
 	#Swap out target tile. If "soft", adds tags to resulting tile's tags. Optionally set stack count, default 1.
-	print(type)
+	#print(type)
 	var targetTile:Hex = hexDatabase[coords]
 	#print("Changing Tile ", coords, " to ", type.name)
 	#play random sound from targetTile.tileType.soundScale
@@ -177,8 +193,8 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 		targetTile.tileType = type
 		targetTile.stackCount = stacks
 		targetTile.counter = type.counterStart
-		if targetTile.counter != -1:
-			print("Counter: ", targetTile.counter)
+		#if targetTile.counter != -1:
+			#print("Counter: ", targetTile.counter)
 		#Keep tile graphic atlas to tile types going vertical, stacks going horizontal. New columns OK
 		set_cell(0, coords, 0, type.tileIndex + Vector2i(targetTile.stackCount-1, 0))
 		ChangeTags(coords, type.tagsDatabase)
@@ -190,8 +206,8 @@ func ChangeEntity(coords:Vector2i, entity:Entity, forceReplace:bool=false):
 		return
 	if targetTile.entityOnTile != null and forceReplace == false:
 		return
-	if targetTile.entityOnTile.entityTags["Irreplacable"] == true:
-		return
+	#if targetTile.entityOnTile.entityTags["Irreplacable"] == true:
+	#	return
 	targetTile.entityOnTile = entity
 	#Change entity graphic out for new
 

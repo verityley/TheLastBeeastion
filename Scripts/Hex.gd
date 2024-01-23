@@ -10,7 +10,8 @@ var counter:int #Used for turn timers and slower growths
 var topper:Sprite2D
 var topperPosition:Vector2
 var flowTile
-var priorStack:int = 1
+var priorStack:int
+var outOfFuel:bool = false
 
 
 func UpdateHexSprite(map:WorldMap):

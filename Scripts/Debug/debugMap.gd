@@ -50,6 +50,8 @@ func _input(event):
 		else:
 			$Timer.stop()
 		
+		#wait = true
+		#$Timer.start()
 		#WorldTurn()
 
 

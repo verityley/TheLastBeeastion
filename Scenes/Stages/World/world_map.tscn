@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cepuo6625f5j0"]
+[gd_scene load_steps=12 format=3 uid="uid://cepuo6625f5j0"]
 
 [ext_resource type="Texture2D" uid="uid://bkhpfriatbcr3" path="res://Assets/Tile Graphics/minimalHexes.png" id="1_21n8k"]
 [ext_resource type="Resource" uid="uid://dv4l2rsudo0eb" path="res://Scripts/Resources/Tiles/Brush.tres" id="1_lo43y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://byi2x38dlb0wo" path="res://Scripts/Resources/Tiles/Stone.tres" id="4_i4tqr"]
 [ext_resource type="Resource" uid="uid://cdba7e06nccya" path="res://Scripts/Resources/Tiles/Water.tres" id="4_xs311"]
 [ext_resource type="Resource" uid="uid://d1pmargdpki0u" path="res://Scripts/Resources/Tiles/Fire.tres" id="5_xi3bq"]
+[ext_resource type="Texture2D" uid="uid://7ymnceqjpltl" path="res://Assets/Misc Graphics/icon.svg" id="9_bq45t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4knm"]
 texture = ExtResource("1_21n8k")
@@ -126,12 +127,13 @@ format = 2
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(65536, 0, 0, -1, 0, 0, -65536, 0, 0, 131071, 0, 0, 65534, 0, 0, -2, 0, 4, -65537, 0, 4, -131072, 0, 4, -131071, 0, 4, -65534, 0, 4, 2, 0, 0, 65537, 0, 0, 65538, 0, 0, 196608, 0, 0, 196607, 0, 0, 196606, 0, 0, -65538, 0, 4, -131073, 0, 4, -196608, 0, 4, -196607, 0, 4, -131070, 0, 4, -65533, 0, 4, 3, 0, 0, 65539, 0, 0, 131074, 0, 0, 131073, 0, 0, 65533, 0, 0, -131069, 0, 4, -3, 0, 4, -65539, 0, 4, 1, 0, 0, -65535, 0, 0, 0, 0, 0, 65535, 0, 0, 131070, 0, 0, 131069, 0, 0, 131072, 0, 0)
 script = ExtResource("2_jc8hh")
+turnIcon = ExtResource("9_bq45t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(203, 155)
 zoom = Vector2(0.2, 0.2)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

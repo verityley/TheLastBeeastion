@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="FireRules" load_steps=2 format=3 uid="uid://d1pmargdpki0u"]
+[gd_resource type="Resource" script_class="FireRules" load_steps=3 format=3 uid="uid://d1pmargdpki0u"]
 
 [ext_resource type="Script" path="res://Scripts/Rulesets/FireRules.gd" id="1_8dej5"]
+[ext_resource type="Resource" uid="uid://dktxm58ry242g" path="res://Scripts/Resources/Entities/Spark.tres" id="2_bsu7g"]
 
 [resource]
 script = ExtResource("1_8dej5")
+sparkEntity = ExtResource("2_bsu7g")
 name = "Fire"
 tileIndex = Vector2i(0, 6)
 stackMax = 3
-counterStart = 3
+counterStart = 2
 soundScale = []
 tagsDatabase = {
 "Blocked": false,
