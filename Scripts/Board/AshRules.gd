@@ -16,12 +16,12 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 				map.ChangeStack(coords, -1)
 			break
 	
-	if TimeTrig(map, coords):
-		if MinMaxTrig(map, coords, false):
-			map.ChangeTile(coords, HexTypes.type["Stone"], 1)
-			map.hexDatabase[coords].counter = self.counterStart
-		else:
-			map.ChangeStack(coords, -1)
-			map.hexDatabase[coords].counter = self.counterStart
-	else:
-		map.hexDatabase[coords].counter = clampi(map.hexDatabase[coords].counter - 1, 0, self.counterStart)
+	#if TimeTrig(map, coords):
+		#if MinMaxTrig(map, coords, false):
+			#map.ChangeTile(coords, HexTypes.type["Stone"], 1)
+			#map.hexDatabase[coords].counter = self.counterStart
+		#else:
+			#map.ChangeStack(coords, -1)
+			#map.hexDatabase[coords].counter = self.counterStart
+	#else:
+		#map.hexDatabase[coords].counter = clampi(map.hexDatabase[coords].counter - 1, 0, self.counterStart)

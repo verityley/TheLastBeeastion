@@ -44,12 +44,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			return
 		
 	var dampTiles = map.GetAllAdjacent(coords)
-	var tagsToAdd:Dictionary
-	tagsToAdd["Damp"] = true
 	for tile in dampTiles:
 		if TagTrig(map, tile, "Damp"):
 			continue
-		map.ChangeTags(tile, tagsToAdd, true)
+		map.AddRemoveTag(tile, "Damp", true)
 	#print("Loop Broke, no tile to flow to.")
 	#var neighbors = map.GetAllAdjacent(coords)
 	#var filteredNeighbors:Array = neighbors.duplicate()

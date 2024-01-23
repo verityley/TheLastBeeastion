@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FireRules" load_steps=2 format=3 uid="uid://d1pmargdpki0u"]
+
+[ext_resource type="Script" path="res://Scripts/Board/FireRules.gd" id="1_8dej5"]
+
+[resource]
+script = ExtResource("1_8dej5")
+name = "Fire"
+tileIndex = Vector2i(0, 6)
+stackMax = 3
+counterStart = 3
+soundScale = []
+tagsDatabase = {
+"Blocked": false,
+"Damp": false,
+"Fertile": false,
+"Flammable": false,
+"Irreplacable": false,
+"Open": true
+}
+trigFlowTile = Vector2i(0, 0)

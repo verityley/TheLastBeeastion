@@ -12,7 +12,7 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			waterNeighbors.append(tile)
 			continue
 		if TagTrig(map, tile, "Fertile") and TagTrig(map, tile, "Open"): #Brush spreads to fertile
-			if CompareTrig(map, coords, tile, false): #Only if stack is lower
+			if !CompareTrig(map, coords, tile, true): #Only if stack is lower
 				map.ChangeTile(tile, HexTypes.type["Brush"])
 				map.updateOrder.erase(tile)
 				continue

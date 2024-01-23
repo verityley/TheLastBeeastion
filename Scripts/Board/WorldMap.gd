@@ -21,10 +21,16 @@ func WorldSetup():
 		newHex.stackCount = hexData.get_custom_data("Stack Count")
 		newHex.tags = newHex.tileType.tagsDatabase.duplicate()
 		newHex.counter = newHex.tileType.counterStart
-		var newTopper:Sprite2D = hexData.get_custom_data("Tile Ruleset")
+		var newTopper:Sprite2D = Sprite2D.new()
+		add_child(newTopper)
+		newTopper.texture = hexData.get_custom_data("Topper")
 		newTopper.position = to_global(map_to_local(tile))
+		newTopper.y_sort_enabled = true
+		newTopper.z_index = 1
+		print("Topper position: ", newTopper.position, " Topper Texture: ", newTopper.texture)
 		newHex.topper = newTopper
 		newHex.topperPosition = newTopper.position
+		newHex.UpdateHexSprite(self)
 		#if newHex.stackCount > 3: Might not need this edge case, but leaving it here anyways
 			#newHex.tags["Open"] = false
 			#newHex.tags["Blocked"] = true
@@ -43,6 +49,7 @@ func UpdateWorld(): #This is a loop that iterates through every hex, in priority
 		if hexDatabase.has(tile):
 			#print("Current Updating Tile: ", tile, " Current Tile Type: ", hexDatabase[tile].tileType.name)
 			hexDatabase[tile].tileType.UpdateHex(self, tile)
+			hexDatabase[tile].UpdateHexSprite(self)
 	pass
 	#Make sure to skip any hex that has already updated, or been newly placed this turn
 	#Be sure to remove tile coords from updateOrder if they've been changed by anything in this function
@@ -140,19 +147,12 @@ func ChangeStack(coords:Vector2i, amount:int):
 		#print("Tile at Maximum Stacks!")
 		#MaxStackTrig(targetTile)
 
-func ChangeTags(coords:Vector2i, tagsToAdd:Dictionary, soft:bool=false): 
-	#Swap out tags on target tile. If "soft", adds tags instead of replacing.
+func ChangeTags(coords:Vector2i, tagsToAdd:Dictionary): 
 	var targetTile:Hex = hexDatabase[coords]
 	if targetTile == null:
 		return
-	if soft == false:
-		targetTile.tags = tagsToAdd
-	else:
-		for tag in tagsToAdd:
-			if !targetTile.tags.has(tag):
-				targetTile.tags[tag] = tagsToAdd[tag]
-			elif targetTile.tags.has(tag) and targetTile.tags[tag] == false:
-				targetTile.tags[tag] = true
+	for tag in tagsToAdd:
+		targetTile.tags[tag] = tagsToAdd[tag]
 
 func AddRemoveTag(coords:Vector2i, tag:String, tagState:bool):
 	var targetTile:Hex = hexDatabase[coords]
@@ -176,7 +176,7 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 			print("Counter: ", targetTile.counter)
 		#Keep tile graphic atlas to tile types going vertical, stacks going horizontal. New columns OK
 		set_cell(0, coords, 0, type.tileIndex + Vector2i(targetTile.stackCount-1, 0))
-		ChangeTags(coords, type.tagsDatabase, soft)
+		ChangeTags(coords, type.tagsDatabase)
 
 func ChangeEntity(coords:Vector2i, entity:Entity, forceReplace:bool=false): 
 	#Swap out target entity/worker.
