@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WaterRules" load_steps=2 format=3 uid="uid://cdba7e06nccya"]
 
-[ext_resource type="Script" path="res://Scripts/Board/WaterRules.gd" id="1_4764f"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/WaterRules.gd" id="1_4764f"]
 
 [resource]
 script = ExtResource("1_4764f")

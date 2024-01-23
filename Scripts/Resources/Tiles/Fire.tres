@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FireRules" load_steps=2 format=3 uid="uid://d1pmargdpki0u"]
 
-[ext_resource type="Script" path="res://Scripts/Board/FireRules.gd" id="1_8dej5"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/FireRules.gd" id="1_8dej5"]
 
 [resource]
 script = ExtResource("1_8dej5")

@@ -5,6 +5,7 @@ var hexDatabase:Dictionary
 var worldSize:int = 10 #current "stage/max map size in rings from center
 
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
+var entityOrder:Array[Entity]
 #Use Array.has() to make sure it isnt added twice
 
 func WorldSetup():
@@ -27,7 +28,7 @@ func WorldSetup():
 		newTopper.position = to_global(map_to_local(tile))
 		newTopper.y_sort_enabled = true
 		newTopper.z_index = 1
-		print("Topper position: ", newTopper.position, " Topper Texture: ", newTopper.texture)
+		#print("Topper position: ", newTopper.position, " Topper Texture: ", newTopper.texture)
 		newHex.topper = newTopper
 		newHex.topperPosition = newTopper.position
 		newHex.UpdateHexSprite(self)
@@ -44,6 +45,10 @@ func WorldTurn():
 	UpdateWorld()
 
 func UpdateWorld(): #This is a loop that iterates through every hex, in priority order
+	var entityUpdates:Array[Entity] = entityOrder.duplicate()
+	while entityUpdates.size() > 0:
+		var entity:Entity = entityUpdates.pop_front()
+		entity.UpdateEntity(self)
 	while updateOrder.size() > 0:
 		var tile = updateOrder.pop_front()
 		if hexDatabase.has(tile):
@@ -164,7 +169,7 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 	#Swap out target tile. If "soft", adds tags to resulting tile's tags. Optionally set stack count, default 1.
 	print(type)
 	var targetTile:Hex = hexDatabase[coords]
-	print("Changing Tile ", coords, " to ", type.name)
+	#print("Changing Tile ", coords, " to ", type.name)
 	#play random sound from targetTile.tileType.soundScale
 	if targetTile == null:
 		return

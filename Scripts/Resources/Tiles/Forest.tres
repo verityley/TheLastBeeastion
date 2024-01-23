@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ForestRules" load_steps=2 format=3 uid="uid://dsd8phi1rvkwl"]
 
-[ext_resource type="Script" path="res://Scripts/Board/ForestRules.gd" id="1_ffhju"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/ForestRules.gd" id="1_ffhju"]
 
 [resource]
 script = ExtResource("1_ffhju")

@@ -1,6 +1,7 @@
 extends TileRuleset
 class_name FireRules
 
+@export var sparkEntity:Entity
 
 func UpdateHex(map:WorldMap, coords:Vector2i):
 	var neighbors = map.GetAllAdjacent(coords)
@@ -19,12 +20,14 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		if MinMaxTrig(map, coords, true):
 			map.ChangeTile(coords, HexTypes.type["Ash"], priorStack)
 			for tile in neighbors:
-				if TagTrig(map, tile, "Flammable"):
-					if TagTrig(map, tile, "Damp"):
-						map.AddRemoveTag(tile, "Damp", false)
-					else:
-						map.hexDatabase[tile].priorStack = map.hexDatabase[tile].stackCount
-						map.ChangeTile(tile, HexTypes.type["Fire"], priorStack) #Replace with Spark entity
+				if TileTrig(map, coords, HexTypes.type["Water"]):
+					map.hexDatabase[tile].priorStack = map.hexDatabase[tile].stackCount
+					map.ChangeEntity(tile, sparkEntity)
+					var spark = map.hexDatabase[tile].entityOnTile
+					spark.OnPlace(map, tile)
+					spark.sparkCount = priorStack
+					spark.entitySprite.texture = spark.sparkResource[priorStack-1]
+					#map.ChangeTile(tile, HexTypes.type["Fire"], priorStack) #Replace with Spark entity
 		else:
 			map.ChangeStack(coords, 1)
 		
