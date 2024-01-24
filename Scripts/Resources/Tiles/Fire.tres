@@ -17,6 +17,6 @@ tagsDatabase = {
 "Fertile": false,
 "Flammable": false,
 "Irreplacable": false,
-"Open": true
+"Open": false
 }
 trigFlowTile = Vector2i(0, 0)

@@ -1,14 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://cepuo6625f5j0"]
+[gd_scene load_steps=19 format=3 uid="uid://cepuo6625f5j0"]
 
 [ext_resource type="Texture2D" uid="uid://bkhpfriatbcr3" path="res://Assets/Tile Graphics/minimalHexes.png" id="1_21n8k"]
 [ext_resource type="Resource" uid="uid://dv4l2rsudo0eb" path="res://Scripts/Resources/Tiles/Brush.tres" id="1_lo43y"]
 [ext_resource type="Resource" uid="uid://dsd8phi1rvkwl" path="res://Scripts/Resources/Tiles/Forest.tres" id="2_1u0g0"]
+[ext_resource type="Texture2D" uid="uid://cd7xbwom625u" path="res://Assets/Tile Graphics/Toppers/brush1top.png" id="2_a5dy0"]
 [ext_resource type="Script" path="res://Scripts/Debug/debugMap.gd" id="2_jc8hh"]
 [ext_resource type="Resource" uid="uid://be278mkdcaghn" path="res://Scripts/Resources/Tiles/Ash.tres" id="3_0wvqc"]
+[ext_resource type="Texture2D" uid="uid://br6a4w3n3ldnx" path="res://Assets/Tile Graphics/Toppers/forest1top.png" id="4_7vhq8"]
 [ext_resource type="Resource" uid="uid://byi2x38dlb0wo" path="res://Scripts/Resources/Tiles/Stone.tres" id="4_i4tqr"]
 [ext_resource type="Resource" uid="uid://cdba7e06nccya" path="res://Scripts/Resources/Tiles/Water.tres" id="4_xs311"]
 [ext_resource type="Resource" uid="uid://d1pmargdpki0u" path="res://Scripts/Resources/Tiles/Fire.tres" id="5_xi3bq"]
+[ext_resource type="Texture2D" uid="uid://bre74vuk3lx48" path="res://Assets/Tile Graphics/Toppers/brush2top.png" id="8_jixqe"]
 [ext_resource type="Texture2D" uid="uid://7ymnceqjpltl" path="res://Assets/Misc Graphics/icon.svg" id="9_bq45t"]
+[ext_resource type="Texture2D" uid="uid://btrp3lonuevfr" path="res://Assets/Tile Graphics/Toppers/brush3top.png" id="9_uruaa"]
+[ext_resource type="Texture2D" uid="uid://c0is2ccps8pbn" path="res://Assets/Tile Graphics/Toppers/forest2top.png" id="10_vbyci"]
+[ext_resource type="Texture2D" uid="uid://b4mmumiv3vfqx" path="res://Assets/Tile Graphics/Toppers/forest3top.png" id="12_k1v4k"]
+[ext_resource type="Texture2D" uid="uid://dwj76euwyjo45" path="res://Assets/Tile Graphics/Toppers/forest4top.png" id="13_wkxgo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4knm"]
 texture = ExtResource("1_21n8k")
@@ -17,26 +24,32 @@ texture_region_size = Vector2i(400, 400)
 0:0/0/texture_origin = Vector2i(0, 40)
 0:0/0/custom_data_0 = 1
 0:0/0/custom_data_1 = ExtResource("1_lo43y")
+0:0/0/custom_data_2 = ExtResource("2_a5dy0")
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, 40)
 1:0/0/custom_data_0 = 2
 1:0/0/custom_data_1 = ExtResource("1_lo43y")
+1:0/0/custom_data_2 = ExtResource("8_jixqe")
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 40)
 2:0/0/custom_data_0 = 3
 2:0/0/custom_data_1 = ExtResource("1_lo43y")
+2:0/0/custom_data_2 = ExtResource("9_uruaa")
 2:1/0 = 0
 2:1/0/texture_origin = Vector2i(0, 40)
 2:1/0/custom_data_0 = 3
 2:1/0/custom_data_1 = ExtResource("2_1u0g0")
+2:1/0/custom_data_2 = ExtResource("12_k1v4k")
 1:1/0 = 0
 1:1/0/texture_origin = Vector2i(0, 40)
 1:1/0/custom_data_0 = 2
 1:1/0/custom_data_1 = ExtResource("2_1u0g0")
+1:1/0/custom_data_2 = ExtResource("10_vbyci")
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(0, 40)
 0:1/0/custom_data_0 = 1
 0:1/0/custom_data_1 = ExtResource("2_1u0g0")
+0:1/0/custom_data_2 = ExtResource("4_7vhq8")
 0:2/0 = 0
 0:2/0/texture_origin = Vector2i(0, 40)
 0:2/0/custom_data_0 = 1
@@ -107,6 +120,7 @@ texture_region_size = Vector2i(400, 400)
 3:1/0/texture_origin = Vector2i(0, 40)
 3:1/0/custom_data_0 = 4
 3:1/0/custom_data_1 = ExtResource("2_1u0g0")
+3:1/0/custom_data_2 = ExtResource("13_wkxgo")
 
 [sub_resource type="TileSet" id="TileSet_20swi"]
 tile_shape = 3
@@ -125,15 +139,15 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_20swi")
 format = 2
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(65536, 0, 0, -1, 0, 0, -65536, 0, 0, 131071, 0, 0, 65534, 0, 0, -2, 0, 4, -65537, 0, 4, -131072, 0, 4, -131071, 0, 4, -65534, 0, 4, 2, 0, 0, 65537, 0, 0, 65538, 0, 0, 196608, 0, 0, 196607, 0, 0, 196606, 0, 0, -65538, 0, 4, -131073, 0, 4, -196608, 0, 4, -196607, 0, 4, -131070, 0, 4, -65533, 0, 4, 3, 0, 0, 65539, 0, 0, 131074, 0, 0, 131073, 0, 0, 65533, 0, 0, -131069, 0, 4, -3, 0, 4, -65539, 0, 4, 1, 0, 0, -65535, 0, 0, 0, 0, 0, 65535, 0, 0, 131070, 0, 0, 131069, 0, 0, 131072, 0, 0)
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, -1, 131072, 0, -65536, 131072, 0, -65535, 131072, 0, 1, 0, 0, 65535, 0, 0, 131070, 0, 0, 65534, 131072, 0, -65537, 131072, 0, -131072, 131072, 0, -131071, 131072, 0, -65534, 131072, 0, 2, 131072, 0, 65538, 0, 0, 65537, 0, 0, 131072, 0, 0, 131071, 0, 0, -2, 131072, 0, 196608, 0, 0, 196607, 0, 0, 196606, 0, 0, 131069, 0, 0, 65533, 131072, 0, -3, 131072, 0, -65539, 131072, 0, -65538, 131072, 0, -131073, 131072, 0, -196608, 131072, 0, -196607, 131072, 0, -131070, 131072, 0, -131069, 131072, 0, -65533, 131072, 0, 3, 131072, 0, 65539, 0, 0, 131074, 0, 0, 131073, 0, 0, 262144, 0, 0, 262143, 0, 0, 262142, 0, 0, 196605, 0, 0, 196604, 0, 0, 131068, 131072, 0, 65532, 131072, 0, -4, 131072, 0, -65540, 131072, 0, -131075, 131072, 0, -131074, 131072, 0, -196609, 131072, 0, -262144, 131072, 0, -262143, 131072, 0, -196606, 131072, 0, -196605, 131072, 0, -131068, 131072, 0, -65532, 131072, 0, 4, 131072, 0, 65540, 131072, 0, 131076, 0, 0, 131075, 0, 0, 196610, 0, 0, 196609, 0, 0)
 script = ExtResource("2_jc8hh")
 turnIcon = ExtResource("9_bq45t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(203, 155)
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.3, 0.3)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

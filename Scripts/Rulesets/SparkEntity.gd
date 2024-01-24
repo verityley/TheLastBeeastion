@@ -12,12 +12,13 @@ func EntityActions(map:WorldMap, hex:Hex):
 		map.AddRemoveTag(tile, "Damp", false)
 		map.ChangeEntity(tile, null, true)
 		map.remove_child(entitySprite)
+		return
 		#map.entityOrder.erase(self)
 	
 	if hex.tags["Flammable"] == true:
 		sparkCount += 1
 		if sparkCount == 4:
-			map.hexDatabase[tile].priorStack = map.hexDatabase[tile].stackCount
+			map.hexDatabase[tile].priorStack = clampi(map.hexDatabase[tile].stackCount, 0, 3)
 			map.ChangeTile(tile, HexTypes.type["Fire"])
 			map.ChangeEntity(tile, null, true)
 			map.remove_child(entitySprite)

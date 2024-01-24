@@ -32,7 +32,7 @@ func WorldSetup():
 		var newTopper:Sprite2D = Sprite2D.new()
 		add_child(newTopper)
 		newTopper.texture = hexData.get_custom_data("Topper")
-		newTopper.position = to_global(map_to_local(tile))
+		newTopper.position = to_global(map_to_local(tile)) + (Vector2(0,-20)*newHex.stackCount)
 		newTopper.y_sort_enabled = true
 		newTopper.z_index = 1
 		#print("Topper position: ", newTopper.position, " Topper Texture: ", newTopper.texture)

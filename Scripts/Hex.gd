@@ -15,13 +15,14 @@ var outOfFuel:bool = false
 
 
 func UpdateHexSprite(map:WorldMap):
-	var tempColor:Color
-	if tags["Damp"]:
-		tempColor += Color(0, 0, 0.5)
-	if tags["Fertile"]:
-		tempColor += Color(0, 0.5, 0)
+	topper.texture = map.get_cell_tile_data(0, gridCoords).get_custom_data("Topper")
+	#var tempColor:Color
+	#if tags["Damp"]:
+		#tempColor += Color(0, 0, 0.5)
+	#if tags["Fertile"]:
+		#tempColor += Color(0, 0.5, 0)
 	#if tags["Flammable"]:
 	#	tempColor += Color(0.5, 0, 0)
 	
-	topper.modulate = tempColor
+	#topper.modulate = tempColor
 	

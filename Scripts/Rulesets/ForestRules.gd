@@ -39,6 +39,7 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	if MinMaxTrig(map, waterTile, false):
 		map.ChangeTile(waterTile, HexTypes.type["Stone"])
 		map.AddRemoveTag(waterTile, "Damp", true)
+		map.hexDatabase[waterTile].flowTile = null
 		map.updateOrder.erase(waterTile)
 	else:
 		map.ChangeStack(waterTile, -1)
