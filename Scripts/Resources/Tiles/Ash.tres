@@ -7,12 +7,12 @@ script = ExtResource("1_tc78p")
 name = "Ash"
 tileIndex = Vector2i(0, 3)
 stackMax = 3
-counterStart = 12
+counterStart = 3
 soundScale = []
 tagsDatabase = {
 "Blocked": false,
 "Damp": false,
-"Fertile": true,
+"Fertile": false,
 "Flammable": false,
 "Irreplacable": false,
 "Open": true

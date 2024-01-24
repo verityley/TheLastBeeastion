@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://gowwh5dt3n6i"]
+[gd_scene load_steps=9 format=3 uid="uid://gowwh5dt3n6i"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Autoloads/HexDatabase.gd" id="1_bw4k7"]
 [ext_resource type="Resource" uid="uid://dv4l2rsudo0eb" path="res://Scripts/Resources/Tiles/Brush.tres" id="2_esdhl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://d1pmargdpki0u" path="res://Scripts/Resources/Tiles/Fire.tres" id="4_qyyiv"]
 [ext_resource type="Resource" uid="uid://byi2x38dlb0wo" path="res://Scripts/Resources/Tiles/Stone.tres" id="5_37fra"]
 [ext_resource type="Resource" uid="uid://cdba7e06nccya" path="res://Scripts/Resources/Tiles/Water.tres" id="5_80twm"]
+[ext_resource type="Resource" uid="uid://dlp0pqk6dlk5a" path="res://Scripts/Resources/Tiles/Garden.tres" id="6_81p0c"]
 
 [node name="HexDatabase" type="Node"]
 script = ExtResource("1_bw4k7")
@@ -16,7 +17,7 @@ type = {
 "Empty": null,
 "Fire": ExtResource("4_qyyiv"),
 "Forest": ExtResource("3_iv45n"),
-"Garden": null,
+"Garden": ExtResource("6_81p0c"),
 "Hive": null,
 "Stone": ExtResource("5_37fra"),
 "Water": ExtResource("5_80twm")
