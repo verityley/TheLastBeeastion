@@ -124,10 +124,12 @@ func TimeTrig(map:WorldMap, coords:Vector2i):
 		trigger = true
 	return trigger
 
-func EntityTrig(map:WorldMap, coords:Vector2i, targetEntity:Entity) -> bool:
+func EntityTrig(map:WorldMap, coords:Vector2i, targetEntity:String) -> bool:
 	var targetTile:Hex = map.hexDatabase[coords]
 	var trigger:bool = false
-	if targetTile.entityOnTile == targetEntity:
+	if targetTile.entityOnTile == null:
+		return trigger
+	if targetTile.entityOnTile.name == targetEntity:
 		trigger = true
 	return trigger
 

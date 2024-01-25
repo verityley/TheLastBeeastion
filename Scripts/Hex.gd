@@ -12,6 +12,7 @@ var topperPosition:Vector2
 var flowTile
 var priorStack:int
 var outOfFuel:bool = false
+var inWorkerRange:bool
 
 
 func UpdateHexSprite(map:WorldMap):

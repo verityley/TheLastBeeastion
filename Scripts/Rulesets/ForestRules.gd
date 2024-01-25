@@ -14,8 +14,8 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	
 	var RNGtile = neighbors[RandomNumberGenerator.new().randi_range(0, neighbors.size()-1)]
 	if TagTrig(map, RNGtile, "Open"):  #Forest Spreads to open+fertile
-		if map.hexDatabase[coords].stackCount > map.hexDatabase[RNGtile].stackCount+1:
-			map.ChangeTile(RNGtile, HexTypes.type["Brush"])
+		if map.hexDatabase[coords].stackCount > map.hexDatabase[RNGtile].stackCount:
+			map.ChangeTile(RNGtile, HexTypes.type["Brush"], map.hexDatabase[coords].stackCount-1)
 			map.updateOrder.erase(RNGtile)
 			return
 	

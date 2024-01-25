@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WaxRules" load_steps=3 format=3 uid="uid://40e2ucwssta8"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/WaxRules.gd" id="1_lwx3g"]
+[ext_resource type="Resource" uid="uid://dktxm58ry242g" path="res://Scripts/Resources/Entities/Spark.tres" id="2_lx1gl"]
+
+[resource]
+script = ExtResource("1_lwx3g")
+sparkEntity = ExtResource("2_lx1gl")
+name = ""
+tileIndex = Vector2i(0, 5)
+stackMax = 2
+counterStart = 12
+soundScale = []
+tagsDatabase = {
+"Blocked": true,
+"Damp": false,
+"Fertile": false,
+"Flammable": false,
+"Irreplacable": false,
+"Open": false
+}
+trigFlowTile = Vector2i(0, 0)

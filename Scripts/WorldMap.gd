@@ -2,21 +2,27 @@ extends TileMap
 class_name WorldMap
 
 var hexDatabase:Dictionary
-var worldSize:int = 10 #current "stage/max map size in rings from center
+@export var worldSize:int = 20 #current "stage/max map size in rings from center
 
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
 var entityOrder:Array[Entity]
-@export var wait:bool
-@export var turnIcon:Texture2D
-var turnTracker:Sprite2D
+#@export var wait:bool
+#@export var turnIcon:Texture2D
+#var turnTracker:Sprite2D
+#var frameTracker:float
+#var frameThreshold:float = 0.5
 #Use Array.has() to make sure it isnt added twice
+
+#func _process(delta):
+	#frameTracker += delta
+	#print(frameTracker)
 
 func WorldSetup():
 	var worldHexes:Array[Vector2i] = GetAllHexes(worldSize)
-	turnTracker = Sprite2D.new()
-	add_child(turnTracker)
-	turnTracker.hide()
-	turnTracker.texture = turnIcon
+	#turnTracker = Sprite2D.new()
+	#add_child(turnTracker)
+	#turnTracker.hide()
+	#turnTracker.texture = turnIcon
 	for tile in worldHexes:
 		var hexData:TileData = get_cell_tile_data(0, tile)
 		if hexData == null:
@@ -33,6 +39,11 @@ func WorldSetup():
 		add_child(newTopper)
 		newTopper.texture = hexData.get_custom_data("Topper")
 		newTopper.position = to_global(map_to_local(tile)) + (Vector2(0,-20)*newHex.stackCount)
+		var flip = RandomNumberGenerator.new().randi_range(0,1)
+		if flip == 0:
+			newTopper.flip_h = false
+		elif flip == 1:
+			newTopper.flip_h = true
 		newTopper.y_sort_enabled = true
 		newTopper.z_index = 1
 		#print("Topper position: ", newTopper.position, " Topper Texture: ", newTopper.texture)
@@ -43,35 +54,41 @@ func WorldSetup():
 			#newHex.tags["Open"] = false
 			#newHex.tags["Blocked"] = true
 		hexDatabase[tile] = newHex
-	
+	ChangeEntity(Vector2i(0,0), HexTypes.entity["Hive"], true)
+	ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
+	ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
 	#print(hexDatabase)
 
 func WorldTurn():
+	#frameTracker = 0
 	updateOrder = GetAllHexes(worldSize)
 	#print(updateOrder)
-	if wait:
-		turnTracker.show()
+	#if wait:
+		#turnTracker.show()
 	UpdateWorld()
 
 func UpdateWorld(): #This is a loop that iterates through every hex, in priority order
 	var entityUpdates:Array[Entity] = entityOrder.duplicate()
 	while entityUpdates.size() > 0:
-		var entity:Entity = entityUpdates.pop_front()
+		var entity:Entity = entityUpdates.pop_back()
 		entity.UpdateEntity(self)
-		if wait == true:
-			turnTracker.position = to_global(map_to_local(entity.entityPos))
-			await $Timer.timeout
+		#if wait == true:
+			#turnTracker.position = to_global(map_to_local(entity.entityPos))
+			#await frameTracker >= frameThreshold
+			#frameTracker = 0 + (frameTracker - frameThreshold)
 	while updateOrder.size() > 0:
 		var tile = updateOrder.pop_front()
 		if hexDatabase.has(tile):
 			#print("Current Updating Tile: ", tile, " Current Tile Type: ", hexDatabase[tile].tileType.name)
 			hexDatabase[tile].tileType.UpdateHex(self, tile)
 			hexDatabase[tile].UpdateHexSprite(self)
-			if wait == true:
-				turnTracker.position = to_global(map_to_local(tile))
-				await $Timer.timeout
-	if wait:
-		turnTracker.hide()
+			#if wait == true:
+				#turnTracker.position = to_global(map_to_local(tile))
+				#await frameTracker >= frameThreshold
+				#frameTracker = 0 + (frameTracker - frameThreshold)
+	#if wait:
+		#turnTracker.hide()
+		#$Timer.wait_time = 0.1
 	#Make sure to skip any hex that has already updated, or been newly placed this turn
 	#Be sure to remove tile coords from updateOrder if they've been changed by anything in this function
 
@@ -118,6 +135,32 @@ func GetAllAdjacent(coords:Vector2i) -> Array:
 	#print(neighbors)
 	return neighbors
 
+func GetRadiusHexes(coords:Vector2i, radius:int) -> Array:
+	var hexes:Array[Vector2i]
+	var currentHex:Vector2i
+	var currentRing:int = 1
+	var directionOrder:Array[int] = [3,4,5,6,1,2] #This creates a clockwise circle, starting from the top
+	
+	currentHex = coords
+	hexes.append(currentHex) #Start at the center hex, spiral outwards
+	
+	while currentRing <= radius:
+		currentHex = get_neighbor_cell(currentHex, TileSet.CELL_NEIGHBOR_TOP_SIDE)
+		if get_cell_tile_data(0, currentHex) != null and !hexes.has(currentHex):
+			hexes.append(currentHex)
+		#print("New Ring! Starting at: ", currentHex)
+		for direction in directionOrder:
+			#print("New Direction! Aiming towards: ", direction)
+			for i in range(currentRing):
+				currentHex = GetAdjacent(currentHex, direction)
+				#print(currentHex)
+				if get_cell_tile_data(0, currentHex) != null and !hexes.has(currentHex):
+					hexes.append(currentHex)
+					#print("Found new hex, adding: ", currentHex)
+		currentRing += 1
+		#frameThreshold = 0.5 / currentRing
+	return hexes
+
 func GetAllHexes(mapSize:int) -> Array:
 	var hexes:Array[Vector2i]
 	var currentHex:Vector2i
@@ -141,6 +184,7 @@ func GetAllHexes(mapSize:int) -> Array:
 					hexes.append(currentHex)
 					#print("Found new hex, adding: ", currentHex)
 		currentRing += 1
+		#frameThreshold = 0.5 / currentRing
 	return hexes
 
 func GetAcross(coords:Vector2i, targetCoords:Vector2i) -> Vector2i:
@@ -198,6 +242,7 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 		#Keep tile graphic atlas to tile types going vertical, stacks going horizontal. New columns OK
 		set_cell(0, coords, 0, type.tileIndex + Vector2i(targetTile.stackCount-1, 0))
 		ChangeTags(coords, type.tagsDatabase)
+		targetTile.UpdateHexSprite(self)
 
 func ChangeEntity(coords:Vector2i, entity:Entity, forceReplace:bool=false): 
 	#Swap out target entity/worker.
@@ -208,7 +253,11 @@ func ChangeEntity(coords:Vector2i, entity:Entity, forceReplace:bool=false):
 		return
 	#if targetTile.entityOnTile.entityTags["Irreplacable"] == true:
 	#	return
-	targetTile.entityOnTile = entity
+	if entity == null:
+		targetTile.entityOnTile
+	else:
+		targetTile.entityOnTile = entity.duplicate()
+		targetTile.entityOnTile.OnPlace(self, coords)
 	#Change entity graphic out for new
 
 func ChangeTopper(coords:Vector2i, topperSprite:Sprite2D, additive:bool):

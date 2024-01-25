@@ -33,5 +33,4 @@ func EntityActions(map:WorldMap, hex:Hex):
 			map.entityOrder.erase(self)
 		entitySprite.texture = sparkResource[sparkCount-1]
 	map.hexDatabase[tile].tileType.UpdateHex(map, tile)
-	map.hexDatabase[tile].UpdateHexSprite(map)
 	#map.entityOrder.append(self)
