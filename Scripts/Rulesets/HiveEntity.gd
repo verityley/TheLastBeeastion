@@ -22,7 +22,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 	for tile in neighbors:
 		if map.hexDatabase[tile].tileType != HexTypes.type["Garden"]:
 			map.ChangeTile(tile, HexTypes.type["Garden"])
-			map.hexDatabase[tile].tileType.UpdateHex(map, tile)
+			#map.hexDatabase[tile].tileType.UpdateHex(map, tile)
 	for tile in workerHexes:
 		map.hexDatabase[tile].inWorkerRange = true
 	

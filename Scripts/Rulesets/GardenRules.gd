@@ -23,6 +23,9 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		#print("Smallest Garden is ", smallestGarden)
 		if map.hexDatabase[coords].stackCount <= smallestGarden:
 			map.ChangeStack(coords, 1)
-		
-	
-	#Increase Honey Resource by Stack Count
+
+#func TendHex(map:WorldMap, coords:Vector2i):
+	#var neighbors = map.GetAllAdjacent(coords)
+	#for tile in neighbors:
+		#map.AddRemoveTag(tile, "Fertile", true)
+	##Increase Honey Resource by Stack Count

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="WorkerBeeEntity" load_steps=3 format=3 uid="uid://dp6sae3hcc8ar"]
 
 [ext_resource type="Script" path="res://Scripts/Rulesets/WorkerBee.gd" id="1_vagsl"]
-[ext_resource type="Texture2D" uid="uid://bawresi3e0cvw" path="res://Assets/Tile Graphics/hive1.png" id="2_5ln1o"]
+[ext_resource type="Texture2D" uid="uid://84jam7nyfe8k" path="res://Assets/Tile Graphics/workerBee.png" id="2_s4mpa"]
 
 [resource]
 script = ExtResource("1_vagsl")
 name = "Worker"
-spriteResource = ExtResource("2_5ln1o")
-spriteOffset = Vector2(0, 0)
+spriteResource = ExtResource("2_s4mpa")
+spriteOffset = Vector2(0, -80)

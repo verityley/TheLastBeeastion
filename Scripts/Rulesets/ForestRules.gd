@@ -48,6 +48,9 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	map.ChangeStack(coords, 1)
 	return
 
+func TendHex(map:WorldMap, coords:Vector2i):
+	map.ChangeStack(coords, -1)
+
 #
 #func UpdateHex(map:WorldMap, coords:Vector2i):
 	#var neighbors = map.GetAllAdjacent(coords)

@@ -15,7 +15,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 
 func EntityActions(map:WorldMap, hex:Hex):
 	var tile:Vector2i = hex.gridCoords
-	map.updateOrder.erase(tile)
+	#map.updateOrder.erase(tile)
 	var RNG:int = RandomNumberGenerator.new().randi_range(1, 6)
 	var targetTile = map.GetAdjacent(tile, RNG)
 	targetTile = map.GetAcross(tile, targetTile)

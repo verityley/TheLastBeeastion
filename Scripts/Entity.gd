@@ -20,7 +20,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 
 func UpdateEntity(map:WorldMap):
 	var occupiedTile:Hex = map.hexDatabase[entityPos]
-	map.updateOrder.append(entityPos)
+	#map.updateOrder.append(entityPos)
 	EntityActions(map, occupiedTile)
 
 func EntityActions(map:WorldMap, hex:Hex):

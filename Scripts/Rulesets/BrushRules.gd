@@ -49,7 +49,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	#After spending water, grow to forest.
 	map.ChangeTile(coords, HexTypes.type["Forest"], 1)
 	
-	
+
+func TendHex(map:WorldMap, coords:Vector2i):
+	map.ChangeStack(coords, -2)
+
 	#if TimeTrig(map, coords):
 		#if MinMaxTrig(map, coords, true):
 			#for tile in neighbors:

@@ -17,11 +17,22 @@ class_name TileRuleset #This allows other scripts to look this up as a "type", m
 #This may also be where resources are instead extended into subresources
 @export var trigFlowTile:Vector2i #The coords of the tile that affected this one. Used for Water and Magma.
 
+func UpdateOnTile(map:WorldMap, coords:Vector2i):
+	if map.hexDatabase[coords].entityOnTile != null:
+		map.hexDatabase[coords].entityOnTile.UpdateEntity(map)
 
 func UpdateHex(map:WorldMap, coords:Vector2i):
+	#When in doubt, allow tile to be turned fertile by a worker
+	if map.hexDatabase[coords].entityOnTile != null:
+		map.hexDatabase[coords].entityOnTile.UpdateEntity(map)
 	pass #For subresource, list all possible trigger/effect combos as ordered if statements
 	#if triggerX(map, coords) == true:
 	#	doEventY(tiletype)
+
+func TendHex(map:WorldMap, coords:Vector2i):
+	if EntityTrig(map, coords, "Worker"):
+		map.AddRemoveTag(coords, "Fertile", true)
+		map.hexDatabase[coords].alreadyChanged = true
 
 #--Effect Functions Start Here--#
 #

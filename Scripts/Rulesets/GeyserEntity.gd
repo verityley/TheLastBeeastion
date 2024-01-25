@@ -15,12 +15,12 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 
 func EntityActions(map:WorldMap, hex:Hex):
 	var tile:Vector2i = hex.gridCoords
-	map.updateOrder.erase(tile)
+	#map.updateOrder.erase(tile)
 	var RNG:int = RandomNumberGenerator.new().randi_range(1, 6)
 	var targetTile = map.GetAdjacent(tile, RNG)
 	targetTile = map.GetAcross(tile, targetTile)
 	if hex.tileType.TileTrig(map, targetTile, HexTypes.type["Water"]):
-		if map.hexDatabase[targetTile].stackCount < 2:
+		if map.hexDatabase[targetTile].stackCount < 3:
 			map.ChangeStack(targetTile, 1)
 		else:
 			return
@@ -29,7 +29,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 	else:
 		return
 	map.hexDatabase[targetTile].flowTile = null
-	map.hexDatabase[targetTile].tileType.UpdateHex(map, tile)
-	map.hexDatabase[targetTile].UpdateHexSprite(map)
-	map.updateOrder.erase(targetTile)
+	#map.hexDatabase[targetTile].tileType.UpdateHex(map, tile)
+	#map.hexDatabase[targetTile].UpdateHexSprite(map)
+	#map.updateOrder.erase(targetTile)
 	

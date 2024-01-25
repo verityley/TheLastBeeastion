@@ -66,20 +66,15 @@ func WorldTurn():
 	#if wait:
 		#turnTracker.show()
 	UpdateWorld()
+	for tile in GetAllHexes(worldSize):
+		hexDatabase[tile].alreadyChanged = false
 
 func UpdateWorld(): #This is a loop that iterates through every hex, in priority order
-	var entityUpdates:Array[Entity] = entityOrder.duplicate()
-	while entityUpdates.size() > 0:
-		var entity:Entity = entityUpdates.pop_back()
-		entity.UpdateEntity(self)
-		#if wait == true:
-			#turnTracker.position = to_global(map_to_local(entity.entityPos))
-			#await frameTracker >= frameThreshold
-			#frameTracker = 0 + (frameTracker - frameThreshold)
 	while updateOrder.size() > 0:
 		var tile = updateOrder.pop_front()
 		if hexDatabase.has(tile):
 			#print("Current Updating Tile: ", tile, " Current Tile Type: ", hexDatabase[tile].tileType.name)
+			hexDatabase[tile].tileType.UpdateOnTile(self, tile)
 			hexDatabase[tile].tileType.UpdateHex(self, tile)
 			hexDatabase[tile].UpdateHexSprite(self)
 			#if wait == true:
@@ -200,21 +195,26 @@ func ChangeStack(coords:Vector2i, amount:int):
 	#As long as the amount change wouldn't take it below 0 or above max, change amount.
 	if targetTile == null:
 		return
+	if targetTile.alreadyChanged:
+		return
 	if targetTile.stackCount + amount > 0 and targetTile.stackCount + amount <= targetTile.tileType.stackMax:
 		targetTile.stackCount += amount
-		set_cell(0, coords, 0, targetTile.tileType.tileIndex + Vector2i(targetTile.stackCount-1, 0))
 		#Add line of code to progress tile's spritesheet "animation set" or variant/alt
 	elif targetTile.stackCount + amount <= 0:
-		pass
+		targetTile.stackCount = 1
 		#NoStackTrig(targetTile)
 	elif targetTile.stackCount + amount > targetTile.tileType.stackMax:
-		pass
+		targetTile.stackCount = targetTile.tileType.stackMax
 		#print("Tile at Maximum Stacks!")
 		#MaxStackTrig(targetTile)
+	set_cell(0, coords, 0, targetTile.tileType.tileIndex + Vector2i(targetTile.stackCount-1, 0))
+	targetTile.UpdateHexSprite(self)
 
 func ChangeTags(coords:Vector2i, tagsToAdd:Dictionary): 
 	var targetTile:Hex = hexDatabase[coords]
 	if targetTile == null:
+		return
+	if targetTile.alreadyChanged:
 		return
 	for tag in tagsToAdd:
 		targetTile.tags[tag] = tagsToAdd[tag]
@@ -222,6 +222,8 @@ func ChangeTags(coords:Vector2i, tagsToAdd:Dictionary):
 func AddRemoveTag(coords:Vector2i, tag:String, tagState:bool):
 	var targetTile:Hex = hexDatabase[coords]
 	if targetTile == null:
+		return
+	if targetTile.alreadyChanged:
 		return
 	targetTile.tags[tag] = tagState
 
@@ -232,6 +234,8 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 	#print("Changing Tile ", coords, " to ", type.name)
 	#play random sound from targetTile.tileType.soundScale
 	if targetTile == null:
+		return
+	if targetTile.alreadyChanged:
 		return
 	if targetTile.tags.has("Irreplacable") and targetTile.tags["Irreplacable"] == false:
 		targetTile.tileType = type
@@ -249,15 +253,18 @@ func ChangeEntity(coords:Vector2i, entity:Entity, forceReplace:bool=false):
 	var targetTile:Hex = hexDatabase[coords]
 	if targetTile == null:
 		return
+	if entity == null:
+		targetTile.entityOnTile = null
+		return
 	if targetTile.entityOnTile != null and forceReplace == false:
 		return
-	#if targetTile.entityOnTile.entityTags["Irreplacable"] == true:
-	#	return
-	if entity == null:
-		targetTile.entityOnTile
-	else:
-		targetTile.entityOnTile = entity.duplicate()
-		targetTile.entityOnTile.OnPlace(self, coords)
+	
+	if targetTile.entityOnTile != null:
+		#if targetTile.entityOnTile.entityTags["Irreplacable"] == true:
+			#return
+		remove_child(targetTile.entityOnTile.entitySprite)
+	targetTile.entityOnTile = entity.duplicate()
+	targetTile.entityOnTile.OnPlace(self, coords)
 	#Change entity graphic out for new
 
 func ChangeTopper(coords:Vector2i, topperSprite:Sprite2D, additive:bool):

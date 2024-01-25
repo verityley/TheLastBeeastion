@@ -44,3 +44,6 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		return
 	else:
 		map.ChangeStack(coords, 1)
+
+func TendHex(map:WorldMap, coords:Vector2i):
+	map.AddRemoveTag(coords, "Damp", true)
