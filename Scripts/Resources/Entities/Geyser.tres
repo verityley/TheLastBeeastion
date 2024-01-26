@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GeyserEntity" load_steps=3 format=3 uid="uid://4l3n47xp5dlc"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/GeyserEntity.gd" id="1_piwh4"]
+[ext_resource type="Texture2D" uid="uid://dtfs2anxpncin" path="res://Assets/Tile Graphics/geyser.png" id="2_xtf2e"]
+
+[resource]
+script = ExtResource("1_piwh4")
+name = "Geyser"
+spriteResource = ExtResource("2_xtf2e")
+spriteOffset = Vector2(0, -150)

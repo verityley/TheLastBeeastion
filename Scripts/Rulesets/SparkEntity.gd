@@ -7,7 +7,8 @@ var sparkCount:int = 1
 func EntityActions(map:WorldMap, hex:Hex):
 	var tileType:TileRuleset = hex.tileType
 	var tile:Vector2i = hex.gridCoords
-	map.updateOrder.erase(tile)
+	sparkCount = clampi(sparkCount, 1, 4)
+	#map.updateOrder.erase(tile)
 	if hex.tags["Damp"] == true:
 		map.AddRemoveTag(tile, "Damp", false)
 		map.ChangeEntity(tile, null, true)
@@ -32,6 +33,5 @@ func EntityActions(map:WorldMap, hex:Hex):
 			map.remove_child(entitySprite)
 			map.entityOrder.erase(self)
 		entitySprite.texture = sparkResource[sparkCount-1]
-	map.hexDatabase[tile].tileType.UpdateHex(map, tile)
-	map.hexDatabase[tile].UpdateHexSprite(map)
+	#map.hexDatabase[tile].tileType.UpdateHex(map, tile)
 	#map.entityOrder.append(self)

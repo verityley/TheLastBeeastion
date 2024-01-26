@@ -23,13 +23,13 @@ func _input(event):
 		var selected = local_to_map(get_global_mouse_position() / self.scale)
 		#prints(selected, setTile.name)
 		if get_cell_tile_data(0, selected) != null: 
-			ChangeTile(selected, HexTypes.type["Water"], 3)
-	
-	if Input.is_action_pressed("RightClick"):
-		var selected = local_to_map(get_global_mouse_position() / self.scale)
-		#prints(selected, setTile.name)
-		if get_cell_tile_data(0, selected) != null: 
-			ChangeTile(selected, HexTypes.type["Fire"], 1)
+			ChangeEntity(selected, HexTypes.entity["Worker"].duplicate())
+	#
+	#if Input.is_action_pressed("RightClick"):
+		#var selected = local_to_map(get_global_mouse_position() / self.scale)
+		##prints(selected, setTile.name)
+		#if get_cell_tile_data(0, selected) != null: 
+			#ChangeTile(selected, HexTypes.type["Fire"], 1)
 		#for tile in GetAllAdjacent(selected):
 			#if get_cell_tile_data(0, tile) == null:
 				#await get_tree().create_timer(0.1).timeout
@@ -44,16 +44,16 @@ func _input(event):
 				##prints(tile, hexDatabase[tile].tileType.name)
 	
 	if Input.is_action_just_pressed("ProgressTurn"):
-		if $Timer.is_stopped():
-			$Timer.start()
-			print("Timer Started")
-		else:
-			$Timer.stop()
+		#if $Timer.is_stopped():
+			#$Timer.start()
+			#print("Timer Started")
+		#else:
+			#$Timer.stop()
 		
-		#wait = true
-		#$Timer.start()
-		#WorldTurn()
+		##wait = true
+		##$Timer.start()
+		WorldTurn()
 
-
+#
 func _on_timer_timeout():
 	WorldTurn()

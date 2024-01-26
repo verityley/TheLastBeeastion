@@ -15,15 +15,16 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		#!TagTrig(map, currentTile, "Damp"):
 			#print("Removing non-water, non-damp tile at ", currentTile)
 			continue
+		if map.hexDatabase[coords].flowTile != null:
+			if map.hexDatabase[coords].flowTile == RNGtile:
+				#print("Removing Flow Tile")
+				continue
 		if !CompareTrig(map, coords, RNGtile, false):
 			#print("Removing equal or higher tiles at ", currentTile)
 			continue
 		if TagTrig(map, RNGtile, "Blocked"):
 			continue
-		if map.hexDatabase[coords].flowTile != null:
-			if map.hexDatabase[coords].flowTile == RNGtile:
-				#print("Removing Flow Tile")
-				continue
+		
 		
 		if TileTrig(map, RNGtile, HexTypes.type["Stone"]):
 			map.ChangeStack(coords, -1)

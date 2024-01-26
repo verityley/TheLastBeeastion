@@ -20,3 +20,9 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		map.AddRemoveTag(coords, "Fertile", true)
 	else:
 		map.hexDatabase[coords].counter = clampi(map.hexDatabase[coords].counter - 1, 0, self.counterStart)
+
+func TendHex(map:WorldMap, coords:Vector2i):
+	if MinMaxTrig(map, coords, false):
+		map.ChangeTile(coords, HexTypes.type["Stone"], 1)
+	else:
+		map.ChangeStack(coords, -2)

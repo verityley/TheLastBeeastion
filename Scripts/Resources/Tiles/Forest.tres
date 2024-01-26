@@ -10,13 +10,11 @@ stackMax = 4
 counterStart = 6
 soundScale = []
 tagsDatabase = {
-"Blocked": true,
+"Blocked": false,
 "Damp": false,
 "Fertile": false,
 "Flammable": true,
 "Irreplacable": false,
 "Open": false
 }
-trigTag = ""
-trigTurns = 0
 trigFlowTile = Vector2i(0, 0)

@@ -11,16 +11,22 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		if TileTrig(map, tile, HexTypes.type["Water"]): #Add nearby water to list
 			waterNeighbors.append(tile)
 			continue
-		if TagTrig(map, tile, "Fertile") and TagTrig(map, tile, "Open"): #Brush spreads to fertile
-			if CompareTrig(map, coords, tile, false): #Only if stack is lower
-				map.ChangeTile(tile, HexTypes.type["Brush"])
-				map.updateOrder.erase(tile)
-				continue
 		if TileTrig(map, tile, HexTypes.type["Brush"]):
 			if map.hexDatabase[coords].stackCount > map.hexDatabase[tile].stackCount+1:
 				map.ChangeStack(tile, 1)
 				map.updateOrder.erase(tile)
 				continue
+		if TagTrig(map, tile, "Open"):
+			if TagTrig(map, tile, "Fertile"): #Brush spreads to fertile
+				if !CompareTrig(map, coords, tile, true): #Only if stack isnt higher
+					map.ChangeTile(tile, HexTypes.type["Brush"])
+					map.updateOrder.erase(tile)
+					continue
+			elif map.hexDatabase[coords].stackCount > map.hexDatabase[tile].stackCount+1:
+				map.ChangeTile(tile, HexTypes.type["Brush"])
+				map.updateOrder.erase(tile)
+				continue
+		
 	
 	#If not at max, increase stack if damp or fertile.
 	if !MinMaxTrig(map, coords, true):
@@ -43,7 +49,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	#After spending water, grow to forest.
 	map.ChangeTile(coords, HexTypes.type["Forest"], 1)
 	
-	
+
+func TendHex(map:WorldMap, coords:Vector2i):
+	map.ChangeStack(coords, -2)
+
 	#if TimeTrig(map, coords):
 		#if MinMaxTrig(map, coords, true):
 			#for tile in neighbors:

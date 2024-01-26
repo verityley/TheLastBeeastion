@@ -1,8 +1,6 @@
 extends TileRuleset
 class_name FireRules
 
-@export var sparkEntity:Entity
-
 func UpdateHex(map:WorldMap, coords:Vector2i):
 	var neighbors = map.GetAllAdjacent(coords)
 	var priorStack = map.hexDatabase[coords].priorStack
@@ -30,7 +28,7 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			RNGtile = neighbors[RandomNumberGenerator.new().randi_range(0, neighbors.size()-1)]
 			if attempts > 5:
 				break
-		var spark = sparkEntity.duplicate()
+		var spark = HexTypes.entity["Spark"].duplicate()
 		map.ChangeEntity(RNGtile, spark)
 		spark.OnPlace(map, RNGtile)
 		spark.sparkCount = priorStack
@@ -46,3 +44,6 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		return
 	else:
 		map.ChangeStack(coords, 1)
+
+func TendHex(map:WorldMap, coords:Vector2i):
+	map.AddRemoveTag(coords, "Damp", true)
