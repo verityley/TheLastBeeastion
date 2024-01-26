@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SparkEntity" load_steps=5 format=3 uid="uid://dktxm58ry242g"]
 
-[ext_resource type="Script" path="res://Scripts/Rulesets/SparkEntity.gd" id="1_c850l"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/SparkEntity.gd" id="1_c850l"]
 [ext_resource type="Texture2D" uid="uid://df8yfk8ivgkrr" path="res://Assets/Tile Graphics/spark1.png" id="2_dl71d"]
 [ext_resource type="Texture2D" uid="uid://dijii3nyx0kd3" path="res://Assets/Tile Graphics/spark2.png" id="3_podad"]
 [ext_resource type="Texture2D" uid="uid://okfg6qdndiid" path="res://Assets/Tile Graphics/spark3.png" id="4_1j8vq"]

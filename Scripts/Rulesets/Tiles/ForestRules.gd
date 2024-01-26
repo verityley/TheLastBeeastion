@@ -49,7 +49,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	return
 
 func TendHex(map:WorldMap, coords:Vector2i):
-	map.ChangeStack(coords, -1)
+	if MinMaxTrig(map, coords, false):
+		map.ChangeTile(coords, HexTypes.type["Stone"], 1)
+	else:
+		map.ChangeStack(coords, -1)
 
 #
 #func UpdateHex(map:WorldMap, coords:Vector2i):

@@ -28,9 +28,9 @@ func EntityActions(map:WorldMap, hex:Hex):
 		targetTile = map.GetAdjacent(tile, RNG)
 		if attempts > 5:
 			break
-	var spark = HexTypes.entity["Spark"].duplicate()
-	map.ChangeEntity(targetTile, spark)
-	spark.OnPlace(map, targetTile)
+	map.ChangeEntity(targetTile, HexTypes.entity["Spark"])
+	var spark = map.hexDatabase[targetTile].entityOnTile
+	#spark.OnPlace(map, targetTile)
 	spark.sparkCount = 2
 	spark.entitySprite.texture = spark.sparkResource[1]
 	

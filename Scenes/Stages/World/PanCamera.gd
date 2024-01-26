@@ -1,9 +1,9 @@
 extends Camera2D
 
 @export var dragSpeed:float = 1.0
-@export var zoomSpeed:float = 0.03
+@export var zoomSpeed:float = 0.02
 @export var zoomMin:float = 0.1
-@export var zoomMax:float = 0.4
+@export var zoomMax:float = 0.6
 
 var dragging:bool = false
 var dragStart:Vector2

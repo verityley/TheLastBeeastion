@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ForestGoalEntity" load_steps=3 format=3 uid="uid://04v2x8jc56i0"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/ForestGoal.gd" id="1_qfetj"]
+[ext_resource type="Texture2D" uid="uid://dmwxpgjsoe4mi" path="res://Assets/Tile Graphics/GoalWindflower.png" id="2_nw6dn"]
+
+[resource]
+script = ExtResource("1_qfetj")
+forestRing = Array[Vector2i]([])
+eternalTree = Vector2i(0, -6)
+name = "Flower of Wind"
+spriteResource = ExtResource("2_nw6dn")
+spriteOffset = Vector2(0, -80)

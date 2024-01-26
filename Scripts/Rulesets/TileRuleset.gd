@@ -30,9 +30,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	#	doEventY(tiletype)
 
 func TendHex(map:WorldMap, coords:Vector2i):
-	if EntityTrig(map, coords, "Worker"):
-		map.AddRemoveTag(coords, "Fertile", true)
-		map.hexDatabase[coords].alreadyChanged = true
+	pass
+	#if EntityTrig(map, coords, "Worker"):
+		#map.AddRemoveTag(coords, "Fertile", true)
+		#map.hexDatabase[coords].alreadyChanged = true
 
 #--Effect Functions Start Here--#
 #

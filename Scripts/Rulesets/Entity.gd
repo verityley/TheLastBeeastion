@@ -16,7 +16,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite.position = map.to_global(map.map_to_local(coords)) + spriteOffset
 	entitySprite.y_sort_enabled = true
 	entitySprite.z_index = 1
-	map.entityOrder.append(self)
+	#map.entityOrder.append(self)
 
 func UpdateEntity(map:WorldMap):
 	var occupiedTile:Hex = map.hexDatabase[entityPos]

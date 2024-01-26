@@ -49,6 +49,14 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		if TagTrig(map, tile, "Damp"):
 			continue
 		map.AddRemoveTag(tile, "Damp", true)
+
+func TendHex(map:WorldMap, coords:Vector2i):
+	if MinMaxTrig(map, coords, false):
+		map.ChangeTile(coords, HexTypes.type["Stone"], 1)
+	else:
+		map.ChangeStack(coords, -1)
+
+
 	#print("Loop Broke, no tile to flow to.")
 	#var neighbors = map.GetAllAdjacent(coords)
 	#var filteredNeighbors:Array = neighbors.duplicate()

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WorkerBeeEntity" load_steps=3 format=3 uid="uid://dp6sae3hcc8ar"]
 
-[ext_resource type="Script" path="res://Scripts/Rulesets/WorkerBee.gd" id="1_vagsl"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/WorkerBee.gd" id="1_vagsl"]
 [ext_resource type="Texture2D" uid="uid://84jam7nyfe8k" path="res://Assets/Tile Graphics/workerBee.png" id="2_s4mpa"]
 
 [resource]

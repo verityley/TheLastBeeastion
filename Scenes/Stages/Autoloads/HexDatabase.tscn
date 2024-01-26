@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gowwh5dt3n6i"]
+[gd_scene load_steps=18 format=3 uid="uid://gowwh5dt3n6i"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/Autoloads/HexDatabase.gd" id="1_bw4k7"]
 [ext_resource type="Resource" uid="uid://dv4l2rsudo0eb" path="res://Scripts/Resources/Tiles/Brush.tres" id="2_esdhl"]
@@ -14,6 +14,9 @@
 [ext_resource type="Resource" uid="uid://c7erwcht8wcn2" path="res://Scripts/Resources/Entities/Hive.tres" id="11_2k8xd"]
 [ext_resource type="Resource" uid="uid://cbue5h0vepmdm" path="res://Scripts/Resources/Entities/Volcano.tres" id="12_65oju"]
 [ext_resource type="Resource" uid="uid://dp6sae3hcc8ar" path="res://Scripts/Resources/Entities/WorkerBee.tres" id="14_d0qu1"]
+[ext_resource type="Resource" uid="uid://bp1yd0o14ocau" path="res://Scripts/Resources/Entities/BuilderBee.tres" id="15_s1qdv"]
+[ext_resource type="Resource" uid="uid://coufwd25m1bmt" path="res://Scripts/Resources/Entities/GardenerBee.tres" id="16_ht34a"]
+[ext_resource type="Resource" uid="uid://04v2x8jc56i0" path="res://Scripts/Resources/Entities/ForestGoal.tres" id="17_qmhwe"]
 
 [node name="HexDatabase" type="Node"]
 script = ExtResource("1_bw4k7")
@@ -28,12 +31,17 @@ type = {
 "Wax": ExtResource("9_qaaqc")
 }
 entity = {
-"Bumble": null,
+"Builder": ExtResource("15_s1qdv"),
+"Fire Goal": null,
+"Forest Goal": ExtResource("17_qmhwe"),
+"Gardener": ExtResource("16_ht34a"),
 "Geyser": ExtResource("10_0v52h"),
 "Hive": ExtResource("11_2k8xd"),
-"Mason": null,
-"Rainflower": null,
+"Rain Goal": null,
+"Sapling Goal": null,
 "Spark": ExtResource("10_8fm0v"),
+"Sun Goal": null,
 "Volcano": ExtResource("12_65oju"),
+"Water Goal": null,
 "Worker": ExtResource("14_d0qu1")
 }
