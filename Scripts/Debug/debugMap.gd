@@ -29,7 +29,8 @@ func _input(event):
 			):
 				ChangeEntity(selected, null, true)
 				#availableWorkers + 1
-			elif hexDatabase[selected].inWorkerRange == true and availableWorkers > 0:
+			elif hexDatabase[selected].inWorkerRange == true and (
+				availableWorkers > 0 and hexDatabase[selected].entityOnTile == null):
 				ChangeEntity(selected, HexTypes.entity[beeType].duplicate())
 				availableWorkers -= 1
 				

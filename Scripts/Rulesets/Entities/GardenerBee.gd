@@ -17,6 +17,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 			RNGTile = map.GetAdjacent(tile, RandomNumberGenerator.new().randi_range(1,6))
 			if attempts >= 6:
 				break
+		print("Making Tile Fertile: ", RNGTile)
 		map.AddRemoveTag(RNGTile, "Fertile", true)
 	else:
 		map.AddRemoveTag(tile, "Fertile", true)

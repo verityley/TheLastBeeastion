@@ -15,8 +15,8 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	if map.hexDatabase[coords].stackCount >= 3:
 		entityTags["Irreplaceable"] = true
 		map.AddRemoveTag(coords, "Irreplaceable", true)
-		map.availableWorkers += 2
-		map.workerMax += 2
+		#map.availableWorkers += 2
+		#map.workerMax += 2
 	else:
 		map.availableWorkers += 1
 		map.workerMax += 1

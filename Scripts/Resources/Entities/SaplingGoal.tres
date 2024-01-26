@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SaplingGoalEntity" load_steps=4 format=3 uid="uid://dgbkc6iebolif"]
+
+[ext_resource type="Texture2D" uid="uid://bamxd0bcwaiov" path="res://Assets/Tile Graphics/GoalEvergreen.png" id="1_6uhu4"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/SaplingGoal.gd" id="1_x2qs7"]
+[ext_resource type="Texture2D" uid="uid://b7b81wwnvqs83" path="res://Assets/Tile Graphics/GoalSapling.png" id="2_un7wl"]
+
+[resource]
+script = ExtResource("1_x2qs7")
+forestRing = Array[Vector2i]([])
+grownSprite = ExtResource("1_6uhu4")
+name = "Flower of Beginnings"
+spriteResource = ExtResource("2_un7wl")
+spriteOffset = Vector2(0, -80)
