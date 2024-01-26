@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://opfbk5a8d8ar"]
+[gd_scene load_steps=36 format=3 uid="uid://opfbk5a8d8ar"]
 
 [ext_resource type="Script" path="res://Scripts/UI/IngameOverlay.gd" id="1_do2g3"]
 [ext_resource type="Texture2D" uid="uid://cvr5jlr740qfn" path="res://Assets/UI Overlay/Pause Sprite.png" id="2_vfpej"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bmb553m0h5s4g" path="res://Assets/UI Overlay/Honey Sprite.png" id="4_p7uq0"]
 [ext_resource type="Texture2D" uid="uid://d2tkkyf58h6eb" path="res://Assets/UI Overlay/Bee Count Sprite.png" id="5_4p67b"]
 [ext_resource type="Texture2D" uid="uid://cjxbfw7408vky" path="res://Assets/UI Overlay/Auto Sprite.png" id="6_mbvk6"]
+[ext_resource type="Texture2D" uid="uid://cxspwwm6i7u6t" path="res://Assets/Tile Graphics/honeyBee.png" id="7_5kc31"]
+[ext_resource type="Texture2D" uid="uid://84jam7nyfe8k" path="res://Assets/Tile Graphics/workerBee.png" id="8_e4ft6"]
+[ext_resource type="Texture2D" uid="uid://dctswtr3agph4" path="res://Assets/Tile Graphics/builderBee.png" id="9_fiqaw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_46bbj"]
 
@@ -29,10 +32,6 @@ bg_color = Color(0.717647, 0.580392, 0.207843, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_815a4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nti5a"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00nea"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00n8e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33m8s"]
 
@@ -64,7 +63,8 @@ bg_color = Color(0.717647, 0.580392, 0.207843, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5muex"]
 
-[node name="In-gameOverlay" type="Control" node_paths=PackedStringArray("PauseOverlay")]
+[node name="In-gameOverlay" type="Control" node_paths=PackedStringArray("PauseOverlay", "honeyLabel", "workerLabel", "maxLabel", "GardenPrice", "WorkerPrice", "BuilderPrice")]
+z_index = 1000
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,26 +73,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_do2g3")
 PauseOverlay = NodePath("Pause Overlay")
+honeyLabel = NodePath("Honey Tracker/Label")
+workerLabel = NodePath("Bee Tracker/Label")
+maxLabel = NodePath("Bee Tracker/Label2")
+GardenPrice = NodePath("Worker Type A/PricePanel2/Pricetag")
+WorkerPrice = NodePath("Worker Type B/PricePanel/Pricetag")
+BuilderPrice = NodePath("Worker Type C/PricePanel2/Pricetag")
 
 [node name="Pause Menu" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -988.0
-offset_bottom = -549.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 135.0
+offset_bottom = 135.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_46bbj")
 
 [node name="Pause Button" type="Button" parent="Pause Menu"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.202
-offset_top = -10.0
-offset_right = -33.0
-offset_bottom = 0.0019989
+offset_left = 1.0
+offset_top = -43.0
+offset_right = -32.0
+offset_bottom = -32.998
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qmpvr")
@@ -104,18 +108,23 @@ flat = true
 expand_icon = true
 
 [node name="Pause Overlay" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 420.0
-offset_top = 200.0
-offset_right = -366.0
-offset_bottom = -318.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -65.5
+offset_right = 80.5
+offset_bottom = 65.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(80, 65)
 
 [node name="Options" type="Button" parent="Pause Overlay"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -126,6 +135,7 @@ text = "Options"
 metadata/_edit_use_anchors_ = true
 
 [node name="Show Tutorial" type="Button" parent="Pause Overlay"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -137,6 +147,7 @@ text = "Show Tutorial"
 metadata/_edit_use_anchors_ = true
 
 [node name="Return to Title" type="Button" parent="Pause Overlay"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -147,6 +158,7 @@ text = "Return to Title"
 metadata/_edit_use_anchors_ = true
 
 [node name="Quit Game" type="Button" parent="Pause Overlay"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -159,6 +171,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Summary" type="Panel" parent="."]
 visible = false
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -171,6 +184,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
 
 [node name="Summary Tab" type="Button" parent="Summary"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,19 +197,23 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Turn Tracker" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 992.0
-offset_top = 496.0
-offset_right = -1.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -161.0
+offset_top = -155.0
+offset_right = -2.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vjap0")
 
 [node name="End Turn Button" type="Button" parent="Turn Tracker"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,34 +232,36 @@ icon = ExtResource("3_7lir1")
 flat = true
 expand_icon = true
 
-[node name="TextEdit" type="TextEdit" parent="Turn Tracker"]
+[node name="Label" type="Label" parent="Turn Tracker"]
+z_index = 1000
 layout_mode = 0
-offset_left = 45.0
-offset_top = 23.0
-offset_right = 207.0
-offset_bottom = 162.0
+offset_left = 46.0
+offset_top = 27.0
+offset_right = 136.0
+offset_bottom = 140.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxEmpty_00nea")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_00n8e")
 text = "End
 Turn"
-autowrap_mode = 2
 
 [node name="Honey Tracker" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 831.0
-offset_top = 538.0
+offset_left = -321.0
+offset_top = -110.0
 offset_right = -157.0
 offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_33m8s")
 
 [node name="Button" type="Button" parent="Honey Tracker"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,6 +281,7 @@ flat = true
 expand_icon = true
 
 [node name="Label" type="Label" parent="Honey Tracker"]
+z_index = 1000
 layout_mode = 0
 offset_left = 9.0
 offset_top = 66.0
@@ -273,19 +294,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Bee Tracker" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1022.0
-offset_top = 351.0
+offset_left = -130.0
+offset_top = -297.0
 offset_right = -1.0
 offset_bottom = -149.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ukig2")
 
 [node name="Button" type="Button" parent="Bee Tracker"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -303,36 +328,61 @@ flat = true
 expand_icon = true
 
 [node name="Label" type="Label" parent="Bee Tracker"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = 52.0
-offset_right = -35.0
-offset_bottom = -20.0
+offset_left = 31.0
+offset_top = 103.0
+offset_right = -52.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -1.14142
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 55
-text = "0"
+theme_override_font_sizes/font_size = 35
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Bee Tracker"]
+z_index = 1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 124.0
+offset_right = -7.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.12366
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Auto Toggle" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 965.0
-offset_top = 468.0
+offset_left = -187.0
+offset_top = -180.0
 offset_right = -89.0
 offset_bottom = -94.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5ld6m")
 
 [node name="Auto Toggle Button" type="Button" parent="Auto Toggle"]
+z_index = 1000
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -349,23 +399,38 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xp547")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_nagv7")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_yo15o")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5muex")
+toggle_mode = true
 icon = ExtResource("6_mbvk6")
 flat = true
 expand_icon = true
 
+[node name="Label" type="Label" parent="Auto Toggle"]
+z_index = 1000
+layout_mode = 0
+offset_left = 29.0
+offset_top = 46.0
+offset_right = 69.0
+offset_bottom = 69.0
+rotation = -0.721083
+text = "Auto"
+
 [node name="Worker Type A" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1081.0
-offset_top = 257.0
-offset_bottom = -322.0
-grow_horizontal = 2
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -67.0
+offset_bottom = 2.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
 
 [node name="Worker Button A" type="Button" parent="Worker Type A"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -377,19 +442,52 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Worker Type A"]
+z_index = 1000
+layout_mode = 0
+offset_left = 3.0
+offset_right = 303.0
+offset_bottom = 300.0
+scale = Vector2(0.22, 0.22)
+mouse_filter = 2
+texture = ExtResource("7_5kc31")
+
+[node name="PricePanel2" type="Panel" parent="Worker Type A"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 15.0
+offset_right = 6.0
+offset_bottom = 55.0
+
+[node name="Label" type="Label" parent="Worker Type A/PricePanel2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cost:"
+
+[node name="Pricetag" type="Label" parent="Worker Type A/PricePanel2"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 41.0
+
 [node name="Worker Type B" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1081.0
-offset_top = 183.0
-offset_bottom = -396.0
-grow_horizontal = 2
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -141.0
+offset_bottom = -72.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
 
 [node name="Worker Button B" type="Button" parent="Worker Type B"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -401,19 +499,51 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect2" type="TextureRect" parent="Worker Type B"]
+z_index = 1000
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 300.0
+scale = Vector2(0.22, 0.22)
+mouse_filter = 2
+texture = ExtResource("8_e4ft6")
+
+[node name="PricePanel" type="Panel" parent="Worker Type B"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 17.0
+offset_right = 6.0
+offset_bottom = 57.0
+
+[node name="Label" type="Label" parent="Worker Type B/PricePanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cost:"
+
+[node name="Pricetag" type="Label" parent="Worker Type B/PricePanel"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 41.0
+
 [node name="Worker Type C" type="Panel" parent="."]
+z_index = 1000
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1081.0
-offset_top = 109.0
-offset_bottom = -470.0
-grow_horizontal = 2
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -216.0
+offset_bottom = -147.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
 
 [node name="Worker Button C" type="Button" parent="Worker Type C"]
+z_index = 1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -424,6 +554,38 @@ offset_right = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Worker Type C"]
+z_index = 1000
+layout_mode = 0
+offset_left = 3.0
+offset_right = 303.0
+offset_bottom = 300.0
+scale = Vector2(0.22, 0.22)
+mouse_filter = 2
+texture = ExtResource("9_fiqaw")
+
+[node name="PricePanel2" type="Panel" parent="Worker Type C"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 14.0
+offset_right = 7.0
+offset_bottom = 54.0
+
+[node name="Label" type="Label" parent="Worker Type C/PricePanel2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cost:"
+
+[node name="Pricetag" type="Label" parent="Worker Type C/PricePanel2"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 41.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 
 [connection signal="pressed" from="Pause Menu/Pause Button" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Pause Overlay/Options" to="." method="_on_options_pressed"]
@@ -431,6 +593,9 @@ grow_vertical = 2
 [connection signal="pressed" from="Pause Overlay/Return to Title" to="." method="_on_return_to_title_pressed"]
 [connection signal="pressed" from="Pause Overlay/Quit Game" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Turn Tracker/End Turn Button" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="Bee Tracker/Button" to="." method="_on_bee_tracker_pressed"]
 [connection signal="pressed" from="Auto Toggle/Auto Toggle Button" to="." method="_on_auto_toggle_pressed"]
+[connection signal="pressed" from="Worker Type A/Worker Button A" to="." method="_on_worker_button_pressed" binds= [1]]
 [connection signal="pressed" from="Worker Type B/Worker Button B" to="." method="_on_worker_button_pressed" binds= [2]]
 [connection signal="pressed" from="Worker Type C/Worker Button C" to="." method="_on_worker_button_pressed" binds= [3]]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

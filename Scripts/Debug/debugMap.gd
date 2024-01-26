@@ -1,7 +1,8 @@
 extends WorldMap
 
-var beeType:String = "Worker"
-var auto:bool = false
+var beeType:String = "Gardener"
+var paused:bool = false
+
 #var setTile:TileRuleset = preload("res://Scripts/Resources/Tiles/Empty.tres")
 
 func _ready():
@@ -10,12 +11,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
-	if Input.is_action_pressed("Menu1"):
-		beeType = "Worker"
-	if Input.is_action_pressed("Menu2"):
-		beeType = "Gardener"
-	if Input.is_action_pressed("Menu3"):
-		beeType = "Builder"
+	if paused == true:
+		return
+	#if Input.is_action_pressed("Menu2"):
+		#beeType = "Worker"
+	#if Input.is_action_pressed("Menu1"):
+		#beeType = "Gardener"
+	#if Input.is_action_pressed("Menu3"):
+		#beeType = "Builder"
 		#setTile = preload("res://Scripts/Resources/Tiles/Water.tres")
 	#if Input.is_action_pressed("Menu4"):
 		#setTile = preload("res://Scripts/Resources/Tiles/Garden.tres")
@@ -55,16 +58,16 @@ func _input(event):
 				#hexDatabase[tile] = newHex
 				##prints(tile, hexDatabase[tile].tileType.name)
 	
-	if Input.is_action_just_pressed("ProgressTurn"):
-		if auto == true:
-			if $Timer.is_stopped():
-				$Timer.start()
-				print("Timer Started")
-			else:
-				$Timer.stop()
-		else:
-			WorldTurn()
+	#if Input.is_action_just_pressed("ProgressTurn"):
+		#if auto == true:
+			#if $Timer.is_stopped():
+				#$Timer.start()
+				#print("Timer Started")
+			#else:
+				#$Timer.stop()
+		#else:
+			#WorldTurn()
 
 #
-func _on_timer_timeout():
-	WorldTurn()
+#func _on_timer_timeout():
+	#WorldTurn()

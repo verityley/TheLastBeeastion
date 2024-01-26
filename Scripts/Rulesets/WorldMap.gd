@@ -7,6 +7,8 @@ var hexDatabase:Dictionary
 @export var dampTexture:Texture2D
 @export var fertileTexture:Texture2D
 
+var auto:bool = false
+
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
 var entityOrder:Array[Entity]
 var changedOrder:Array[Vector2i]
@@ -15,6 +17,7 @@ var stackedOrder:Array[Vector2i]
 var availableWorkers:int = 1
 var workerMax:int = 1
 @export var honey:int = 0
+@export var honeyMax:int = 300
 #@export var wait:bool
 #@export var turnIcon:Texture2D
 #var turnTracker:Sprite2D
@@ -88,14 +91,14 @@ func WorldSetup():
 func WorldTurn():
 	#frameTracker = 0
 	updateOrder = GetAllHexes(worldSize)
-	
+	honey = clampi(honey, 0, honeyMax)
 	#print(updateOrder)
 	#if wait:
 		#turnTracker.show()
 	UpdateWorld()
 	for tile in GetAllHexes(worldSize):
 		hexDatabase[tile].alreadyChanged = false
-	print("Current Honey Stocks: ", honey)
+	#print("Current Honey Stocks: ", honey)
 	#$ChangedPlayer.UpdateBacklog(self, changedOrder.duplicate())
 	#$StackedPlayer.UpdateBacklog(self, stackedOrder.duplicate())
 	#if changedOrder.size() > 0:

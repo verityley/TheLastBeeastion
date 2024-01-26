@@ -24,7 +24,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 		return
 	map.honey -= cost
 	stayInPlace = true
-	if hex.tags["Fertile"] == true:
+	if hex.tags["Fertile"] == true or hex.tileType == HexTypes.type["Garden"]:
 		while neighbors.size() > 0:
 			#prints(coords, neighbors)
 			var RNG = RandomNumberGenerator.new().randi_range(0, neighbors.size()-1)

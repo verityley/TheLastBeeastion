@@ -31,7 +31,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 		map.ChangeEntity(Vector2i(-3,1), null, true)
 		map.AddRemoveTag(Vector2i(-3,1), "Irreplaceable", false)
 		map.ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
-		var fog = map.get_child(2)
+		var fog = map.get_child(1)
 		var tween = map.get_tree().create_tween()
 		tween.tween_property(fog, "scale", Vector2(20,20), 3.0)
 		await tween.finished

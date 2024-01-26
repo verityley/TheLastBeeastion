@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://riun26yxrxrv"]
+
+[ext_resource type="Script" path="res://Slideshow.gd" id="1_rg023"]
+[ext_resource type="Texture2D" uid="uid://j4e35spfupeq" path="res://Assets/UI Graphics/Cover.png" id="2_knoeb"]
+[ext_resource type="Texture2D" uid="uid://b1icsnp6tisxh" path="res://Assets/UI Graphics/SlideFrame.png" id="3_ihmju"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vpql"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj7pv"]
+bg_color = Color(0.596078, 0.411765, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysvac"]
+bg_color = Color(0.921569, 0.458824, 0.0313726, 1)
+skew = Vector2(0.6, 0)
+border_width_left = 6
+border_width_top = 4
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nugx"]
+bg_color = Color(0.921569, 0.458824, 0.0313726, 1)
+skew = Vector2(0.6, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qep77"]
+bg_color = Color(0.921569, 0.458824, 0.0313726, 1)
+skew = Vector2(0.6, 0)
+border_width_left = 6
+border_width_top = 4
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+
+[node name="Slideshow" type="Control" node_paths=PackedStringArray("slidePanel")]
+z_index = 3000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rg023")
+slidePanel = NodePath("SlideshowPanel")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 3000
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 266.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vpql")
+
+[node name="Panel2" type="Panel" parent="Panel"]
+z_index = 3000
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_right = 140.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aj7pv")
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = 3000
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_right = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vpql")
+
+[node name="Panel2" type="Panel" parent="Panel2"]
+z_index = 3000
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_right = -45.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aj7pv")
+
+[node name="SlideshowPanel" type="TextureRect" parent="."]
+z_index = 3000
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -323.0
+offset_right = 323.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+texture = ExtResource("2_knoeb")
+expand_mode = 3
+
+[node name="FrameWindow" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.372549)
+z_index = 3000
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -323.0
+offset_right = 323.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+texture = ExtResource("3_ihmju")
+expand_mode = 3
+
+[node name="StartButton" type="Button" parent="."]
+visible = false
+z_index = 3000
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 276.0
+offset_top = 550.0
+offset_right = 607.0
+offset_bottom = 648.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ysvac")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4nugx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qep77")
+text = "Bee-gin!"

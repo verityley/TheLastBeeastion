@@ -10,9 +10,13 @@ config_version=5
 
 [application]
 
-config/name="TheLastBeeastion"
+config/name="Beeyond the Garden"
+run/main_scene="res://Intro.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Assets/Misc Graphics/icon.svg"
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://Assets/UI Graphics/Cover.png"
 
 [autoload]
 

@@ -26,6 +26,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 	var coords:Vector2i = hex.gridCoords
 	var neighbors = map.GetAllAdjacent(coords)
 	var correctCount:int = 0
+	var timeoutCounter:int = 10
 	if stageComplete == true:
 		#Victory Screen
 		pass
@@ -34,11 +35,16 @@ func EntityActions(map:WorldMap, hex:Hex):
 	map.AddRemoveTag(coords, "Irreplaceable", true)
 	
 	if growthStage == 7:
+		timeoutCounter -= 1
 		var allHexes = map.GetAllHexes(20)
 		for tile in allHexes:
 			if map.hexDatabase.has(tile):
 				map.AddRemoveTag(tile, "Damp", true)
 				map.AddRemoveTag(tile, "Fertile", true)
+		
+		if timeoutCounter <= 0:
+			map.get_tree().change_scene_to_file("res://Outro.tscn")
+		return
 	
 	#if growthStage == 1:
 		#targetType = HexTypes.type["Stone"]

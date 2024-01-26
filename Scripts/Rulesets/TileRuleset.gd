@@ -43,10 +43,10 @@ func CheckHoneyCost(map:WorldMap, coords:Vector2i, actionType:String, staying:bo
 	var totalCost:int = 0
 	var globalMultiplier:int = 10
 	
-	prints(sizeCost, distanceCost, typeCost, globalMultiplier, staying)
+	#prints(sizeCost, distanceCost, typeCost, globalMultiplier, staying)
 	
 	if tile.tileType.name == "Stone":
-		typeCost = 1
+		typeCost = 0
 	elif tile.tileType.name == "Ash":
 		typeCost = 1
 	elif tile.tileType.name == "Brush":
@@ -63,22 +63,22 @@ func CheckHoneyCost(map:WorldMap, coords:Vector2i, actionType:String, staying:bo
 		typeCost = 3
 	elif tile.tileType.name == "Magma":
 		typeCost = 4
-	print(totalCost)
+	#print(totalCost)
 	if actionType == "Worker":
-		totalCost = (typeCost*sizeCost) + (float(distanceCost)/6)
+		totalCost = (typeCost*sizeCost) + (float(distanceCost)/4)
 		if tile.tileType.name == "Garden":
 			totalCost = 0
-			print("I'm tending a garden, no cost!")
+			#print("I'm tending a garden, no cost!")
 	elif actionType == "Builder":
-		totalCost = 6 + typeCost + (float(distanceCost)/6)
+		totalCost = 3 + typeCost + (float(distanceCost)/4)
 		if tile.tileType.name == "Wax":
 			totalCost = 2
 	elif actionType == "Gardener":
-		totalCost = 1 + (float(distanceCost)/6)
-	print(totalCost)
-	totalCost *= globalMultiplier
-	if staying:
-		totalCost = float(totalCost) / 2
+		totalCost = 1 + (float(distanceCost)/4)
+	#print(totalCost)
+	
+	if !staying:
+		totalCost *= globalMultiplier
 	return totalCost
 
 #--Effect Functions Start Here--#

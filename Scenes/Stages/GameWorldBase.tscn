@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bflhab7fww6sr"]
+
+[ext_resource type="PackedScene" uid="uid://cepuo6625f5j0" path="res://Scenes/Stages/World/world_map.tscn" id="1_t20jo"]
+[ext_resource type="PackedScene" uid="uid://opfbk5a8d8ar" path="res://Scenes/UI/In-game Overlay.tscn" id="2_vov36"]
+[ext_resource type="Script" path="res://Scripts/PanCamera.gd" id="3_nm2u2"]
+
+[node name="Game" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="In-gameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("worldMap", "mainCam") instance=ExtResource("2_vov36")]
+worldMap = NodePath("../../WorldMap")
+mainCam = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(203, 155)
+zoom = Vector2(0.3, 0.3)
+script = ExtResource("3_nm2u2")
+
+[node name="WorldMap" parent="." instance=ExtResource("1_t20jo")]
