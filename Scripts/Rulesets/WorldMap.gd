@@ -9,6 +9,7 @@ var entityOrder:Array[Entity]
 
 var availableWorkers:int = 1
 var workerMax:int = 1
+var honey:int = 0
 #@export var wait:bool
 #@export var turnIcon:Texture2D
 #var turnTracker:Sprite2D
@@ -258,9 +259,11 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 	#play random sound from targetTile.tileType.soundScale
 	if targetTile == null:
 		return
+	if targetTile.tags["Irreplacable"] == true:
+		return
 	if targetTile.alreadyChanged:
 		return
-	if targetTile.tags.has("Irreplacable") and targetTile.tags["Irreplacable"] == false:
+	if targetTile.tags["Irreplacable"] == false:
 		targetTile.tileType = type
 		targetTile.stackCount = stacks
 		targetTile.counter = type.counterStart

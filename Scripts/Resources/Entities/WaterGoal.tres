@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WaterGoalEntity" load_steps=3 format=3 uid="uid://82ghtdhwx1ly"]
+
+[ext_resource type="Texture2D" uid="uid://crk3x8stomwmc" path="res://Assets/Tile Graphics/GoalWaterflower.png" id="1_28yk4"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/WaterGoal.gd" id="1_wplky"]
+
+[resource]
+script = ExtResource("1_wplky")
+nextGoal = Vector2i(9, -5)
+geyserPos = Vector2i(-9, 4)
+stoneRing = Array[Vector2i]([])
+grownSprite = ExtResource("1_28yk4")
+name = "Flower of Water"
+spriteResource = ExtResource("1_28yk4")
+spriteOffset = Vector2(0, -120)

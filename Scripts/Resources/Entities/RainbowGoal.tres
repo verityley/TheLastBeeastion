@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RainGoalEntity" load_steps=3 format=3 uid="uid://bi2n6v0gts8o8"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/RainbowGoal.gd" id="1_twviv"]
+[ext_resource type="Texture2D" uid="uid://dius4mq8y23m1" path="res://Assets/Tile Graphics/GoalRainflower.png" id="2_cg5mo"]
+
+[resource]
+script = ExtResource("1_twviv")
+nextGoal = Vector2i(0, 0)
+stoneRing = Array[Vector2i]([])
+grownSprites = Array[Texture2D]([])
+name = "Flower of All"
+spriteResource = ExtResource("2_cg5mo")
+spriteOffset = Vector2(0, -100)

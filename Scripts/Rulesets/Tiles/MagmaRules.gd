@@ -20,9 +20,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 		if attempts > 5:
 			break
 	map.ChangeEntity(RNGtile, HexTypes.entity["Spark"])
-	var spark = map.hexDatabase[RNGtile].entityOnTile
-	spark.sparkCount = map.hexDatabase[coords].stackCount
-	spark.entitySprite.texture = spark.sparkResource[map.hexDatabase[coords].stackCount-1]
+	if map.hexDatabase[RNGtile].entityOnTile.name == "Spark":
+		var spark = map.hexDatabase[RNGtile].entityOnTile
+		spark.sparkCount = map.hexDatabase[coords].stackCount
+		spark.entitySprite.texture = spark.sparkResource[map.hexDatabase[coords].stackCount-1]
 	
 	if !TimeTrig(map, coords):
 		map.hexDatabase[coords].counter = clampi(map.hexDatabase[coords].counter - 1, 0, self.counterStart)

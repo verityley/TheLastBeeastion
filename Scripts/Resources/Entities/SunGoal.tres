@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SunGoalEntity" load_steps=3 format=3 uid="uid://bc0rmbjdudxvd"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/SunGoal.gd" id="1_uarfk"]
+[ext_resource type="Texture2D" uid="uid://ftuago8umqd2" path="res://Assets/Tile Graphics/GoalSunflower.png" id="2_yviho"]
+
+[resource]
+script = ExtResource("1_uarfk")
+stoneRing = Array[Vector2i]([])
+volcanoPos = Vector2i(15, -8)
+name = "Flower of Sun"
+spriteResource = ExtResource("2_yviho")
+spriteOffset = Vector2(0, -100)

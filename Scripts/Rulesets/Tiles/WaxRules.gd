@@ -43,8 +43,8 @@ func BuildHive(map:WorldMap, coords:Vector2i):
 	if hiveCount == 6:
 		map.ChangeStack(coords, 1)
 		map.ChangeEntity(coords, HexTypes.entity["Hive"], true)
-		for tile in neighbors:
-			if !map.hexDatabase.has(tile):
-				continue
-			map.ChangeTile(tile, HexTypes.type["Garden"])
-			map.updateOrder.erase(tile)
+		#for tile in neighbors:
+			#if !map.hexDatabase.has(tile):
+				#continue
+			#map.ChangeTile(tile, HexTypes.type["Garden"])
+			#map.updateOrder.erase(tile)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FireGoalEntity" load_steps=3 format=3 uid="uid://d4gdl5sr0osrq"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/FireGoal.gd" id="1_8ailf"]
+[ext_resource type="Texture2D" uid="uid://2g21cc3jgum1" path="res://Assets/Tile Graphics/GoalFireflower.png" id="2_0w1kr"]
+
+[resource]
+script = ExtResource("1_8ailf")
+stoneRing = Array[Vector2i]([])
+eternalTree = Vector2i(0, 0)
+name = "Flower of Flame"
+spriteResource = ExtResource("2_0w1kr")
+spriteOffset = Vector2(0, -80)

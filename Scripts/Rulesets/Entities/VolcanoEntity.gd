@@ -1,6 +1,8 @@
 extends Entity
 class_name VolcanoEntity
 
+var finished:bool = false
+
 func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite = Sprite2D.new()
 	entityPos = coords
@@ -19,18 +21,35 @@ func EntityActions(map:WorldMap, hex:Hex):
 	var RNG:int = RandomNumberGenerator.new().randi_range(1, 6)
 	var targetTile = map.GetAdjacent(tile, RNG)
 	targetTile = map.GetAcross(tile, targetTile)
-	var attempts:int
-	while hex.tileType.TileTrig(map, targetTile, HexTypes.type["Water"]) or (
-	hex.tileType.TileTrig(map, targetTile, HexTypes.type["Fire"])):
-		#Reroll until not fire or water
-		attempts += 1
-		RNG = RandomNumberGenerator.new().randi_range(1, 6)
-		targetTile = map.GetAdjacent(tile, RNG)
-		if attempts > 5:
-			break
-	map.ChangeEntity(targetTile, HexTypes.entity["Spark"])
-	var spark = map.hexDatabase[targetTile].entityOnTile
-	#spark.OnPlace(map, targetTile)
-	spark.sparkCount = 2
-	spark.entitySprite.texture = spark.sparkResource[1]
+	
+	if hex.stackCount >= 3 and finished == false:
+		map.ChangeEntity(Vector2i(-15,7), HexTypes.entity["Rain Goal"].duplicate(), true)
+		finished = true
+	
+	if hex.stackCount > 1:
+		if hex.tileType.TileTrig(map, targetTile, HexTypes.type["Magma"]):
+			if map.hexDatabase[targetTile].stackCount < hex.stackCount:
+				map.ChangeStack(targetTile, 1)
+			else:
+				return
+		elif hex.tileType.TagTrig(map, targetTile, "Flammable") or hex.tileType.TagTrig(map, targetTile, "Open"):
+			map.ChangeTile(targetTile, HexTypes.type["Magma"], hex.stackCount-1)
+		else:
+			return
+		map.hexDatabase[targetTile].flowTile = null
+	else:
+		var attempts:int
+		while hex.tileType.TileTrig(map, targetTile, HexTypes.type["Water"]) or (
+		hex.tileType.TileTrig(map, targetTile, HexTypes.type["Fire"])):
+			#Reroll until not fire or water
+			attempts += 1
+			RNG = RandomNumberGenerator.new().randi_range(1, 6)
+			targetTile = map.GetAdjacent(tile, RNG)
+			if attempts > 5:
+				break
+		map.ChangeEntity(targetTile, HexTypes.entity["Spark"])
+		var spark = map.hexDatabase[targetTile].entityOnTile
+		#spark.OnPlace(map, targetTile)
+		spark.sparkCount = 2
+		spark.entitySprite.texture = spark.sparkResource[1]
 	

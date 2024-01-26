@@ -1,10 +1,11 @@
 extends Entity
-class_name ForestGoalEntity
+class_name SunGoalEntity
 
-@export var forestRing:Array[Vector2i]
-@export var eternalTree:Vector2i
+@export var stoneRing:Array[Vector2i]
+@export var volcanoPos:Vector2i
 var grown:bool = false
 var stageComplete:bool = false
+var finished:bool = false
 
 func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite = Sprite2D.new()
@@ -17,27 +18,26 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entityTags["Irreplaceable"] = true
 	map.ChangeTile(coords, HexTypes.type["Garden"], 1)
 	map.AddRemoveTag(coords, "Irreplaceable", true)
-	forestRing = map.GetHexRing(Vector2i(0,0), 5)
+	#stoneRing = map.GetHexRing(Vector2i(0,0), 12)
 
 func EntityActions(map:WorldMap, hex:Hex):
 	var coords:Vector2i = hex.gridCoords
 	var neighbors = map.GetAllAdjacent(coords)
 	if stageComplete == true:
 		map.AddRemoveTag(coords, "Irreplaceable", false)
+		map.ChangeEntity(Vector2i(4,7), null, true)
+		map.AddRemoveTag(Vector2i(4,7), "Irreplaceable", false)
+		map.ChangeEntity(Vector2i(-5,-7), null, true)
+		map.AddRemoveTag(Vector2i(-5,-7), "Irreplaceable", false)
 		map.ChangeEntity(coords, null, true)
 		return
 	if grown == true:
 		return
-	if hex.stackCount >= 2:
-		for tile in forestRing:
-			if map.hexDatabase[tile].tileType.name != "Forest":
-				map.ChangeTile(tile, HexTypes.type["Forest"], 1)
-			map.ChangeStack(tile, 1)
-		for tile in neighbors:
-			map.ChangeTile(tile, HexTypes.type["Brush"], 2)
+	if hex.stackCount >= 3 and grown == false:
 		grown = true
-		map.ChangeTile(coords, HexTypes.type["Brush"], 3)
-		map.ChangeStack(Vector2i(0,-3), 1)
+		map.ChangeStack(volcanoPos, 1)
+		for tile in neighbors:
+			map.ChangeTile(tile, HexTypes.type["Magma"], 2)
 #Need a "ring check"
 #When garden beneath reaches stack 2, increase stack of forest ring by 1, if stone, turn to forest
 #grow eternal tree by 1 visual stage

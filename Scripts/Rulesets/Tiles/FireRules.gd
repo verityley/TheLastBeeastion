@@ -31,9 +31,10 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			if attempts > 5:
 				break
 		map.ChangeEntity(RNGtile, HexTypes.entity["Spark"])
-		var spark = map.hexDatabase[RNGtile].entityOnTile
-		spark.sparkCount = priorStack
-		spark.entitySprite.texture = spark.sparkResource[priorStack-1]
+		if map.hexDatabase[RNGtile].entityOnTile.name == "Spark":
+			var spark = map.hexDatabase[RNGtile].entityOnTile
+			spark.sparkCount = priorStack
+			spark.entitySprite.texture = spark.sparkResource[priorStack-1]
 		if MinMaxTrig(map, coords, false):
 			map.ChangeTile(coords, HexTypes.type["Ash"], priorStack)
 		else:

@@ -5,6 +5,7 @@ class_name SaplingGoalEntity
 @export var grownSprite:Texture2D
 var grown:bool = false
 var stageComplete:bool = false
+var finished:bool = false
 
 func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite = Sprite2D.new()
@@ -22,12 +23,21 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 func EntityActions(map:WorldMap, hex:Hex):
 	var coords:Vector2i = hex.gridCoords
 	var neighbors = map.GetAllAdjacent(coords)
+	if finished == true:
+		return
 	if stageComplete == true:
-		map.ChangeEntity(coords, null, true)
+		map.ChangeEntity(Vector2i(3,1), null, true)
+		map.AddRemoveTag(Vector2i(3,1), "Irreplaceable", false)
+		map.ChangeEntity(Vector2i(-3,1), null, true)
+		map.AddRemoveTag(Vector2i(-3,1), "Irreplaceable", false)
+		finished = true
+		return
 	if grown == true:
 		if hex.stackCount >= 4:
 			entitySprite.texture = grownSprite
 			stageComplete = true
+			map.ChangeEntity(Vector2i(4,7), HexTypes.entity["Water Goal"].duplicate(), true)
+			map.ChangeEntity(Vector2i(-5,-7), HexTypes.entity["Water Goal"].duplicate(), true)
 			#map.hexDatabase[Vector2i(3,-2)].entityOnTile.stageComplete = true
 			#map.hexDatabase[Vector2i(-3,-2)].entityOnTile.stageComplete = true
 		return
@@ -37,8 +47,8 @@ func EntityActions(map:WorldMap, hex:Hex):
 		for tile in neighbors:
 			map.ChangeTile(tile, HexTypes.type["Forest"], 1)
 		grown = true
-		map.ChangeEntity(Vector2i(3,-2), HexTypes.entity["Forest Goal"], true)
-		map.ChangeEntity(Vector2i(-3,-2), HexTypes.entity["Forest Goal"], true)
+		map.ChangeEntity(Vector2i(3,1), HexTypes.entity["Forest Goal"].duplicate(), true)
+		map.ChangeEntity(Vector2i(-3,1), HexTypes.entity["Forest Goal"].duplicate(), true)
 		map.ChangeTile(coords, HexTypes.type["Forest"], 2)
 		
 #Need a "ring check"
