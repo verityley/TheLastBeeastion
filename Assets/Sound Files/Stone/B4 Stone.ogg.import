@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bwxsiwh73vbvp"
+path="res://.godot/imported/B4 Stone.ogg-6968fe82190c1b7ad593ace621e3ce4e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Stone/B4 Stone.ogg"
+dest_files=["res://.godot/imported/B4 Stone.ogg-6968fe82190c1b7ad593ace621e3ce4e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MagmaRules" load_steps=2 format=3 uid="uid://dx28xa2ufmp2k"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/Tiles/MagmaRules.gd" id="1_8x0k3"]
+
+[resource]
+script = ExtResource("1_8x0k3")
+floodChance = 2
+name = "Magma"
+tileIndex = Vector2i(0, 8)
+stackMax = 3
+counterStart = 3
+soundScale = []
+tagsDatabase = {
+"Blocked": false,
+"Damp": false,
+"Fertile": false,
+"Flammable": false,
+"Irreplacable": false,
+"Open": false
+}
+trigFlowTile = Vector2i(0, 0)

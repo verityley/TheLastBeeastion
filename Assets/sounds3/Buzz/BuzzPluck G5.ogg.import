@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kfdhr1gkr7dq"
+path="res://.godot/imported/BuzzPluck G5.ogg-490a8748bd3475cd0dd0c308a750b7fe.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds3/Buzz/BuzzPluck G5.ogg"
+dest_files=["res://.godot/imported/BuzzPluck G5.ogg-490a8748bd3475cd0dd0c308a750b7fe.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

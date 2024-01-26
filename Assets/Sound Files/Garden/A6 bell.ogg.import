@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cet7aw3knw0rt"
+path="res://.godot/imported/A6 bell.ogg-612dbd402db7b21307591d2f445024af.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Garden/A6 bell.ogg"
+dest_files=["res://.godot/imported/A6 bell.ogg-612dbd402db7b21307591d2f445024af.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

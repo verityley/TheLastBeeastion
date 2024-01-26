@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1jgwpicgvppa"
+path="res://.godot/imported/E5 Garden.ogg-bfc13c9419924fcf5f278b69e2304543.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Garden/E5 Garden.ogg"
+dest_files=["res://.godot/imported/E5 Garden.ogg-bfc13c9419924fcf5f278b69e2304543.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

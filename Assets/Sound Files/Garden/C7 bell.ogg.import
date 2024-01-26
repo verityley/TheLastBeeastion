@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://o0q1t06ya237"
+path="res://.godot/imported/C7 bell.ogg-1cebb200c4c7202b47e54b269b255458.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Garden/C7 bell.ogg"
+dest_files=["res://.godot/imported/C7 bell.ogg-1cebb200c4c7202b47e54b269b255458.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

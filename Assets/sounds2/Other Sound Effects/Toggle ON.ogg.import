@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1ge5lflordqj"
+path="res://.godot/imported/Toggle ON.ogg-58e363a25a88581b496428158be91d13.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds2/Other Sound Effects/Toggle ON.ogg"
+dest_files=["res://.godot/imported/Toggle ON.ogg-58e363a25a88581b496428158be91d13.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

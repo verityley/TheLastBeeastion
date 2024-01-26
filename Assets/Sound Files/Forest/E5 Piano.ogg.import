@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cw0b1k1dm0fxq"
+path="res://.godot/imported/E5 Piano.ogg-3c6b09effa5c1fd4eda845e7d8bc0650.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Forest/E5 Piano.ogg"
+dest_files=["res://.godot/imported/E5 Piano.ogg-3c6b09effa5c1fd4eda845e7d8bc0650.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

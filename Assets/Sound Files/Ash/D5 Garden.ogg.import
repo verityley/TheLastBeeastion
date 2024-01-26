@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://q8f2m8axhiyn"
+path="res://.godot/imported/D5 Garden.ogg-7d58d5240d4ec55c3656ebd8e22c4ce6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Ash/D5 Garden.ogg"
+dest_files=["res://.godot/imported/D5 Garden.ogg-7d58d5240d4ec55c3656ebd8e22c4ce6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

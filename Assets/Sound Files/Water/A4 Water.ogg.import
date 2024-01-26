@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cwkcjidoo34s8"
+path="res://.godot/imported/A4 Water.ogg-53031c61fd77e3f9b0a8833b373a7411.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Water/A4 Water.ogg"
+dest_files=["res://.godot/imported/A4 Water.ogg-53031c61fd77e3f9b0a8833b373a7411.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

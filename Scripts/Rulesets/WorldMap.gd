@@ -59,8 +59,8 @@ func WorldSetup():
 		hexDatabase[tile] = newHex
 	ChangeEntity(Vector2i(0,0), HexTypes.entity["Hive"], true)
 	ChangeEntity(Vector2i(0,-3), HexTypes.entity["Sapling Goal"], true)
-	#ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
-	#ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
+	ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
+	ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
 	#print(hexDatabase)
 
 func WorldTurn():

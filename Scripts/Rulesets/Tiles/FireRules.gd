@@ -22,15 +22,16 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	if map.hexDatabase[coords].outOfFuel:
 		var RNGtile = neighbors[RandomNumberGenerator.new().randi_range(0, neighbors.size()-1)]
 		var attempts:int
-		while TileTrig(map, RNGtile, HexTypes.type["Water"]) or TileTrig(map, RNGtile, HexTypes.type["Fire"]):
+		while TileTrig(map, RNGtile, HexTypes.type["Water"]) or (
+		TileTrig(map, RNGtile, HexTypes.type["Fire"]) or
+		TileTrig(map, RNGtile, HexTypes.type["Magma"])):
 			#Reroll until not fire or water
 			attempts += 1
 			RNGtile = neighbors[RandomNumberGenerator.new().randi_range(0, neighbors.size()-1)]
 			if attempts > 5:
 				break
-		var spark = HexTypes.entity["Spark"].duplicate()
-		map.ChangeEntity(RNGtile, spark)
-		spark.OnPlace(map, RNGtile)
+		map.ChangeEntity(RNGtile, HexTypes.entity["Spark"])
+		var spark = map.hexDatabase[RNGtile].entityOnTile
 		spark.sparkCount = priorStack
 		spark.entitySprite.texture = spark.sparkResource[priorStack-1]
 		if MinMaxTrig(map, coords, false):

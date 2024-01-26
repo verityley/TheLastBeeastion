@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://rqccmff70cei"
+path="res://.godot/imported/B6 Pluck.ogg-3e3b26faad2cc38e6acb1d85ebb89b71.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Wax/B6 Pluck.ogg"
+dest_files=["res://.godot/imported/B6 Pluck.ogg-3e3b26faad2cc38e6acb1d85ebb89b71.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

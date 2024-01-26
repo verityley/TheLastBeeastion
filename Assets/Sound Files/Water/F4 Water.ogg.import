@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dugadcjqbhp1a"
+path="res://.godot/imported/F4 Water.ogg-1c8606678b2c6b593ef83e1e58e94fbd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Water/F4 Water.ogg"
+dest_files=["res://.godot/imported/F4 Water.ogg-1c8606678b2c6b593ef83e1e58e94fbd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

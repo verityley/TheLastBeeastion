@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kdihnt5is023"
+path="res://.godot/imported/Warmth A5.ogg-7ae439036ba4fa642389a658a902aeef.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds2/WarmthPad_erq/Warmth A5.ogg"
+dest_files=["res://.godot/imported/Warmth A5.ogg-7ae439036ba4fa642389a658a902aeef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

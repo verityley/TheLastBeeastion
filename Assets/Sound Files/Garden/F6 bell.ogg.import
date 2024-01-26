@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3djixf7nx4rf"
+path="res://.godot/imported/F6 bell.ogg-dd9e77f3712abe3bf268670489fd1ab0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Garden/F6 bell.ogg"
+dest_files=["res://.godot/imported/F6 bell.ogg-dd9e77f3712abe3bf268670489fd1ab0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

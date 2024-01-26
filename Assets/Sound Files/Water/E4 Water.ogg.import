@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8oh0m82dncjw"
+path="res://.godot/imported/E4 Water.ogg-7f4ce2d8c81d9ff7f7adafc2ffed8059.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Water/E4 Water.ogg"
+dest_files=["res://.godot/imported/E4 Water.ogg-7f4ce2d8c81d9ff7f7adafc2ffed8059.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

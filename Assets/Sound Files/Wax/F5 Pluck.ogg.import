@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dql1tatefyx2i"
+path="res://.godot/imported/F5 Pluck.ogg-747af849e3da75ffd64ab3a9e9af9580.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Wax/F5 Pluck.ogg"
+dest_files=["res://.godot/imported/F5 Pluck.ogg-747af849e3da75ffd64ab3a9e9af9580.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

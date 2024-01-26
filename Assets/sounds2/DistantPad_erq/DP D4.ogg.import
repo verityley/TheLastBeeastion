@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csdc5xmjxb0r5"
+path="res://.godot/imported/DP D4.ogg-5199899e24d31d9f731d492c4470b1bb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds2/DistantPad_erq/DP D4.ogg"
+dest_files=["res://.godot/imported/DP D4.ogg-5199899e24d31d9f731d492c4470b1bb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

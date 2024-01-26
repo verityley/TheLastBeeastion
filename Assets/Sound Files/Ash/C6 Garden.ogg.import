@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://biai62vlowra0"
+path="res://.godot/imported/C6 Garden.ogg-122e7cdc78428b5c09e194e034572970.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound Files/Ash/C6 Garden.ogg"
+dest_files=["res://.godot/imported/C6 Garden.ogg-122e7cdc78428b5c09e194e034572970.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

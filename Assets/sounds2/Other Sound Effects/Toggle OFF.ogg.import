@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7mrxqwfd0xgp"
+path="res://.godot/imported/Toggle OFF.ogg-1db93ca83e85039afb7cd92c9e8baf98.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds2/Other Sound Effects/Toggle OFF.ogg"
+dest_files=["res://.godot/imported/Toggle OFF.ogg-1db93ca83e85039afb7cd92c9e8baf98.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
