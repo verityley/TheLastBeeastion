@@ -31,6 +31,13 @@ func EntityActions(map:WorldMap, hex:Hex):
 		map.AddRemoveTag(Vector2i(-5,-7), "Irreplaceable", false)
 		map.ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
 		map.ChangeEntity(coords, null, true)
+		var fog = map.get_child(3)
+		var tween = map.get_tree().create_tween()
+		tween.tween_property(fog, "scale", Vector2(30,30), 3.0)
+		await tween.finished
+		fog.hide()
+		#finished = true
+		return
 		return
 	if hex.stackCount >= 3:
 		for tile in stoneRing:

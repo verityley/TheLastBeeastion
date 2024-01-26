@@ -31,6 +31,11 @@ func EntityActions(map:WorldMap, hex:Hex):
 		map.ChangeEntity(Vector2i(-3,1), null, true)
 		map.AddRemoveTag(Vector2i(-3,1), "Irreplaceable", false)
 		map.ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
+		var fog = map.get_child(2)
+		var tween = map.get_tree().create_tween()
+		tween.tween_property(fog, "scale", Vector2(20,20), 3.0)
+		await tween.finished
+		fog.hide()
 		finished = true
 		return
 	if grown == true:
@@ -55,6 +60,8 @@ func EntityActions(map:WorldMap, hex:Hex):
 		for tile in map.GetAllAdjacent(Vector2i(-3,1)):
 			map.ChangeTile(tile, HexTypes.type["Stone"], 1)
 		map.ChangeTile(coords, HexTypes.type["Forest"], 2)
+		
+		
 		
 #Need a "ring check"
 #When garden beneath reaches stack 2, increase stack of forest ring by 1, if stone, turn to forest

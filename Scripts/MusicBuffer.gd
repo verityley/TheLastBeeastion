@@ -14,12 +14,13 @@ func _process(delta):
 func UpdateBacklog(map:WorldMap, updateOrder:Array):
 	for tile in updateOrder:
 		var sfxArray = map.hexDatabase[tile].tileType.soundScale
-		var sfx = sfxArray[RandomNumberGenerator.new().randi_range(0,7)]
+		var sfx = sfxArray[RandomNumberGenerator.new().randi_range(0,5)]
 		orderedSFX.append(sfx)
+		print(orderedSFX)
 
 func PlayBacklog():
 	for sfx in orderedSFX:
-		var delay = RandomNumberGenerator.new().randf_range(0.5,2.0)
+		var delay = RandomNumberGenerator.new().randf_range(0.4,2.0)
 		self.stream = sfx
-		play(delay)
-		await playing == false
+		play()
+		await get_tree().create_timer(delay).timeout

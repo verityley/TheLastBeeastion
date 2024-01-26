@@ -1,16 +1,20 @@
-[gd_resource type="Resource" script_class="WaxRules" load_steps=3 format=3 uid="uid://40e2ucwssta8"]
+[gd_resource type="Resource" script_class="WaxRules" load_steps=8 format=3 uid="uid://40e2ucwssta8"]
 
 [ext_resource type="Script" path="res://Scripts/Rulesets/Tiles/WaxRules.gd" id="1_lwx3g"]
-[ext_resource type="Resource" uid="uid://dktxm58ry242g" path="res://Scripts/Resources/Entities/Spark.tres" id="2_lx1gl"]
+[ext_resource type="AudioStream" uid="uid://bs4xbgcmau5jw" path="res://Assets/Sound Files/Stone/C4 Stone.ogg" id="2_rlcnm"]
+[ext_resource type="AudioStream" uid="uid://bf8lq1nuqbkor" path="res://Assets/Sound Files/Stone/D4 Stone.ogg" id="3_5gv5a"]
+[ext_resource type="AudioStream" uid="uid://dahk2ysgdws22" path="res://Assets/Sound Files/Stone/E4 Stone.ogg" id="4_gkbcq"]
+[ext_resource type="AudioStream" uid="uid://dspwhlapdw3g1" path="res://Assets/Sound Files/Stone/G4 Stone.ogg" id="6_f46tp"]
+[ext_resource type="AudioStream" uid="uid://60u6hsvvo5a0" path="res://Assets/Sound Files/Stone/A4 Stone.ogg" id="7_1ngkj"]
+[ext_resource type="AudioStream" uid="uid://bt7x61ghthjhu" path="res://Assets/Sound Files/Stone/C5 Stone.ogg" id="9_a63tk"]
 
 [resource]
 script = ExtResource("1_lwx3g")
-sparkEntity = ExtResource("2_lx1gl")
 name = ""
 tileIndex = Vector2i(0, 5)
 stackMax = 2
 counterStart = 12
-soundScale = []
+soundScale = [ExtResource("2_rlcnm"), ExtResource("3_5gv5a"), ExtResource("4_gkbcq"), ExtResource("6_f46tp"), ExtResource("7_1ngkj"), ExtResource("9_a63tk")]
 tagsDatabase = {
 "Blocked": true,
 "Damp": false,

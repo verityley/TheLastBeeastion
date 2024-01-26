@@ -9,6 +9,8 @@ var hexDatabase:Dictionary
 
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
 var entityOrder:Array[Entity]
+var changedOrder:Array[Vector2i]
+var stackedOrder:Array[Vector2i]
 
 var availableWorkers:int = 1
 var workerMax:int = 1
@@ -86,7 +88,7 @@ func WorldSetup():
 func WorldTurn():
 	#frameTracker = 0
 	updateOrder = GetAllHexes(worldSize)
-	$AudioStreamPlayer.UpdateBacklog(self, updateOrder.duplicate())
+	
 	#print(updateOrder)
 	#if wait:
 		#turnTracker.show()
@@ -94,7 +96,14 @@ func WorldTurn():
 	for tile in GetAllHexes(worldSize):
 		hexDatabase[tile].alreadyChanged = false
 	print("Current Honey Stocks: ", honey)
-	$AudioStreamPlayer.PlayBacklog()
+	#$ChangedPlayer.UpdateBacklog(self, changedOrder.duplicate())
+	#$StackedPlayer.UpdateBacklog(self, stackedOrder.duplicate())
+	#if changedOrder.size() > 0:
+		#$ChangedPlayer.PlayBacklog()
+	#if stackedOrder.size() > 0:
+		#$StackedPlayer.PlayBacklog()
+	#changedOrder.clear()
+	#stackedOrder.clear()
 
 func UpdateWorld(): #This is a loop that iterates through every hex, in priority order
 	while updateOrder.size() > 0:
@@ -257,6 +266,7 @@ func ChangeStack(coords:Vector2i, amount:int):
 		targetTile.stackCount = targetTile.tileType.stackMax
 		#print("Tile at Maximum Stacks!")
 		#MaxStackTrig(targetTile)
+	stackedOrder.append(coords)
 	set_cell(0, coords, 0, targetTile.tileType.tileIndex + Vector2i(targetTile.stackCount-1, 0))
 	targetTile.UpdateHexSprite(self)
 
@@ -296,6 +306,7 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 		#if targetTile.counter != -1:
 			#print("Counter: ", targetTile.counter)
 		#Keep tile graphic atlas to tile types going vertical, stacks going horizontal. New columns OK
+		changedOrder.append(coords)
 		set_cell(0, coords, 0, type.tileIndex + Vector2i(targetTile.stackCount-1, 0))
 		ChangeTags(coords, type.tagsDatabase)
 		targetTile.UpdateHexSprite(self)

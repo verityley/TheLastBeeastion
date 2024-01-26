@@ -1,6 +1,12 @@
-[gd_resource type="Resource" script_class="AshRules" load_steps=2 format=3 uid="uid://be278mkdcaghn"]
+[gd_resource type="Resource" script_class="AshRules" load_steps=8 format=3 uid="uid://be278mkdcaghn"]
 
 [ext_resource type="Script" path="res://Scripts/Rulesets/Tiles/AshRules.gd" id="1_tc78p"]
+[ext_resource type="AudioStream" uid="uid://bs4xbgcmau5jw" path="res://Assets/Sound Files/Stone/C4 Stone.ogg" id="2_621yi"]
+[ext_resource type="AudioStream" uid="uid://bf8lq1nuqbkor" path="res://Assets/Sound Files/Stone/D4 Stone.ogg" id="3_ywnh2"]
+[ext_resource type="AudioStream" uid="uid://dahk2ysgdws22" path="res://Assets/Sound Files/Stone/E4 Stone.ogg" id="4_270oq"]
+[ext_resource type="AudioStream" uid="uid://dspwhlapdw3g1" path="res://Assets/Sound Files/Stone/G4 Stone.ogg" id="6_qfu2y"]
+[ext_resource type="AudioStream" uid="uid://60u6hsvvo5a0" path="res://Assets/Sound Files/Stone/A4 Stone.ogg" id="7_jcb6n"]
+[ext_resource type="AudioStream" uid="uid://bt7x61ghthjhu" path="res://Assets/Sound Files/Stone/C5 Stone.ogg" id="9_imesv"]
 
 [resource]
 script = ExtResource("1_tc78p")
@@ -8,7 +14,7 @@ name = "Ash"
 tileIndex = Vector2i(0, 3)
 stackMax = 3
 counterStart = 6
-soundScale = []
+soundScale = [ExtResource("2_621yi"), ExtResource("3_ywnh2"), ExtResource("4_270oq"), ExtResource("6_qfu2y"), ExtResource("7_jcb6n"), ExtResource("9_imesv")]
 tagsDatabase = {
 "Blocked": false,
 "Damp": false,
