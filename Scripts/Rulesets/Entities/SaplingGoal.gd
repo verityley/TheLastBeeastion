@@ -14,7 +14,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite.texture = spriteResource
 	entitySprite.position = map.to_global(map.map_to_local(coords)) + spriteOffset
 	entitySprite.y_sort_enabled = true
-	entitySprite.z_index = 1
+	entitySprite.z_index = 5
 	entityTags["Irreplaceable"] = true
 	map.ChangeTile(coords, HexTypes.type["Garden"], 1)
 	map.AddRemoveTag(coords, "Irreplaceable", true)
@@ -30,6 +30,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 		map.AddRemoveTag(Vector2i(3,1), "Irreplaceable", false)
 		map.ChangeEntity(Vector2i(-3,1), null, true)
 		map.AddRemoveTag(Vector2i(-3,1), "Irreplaceable", false)
+		map.ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
 		finished = true
 		return
 	if grown == true:
@@ -48,7 +49,11 @@ func EntityActions(map:WorldMap, hex:Hex):
 			map.ChangeTile(tile, HexTypes.type["Forest"], 1)
 		grown = true
 		map.ChangeEntity(Vector2i(3,1), HexTypes.entity["Forest Goal"].duplicate(), true)
+		for tile in map.GetAllAdjacent(Vector2i(3,1)):
+			map.ChangeTile(tile, HexTypes.type["Stone"], 1)
 		map.ChangeEntity(Vector2i(-3,1), HexTypes.entity["Forest Goal"].duplicate(), true)
+		for tile in map.GetAllAdjacent(Vector2i(-3,1)):
+			map.ChangeTile(tile, HexTypes.type["Stone"], 1)
 		map.ChangeTile(coords, HexTypes.type["Forest"], 2)
 		
 #Need a "ring check"

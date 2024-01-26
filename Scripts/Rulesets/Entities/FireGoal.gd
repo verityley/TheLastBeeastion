@@ -14,7 +14,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite.texture = spriteResource
 	entitySprite.position = map.to_global(map.map_to_local(coords)) + spriteOffset
 	entitySprite.y_sort_enabled = true
-	entitySprite.z_index = 1
+	entitySprite.z_index = 5
 	entityTags["Irreplaceable"] = true
 	map.ChangeTile(coords, HexTypes.type["Garden"], 1)
 	map.AddRemoveTag(coords, "Irreplaceable", true)
@@ -29,6 +29,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 		map.AddRemoveTag(Vector2i(4,7), "Irreplaceable", false)
 		map.ChangeEntity(Vector2i(-5,-7), null, true)
 		map.AddRemoveTag(Vector2i(-5,-7), "Irreplaceable", false)
+		map.ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
 		map.ChangeEntity(coords, null, true)
 		return
 	if hex.stackCount >= 3:

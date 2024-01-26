@@ -1,6 +1,7 @@
 extends WorldMap
 
 var beeType:String = "Worker"
+var auto:bool = false
 #var setTile:TileRuleset = preload("res://Scripts/Resources/Tiles/Empty.tres")
 
 func _ready():
@@ -55,15 +56,14 @@ func _input(event):
 				##prints(tile, hexDatabase[tile].tileType.name)
 	
 	if Input.is_action_just_pressed("ProgressTurn"):
-		#if $Timer.is_stopped():
-			#$Timer.start()
-			#print("Timer Started")
-		#else:
-			#$Timer.stop()
-		
-		##wait = true
-		##$Timer.start()
-		WorldTurn()
+		if auto == true:
+			if $Timer.is_stopped():
+				$Timer.start()
+				print("Timer Started")
+			else:
+				$Timer.stop()
+		else:
+			WorldTurn()
 
 #
 func _on_timer_timeout():

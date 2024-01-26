@@ -8,4 +8,4 @@ script = ExtResource("1_n8yox")
 range = 5
 name = "Hive"
 spriteResource = ExtResource("2_gcrwq")
-spriteOffset = Vector2(0, -150)
+spriteOffset = Vector2(0, -160)

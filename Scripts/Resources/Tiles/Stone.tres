@@ -1,6 +1,14 @@
-[gd_resource type="Resource" script_class="TileRuleset" load_steps=2 format=3 uid="uid://byi2x38dlb0wo"]
+[gd_resource type="Resource" script_class="TileRuleset" load_steps=10 format=3 uid="uid://byi2x38dlb0wo"]
 
 [ext_resource type="Script" path="res://Scripts/Rulesets/TileRuleset.gd" id="1_4u2nu"]
+[ext_resource type="AudioStream" uid="uid://bs4xbgcmau5jw" path="res://Assets/Sound Files/Stone/C4 Stone.ogg" id="2_2hft0"]
+[ext_resource type="AudioStream" uid="uid://bf8lq1nuqbkor" path="res://Assets/Sound Files/Stone/D4 Stone.ogg" id="3_sen68"]
+[ext_resource type="AudioStream" uid="uid://dahk2ysgdws22" path="res://Assets/Sound Files/Stone/E4 Stone.ogg" id="4_xqbnx"]
+[ext_resource type="AudioStream" uid="uid://b8bo2d7sjfutn" path="res://Assets/Sound Files/Stone/F4 Stone.ogg" id="5_7l8db"]
+[ext_resource type="AudioStream" uid="uid://dspwhlapdw3g1" path="res://Assets/Sound Files/Stone/G4 Stone.ogg" id="6_kee42"]
+[ext_resource type="AudioStream" uid="uid://60u6hsvvo5a0" path="res://Assets/Sound Files/Stone/A4 Stone.ogg" id="7_udm7j"]
+[ext_resource type="AudioStream" uid="uid://bwxsiwh73vbvp" path="res://Assets/Sound Files/Stone/B4 Stone.ogg" id="8_7kpde"]
+[ext_resource type="AudioStream" uid="uid://bt7x61ghthjhu" path="res://Assets/Sound Files/Stone/C5 Stone.ogg" id="9_etrc2"]
 
 [resource]
 script = ExtResource("1_4u2nu")
@@ -8,7 +16,7 @@ name = "Stone"
 tileIndex = Vector2i(0, 7)
 stackMax = 3
 counterStart = -1
-soundScale = []
+soundScale = [ExtResource("2_2hft0"), ExtResource("3_sen68"), ExtResource("4_xqbnx"), ExtResource("5_7l8db"), ExtResource("6_kee42"), ExtResource("7_udm7j"), ExtResource("8_7kpde"), ExtResource("9_etrc2")]
 tagsDatabase = {
 "Blocked": false,
 "Damp": false,

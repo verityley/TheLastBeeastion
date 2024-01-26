@@ -23,8 +23,8 @@ func UpdateOnTile(map:WorldMap, coords:Vector2i):
 
 func UpdateHex(map:WorldMap, coords:Vector2i):
 	#When in doubt, allow tile to be turned fertile by a worker
-	if map.hexDatabase[coords].entityOnTile != null:
-		map.hexDatabase[coords].entityOnTile.UpdateEntity(map)
+	#if map.hexDatabase[coords].entityOnTile != null:
+		#map.hexDatabase[coords].entityOnTile.UpdateEntity(map)
 	pass #For subresource, list all possible trigger/effect combos as ordered if statements
 	#if triggerX(map, coords) == true:
 	#	doEventY(tiletype)
@@ -34,6 +34,52 @@ func TendHex(map:WorldMap, coords:Vector2i):
 	#if EntityTrig(map, coords, "Worker"):
 		#map.AddRemoveTag(coords, "Fertile", true)
 		#map.hexDatabase[coords].alreadyChanged = true
+
+func CheckHoneyCost(map:WorldMap, coords:Vector2i, actionType:String, staying:bool) -> int:
+	var tile:Hex = map.hexDatabase[coords]
+	var sizeCost:int = tile.stackCount
+	var distanceCost:int = 1 + tile.ring
+	var typeCost:int = 0
+	var totalCost:int = 0
+	var globalMultiplier:int = 10
+	
+	prints(sizeCost, distanceCost, typeCost, globalMultiplier, staying)
+	
+	if tile.tileType.name == "Stone":
+		typeCost = 1
+	elif tile.tileType.name == "Ash":
+		typeCost = 1
+	elif tile.tileType.name == "Brush":
+		typeCost = 1
+	elif tile.tileType.name == "Forest":
+		typeCost = 2
+	elif tile.tileType.name == "Water":
+		typeCost = 2
+	elif tile.tileType.name == "Garden":
+		typeCost = 0
+	elif tile.tileType.name == "Wax":
+		typeCost = 0
+	elif tile.tileType.name == "Fire":
+		typeCost = 3
+	elif tile.tileType.name == "Magma":
+		typeCost = 4
+	print(totalCost)
+	if actionType == "Worker":
+		totalCost = (typeCost*sizeCost) + (float(distanceCost)/6)
+		if tile.tileType.name == "Garden":
+			totalCost = 0
+			print("I'm tending a garden, no cost!")
+	elif actionType == "Builder":
+		totalCost = 6 + typeCost + (float(distanceCost)/6)
+		if tile.tileType.name == "Wax":
+			totalCost = 2
+	elif actionType == "Gardener":
+		totalCost = 1 + (float(distanceCost)/6)
+	print(totalCost)
+	totalCost *= globalMultiplier
+	if staying:
+		totalCost = float(totalCost) / 2
+	return totalCost
 
 #--Effect Functions Start Here--#
 #
