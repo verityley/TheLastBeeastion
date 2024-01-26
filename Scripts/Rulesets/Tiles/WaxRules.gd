@@ -26,6 +26,12 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			map.ChangeTile(coords, HexTypes.type["Stone"])
 	
 func TendHex(map:WorldMap, coords:Vector2i):
+	if MinMaxTrig(map, coords, false):
+		map.ChangeTile(coords, HexTypes.type["Stone"], 1)
+	else:
+		map.ChangeStack(coords, -1)
+
+func BuildHive(map:WorldMap, coords:Vector2i):
 	var neighbors = map.GetAllAdjacent(coords)
 	var hiveCount:int = 0
 	for tile in neighbors:

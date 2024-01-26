@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BrushRules" load_steps=3 format=3 uid="uid://dv4l2rsudo0eb"]
 
-[ext_resource type="Script" path="res://Scripts/Rulesets/BrushRules.gd" id="1_2qive"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Tiles/BrushRules.gd" id="1_2qive"]
 [ext_resource type="Texture2D" uid="uid://7ymnceqjpltl" path="res://Assets/Misc Graphics/icon.svg" id="2_srfe6"]
 
 [resource]

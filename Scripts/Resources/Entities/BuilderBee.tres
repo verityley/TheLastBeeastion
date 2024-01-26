@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuilderBeeEntity" load_steps=3 format=3 uid="uid://bp1yd0o14ocau"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/BuilderBee.gd" id="1_kam8h"]
+[ext_resource type="Texture2D" uid="uid://dctswtr3agph4" path="res://Assets/Tile Graphics/builderBee.png" id="2_75oy8"]
+
+[resource]
+script = ExtResource("1_kam8h")
+name = "Builder"
+spriteResource = ExtResource("2_75oy8")
+spriteOffset = Vector2(0, -80)

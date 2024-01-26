@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GardenerBeeEntity" load_steps=3 format=3 uid="uid://coufwd25m1bmt"]
+
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/GardenerBee.gd" id="1_u0dnu"]
+[ext_resource type="Texture2D" uid="uid://cxspwwm6i7u6t" path="res://Assets/Tile Graphics/honeyBee.png" id="2_ug0j6"]
+
+[resource]
+script = ExtResource("1_u0dnu")
+name = "Gardener"
+spriteResource = ExtResource("2_ug0j6")
+spriteOffset = Vector2(0, -80)

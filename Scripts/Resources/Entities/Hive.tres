@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Hive" load_steps=3 format=3 uid="uid://c7erwcht8wcn2"]
 
-[ext_resource type="Script" path="res://Scripts/Rulesets/HiveEntity.gd" id="1_n8yox"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/HiveEntity.gd" id="1_n8yox"]
 [ext_resource type="Texture2D" uid="uid://bawresi3e0cvw" path="res://Assets/Tile Graphics/hive1.png" id="2_gcrwq"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VolcanoEntity" load_steps=3 format=3 uid="uid://cbue5h0vepmdm"]
 
-[ext_resource type="Script" path="res://Scripts/Rulesets/VolcanoEntity.gd" id="1_f2yty"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Entities/VolcanoEntity.gd" id="1_f2yty"]
 [ext_resource type="Texture2D" uid="uid://2l437l0kk8do" path="res://Assets/Tile Graphics/volcano.png" id="2_uujqa"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GardenRules" load_steps=2 format=3 uid="uid://dlp0pqk6dlk5a"]
 
-[ext_resource type="Script" path="res://Scripts/Rulesets/GardenRules.gd" id="1_xtmyt"]
+[ext_resource type="Script" path="res://Scripts/Rulesets/Tiles/GardenRules.gd" id="1_xtmyt"]
 
 [resource]
 script = ExtResource("1_xtmyt")

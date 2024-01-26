@@ -6,6 +6,9 @@ var hexDatabase:Dictionary
 
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
 var entityOrder:Array[Entity]
+
+var availableWorkers:int = 1
+var workerMax:int = 1
 #@export var wait:bool
 #@export var turnIcon:Texture2D
 #var turnTracker:Sprite2D
@@ -55,6 +58,9 @@ func WorldSetup():
 			#newHex.tags["Blocked"] = true
 		hexDatabase[tile] = newHex
 	ChangeEntity(Vector2i(0,0), HexTypes.entity["Hive"], true)
+	ChangeEntity(Vector2i(3,-2), HexTypes.entity["Treeflower"], true)
+	ChangeEntity(Vector2i(-3,-2), HexTypes.entity["Treeflower"], true)
+	ChangeEntity(Vector2i(0,-3), HexTypes.entity["Treeflower"], true)
 	ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
 	ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
 	#print(hexDatabase)
@@ -156,6 +162,25 @@ func GetRadiusHexes(coords:Vector2i, radius:int) -> Array:
 		#frameThreshold = 0.5 / currentRing
 	return hexes
 
+func GetHexRing(coords:Vector2i, ring:int) -> Array:
+	var hexes:Array[Vector2i]
+	var currentHex:Vector2i
+	var directionOrder:Array[int] = [3,4,5,6,1,2] #This creates a clockwise circle, starting from the top
+	
+	currentHex = Vector2i(coords.x,coords.y-ring)
+	if get_cell_tile_data(0, currentHex) != null and !hexes.has(currentHex):
+		hexes.append(currentHex)
+	#print("New Ring! Starting at: ", currentHex)
+	for direction in directionOrder:
+		#print("New Direction! Aiming towards: ", direction)
+		for i in range(ring):
+			currentHex = GetAdjacent(currentHex, direction)
+			#print(currentHex)
+			if get_cell_tile_data(0, currentHex) != null and !hexes.has(currentHex):
+				hexes.append(currentHex)
+				#print("Found new hex, adding: ", currentHex)
+	return hexes
+
 func GetAllHexes(mapSize:int) -> Array:
 	var hexes:Array[Vector2i]
 	var currentHex:Vector2i
@@ -253,16 +278,22 @@ func ChangeEntity(coords:Vector2i, entity:Entity, forceReplace:bool=false):
 	var targetTile:Hex = hexDatabase[coords]
 	if targetTile == null:
 		return
+	if targetTile.entityOnTile != null and forceReplace == false:
+		return
+	elif targetTile.entityOnTile != null and forceReplace == true:
+		#if targetTile.entityOnTile.entityTags.has("Irreplacable"):
+		#	return
+		remove_child(targetTile.entityOnTile.entitySprite)
+		if (targetTile.entityOnTile.name == "Worker" or 
+			targetTile.entityOnTile.name == "Gardener" or 
+			targetTile.entityOnTile.name == "Builder"):
+			availableWorkers += 1
+		if targetTile.entityOnTile.name == "Hive":
+			availableWorkers -= 1
+			workerMax -= 1
 	if entity == null:
 		targetTile.entityOnTile = null
 		return
-	if targetTile.entityOnTile != null and forceReplace == false:
-		return
-	
-	if targetTile.entityOnTile != null:
-		#if targetTile.entityOnTile.entityTags["Irreplacable"] == true:
-			#return
-		remove_child(targetTile.entityOnTile.entitySprite)
 	targetTile.entityOnTile = entity.duplicate()
 	targetTile.entityOnTile.OnPlace(self, coords)
 	#Change entity graphic out for new

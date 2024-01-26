@@ -1,5 +1,6 @@
 extends WorldMap
 
+var beeType:String = "Worker"
 #var setTile:TileRuleset = preload("res://Scripts/Resources/Tiles/Empty.tres")
 
 func _ready():
@@ -8,22 +9,31 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
-	pass
-	
-	#if Input.is_action_pressed("Menu1"):
-		#setTile = preload("res://Scripts/Resources/Tiles/Empty.tres")
-	#if Input.is_action_pressed("Menu2"):
-		#setTile = preload("res://Scripts/Resources/Tiles/Forest.tres")
-	#if Input.is_action_pressed("Menu3"):
-		#pass
-		##setTile = preload("res://Scripts/Resources/Tiles/Water.tres")
+	if Input.is_action_pressed("Menu1"):
+		beeType = "Worker"
+	if Input.is_action_pressed("Menu2"):
+		beeType = "Gardener"
+	if Input.is_action_pressed("Menu3"):
+		beeType = "Builder"
+		#setTile = preload("res://Scripts/Resources/Tiles/Water.tres")
 	#if Input.is_action_pressed("Menu4"):
 		#setTile = preload("res://Scripts/Resources/Tiles/Garden.tres")
-	if Input.is_action_pressed("LeftClick"):
+	if Input.is_action_just_pressed("LeftClick"):
 		var selected = local_to_map(get_global_mouse_position() / self.scale)
 		#prints(selected, setTile.name)
-		if get_cell_tile_data(0, selected) != null: 
-			ChangeEntity(selected, HexTypes.entity["Worker"].duplicate())
+		if get_cell_tile_data(0, selected) != null:
+			if hexDatabase[selected].entityOnTile != null and (
+				hexDatabase[selected].entityOnTile.name == "Worker" or 
+				hexDatabase[selected].entityOnTile.name == "Gardener" or 
+				hexDatabase[selected].entityOnTile.name == "Builder"
+			):
+				ChangeEntity(selected, null, true)
+				#availableWorkers + 1
+			elif hexDatabase[selected].inWorkerRange == true and availableWorkers > 0:
+				ChangeEntity(selected, HexTypes.entity[beeType].duplicate())
+				availableWorkers -= 1
+				
+		print("Workers: ", availableWorkers, " Max: ", workerMax)
 	#
 	#if Input.is_action_pressed("RightClick"):
 		#var selected = local_to_map(get_global_mouse_position() / self.scale)
