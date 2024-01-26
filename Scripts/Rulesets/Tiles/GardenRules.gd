@@ -5,6 +5,7 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 	var neighbors = map.GetAllAdjacent(coords)
 	var smallestGarden:int = 0
 	var gardenCount:int = 0
+	map.honey += map.hexDatabase[coords].stackCount-1
 	for tile in neighbors:
 		if !map.hexDatabase.has(tile):
 			continue
@@ -25,6 +26,7 @@ func UpdateHex(map:WorldMap, coords:Vector2i):
 			map.ChangeStack(coords, 1)
 
 func TendHex(map:WorldMap, coords:Vector2i):
+	map.honey += map.hexDatabase[coords].stackCount
 	#Make Honey Resource for each adjacent Garden, multiplied by stack
 	#var neighbors = map.GetAllAdjacent(coords)
 	#for tile in neighbors:

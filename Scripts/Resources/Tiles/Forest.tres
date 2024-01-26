@@ -1,6 +1,12 @@
-[gd_resource type="Resource" script_class="ForestRules" load_steps=2 format=3 uid="uid://dsd8phi1rvkwl"]
+[gd_resource type="Resource" script_class="ForestRules" load_steps=8 format=3 uid="uid://dsd8phi1rvkwl"]
 
 [ext_resource type="Script" path="res://Scripts/Rulesets/Tiles/ForestRules.gd" id="1_ffhju"]
+[ext_resource type="AudioStream" uid="uid://bs4xbgcmau5jw" path="res://Assets/Sound Files/Stone/C4 Stone.ogg" id="2_bfe48"]
+[ext_resource type="AudioStream" uid="uid://bf8lq1nuqbkor" path="res://Assets/Sound Files/Stone/D4 Stone.ogg" id="3_pt7no"]
+[ext_resource type="AudioStream" uid="uid://dahk2ysgdws22" path="res://Assets/Sound Files/Stone/E4 Stone.ogg" id="4_yt5so"]
+[ext_resource type="AudioStream" uid="uid://dspwhlapdw3g1" path="res://Assets/Sound Files/Stone/G4 Stone.ogg" id="6_034oh"]
+[ext_resource type="AudioStream" uid="uid://60u6hsvvo5a0" path="res://Assets/Sound Files/Stone/A4 Stone.ogg" id="7_3vlav"]
+[ext_resource type="AudioStream" uid="uid://bt7x61ghthjhu" path="res://Assets/Sound Files/Stone/C5 Stone.ogg" id="9_vx2l6"]
 
 [resource]
 script = ExtResource("1_ffhju")
@@ -8,7 +14,7 @@ name = "Forest"
 tileIndex = Vector2i(0, 1)
 stackMax = 4
 counterStart = 6
-soundScale = []
+soundScale = [ExtResource("2_bfe48"), ExtResource("3_pt7no"), ExtResource("4_yt5so"), ExtResource("6_034oh"), ExtResource("7_3vlav"), ExtResource("9_vx2l6")]
 tagsDatabase = {
 "Blocked": false,
 "Damp": false,

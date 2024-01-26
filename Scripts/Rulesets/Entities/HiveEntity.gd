@@ -10,7 +10,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite.texture = spriteResource
 	entitySprite.position = map.to_global(map.map_to_local(coords)) + spriteOffset
 	entitySprite.y_sort_enabled = true
-	entitySprite.z_index = 1
+	entitySprite.z_index = 5
 	map.entityOrder.append(self)
 	var workerHexes = map.GetRadiusHexes(entityPos, range)
 	var neighbors = map.GetAllAdjacent(entityPos)
@@ -38,6 +38,7 @@ func EntityActions(map:WorldMap, hex:Hex):
 	var neighbors = map.GetAllAdjacent(entityPos)
 	if map.hexDatabase[entityPos].stackCount < 3:
 		return
+	map.honey += 1
 	for tile in neighbors:
 		if map.hexDatabase[tile].tileType != HexTypes.type["Garden"]:
 			map.ChangeTile(tile, HexTypes.type["Garden"])

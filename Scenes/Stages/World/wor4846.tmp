@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cepuo6625f5j0"]
+[gd_scene load_steps=45 format=3 uid="uid://cepuo6625f5j0"]
 
 [ext_resource type="Texture2D" uid="uid://bkhpfriatbcr3" path="res://Assets/Tile Graphics/minimalHexes.png" id="1_21n8k"]
 [ext_resource type="Resource" uid="uid://dv4l2rsudo0eb" path="res://Scripts/Resources/Tiles/Brush.tres" id="1_lo43y"]
@@ -42,8 +42,6 @@
 [ext_resource type="Texture2D" uid="uid://enky4lthi1vy" path="res://Assets/Tile Graphics/DampRing.png" id="39_ihjxi"]
 [ext_resource type="Texture2D" uid="uid://p28ppa2ob0l3" path="res://Assets/Tile Graphics/FertileRing.png" id="40_05cmj"]
 [ext_resource type="Script" path="res://Scripts/MusicBuffer.gd" id="42_54fgv"]
-[ext_resource type="Texture2D" uid="uid://bvnydbok63wm5" path="res://Assets/Misc Graphics/hexfog2.png" id="43_lbbae"]
-[ext_resource type="Texture2D" uid="uid://c3iftsaslpyxo" path="res://Assets/Misc Graphics/hexfogsmall.png" id="44_7osiv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4knm"]
 texture = ExtResource("1_21n8k")
@@ -228,31 +226,13 @@ script = ExtResource("19_g0rri")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="Hexfogsmall" type="Sprite2D" parent="."]
-z_index = 199
-position = Vector2(322, 1144)
-scale = Vector2(7.5, 7.5)
-texture = ExtResource("44_7osiv")
-
-[node name="Hexfog2" type="Sprite2D" parent="."]
-z_index = 200
-position = Vector2(322, 1144)
-scale = Vector2(7.5, 7.5)
-texture = ExtResource("43_lbbae")
-
 [node name="Overlay" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ChangedPlayer" type="AudioStreamPlayer" parent="."]
-max_polyphony = 3
-script = ExtResource("42_54fgv")
-
-[node name="StackedPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
-pitch_scale = 2.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 3
 script = ExtResource("42_54fgv")
 

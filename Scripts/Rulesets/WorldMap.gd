@@ -4,12 +4,17 @@ class_name WorldMap
 var hexDatabase:Dictionary
 @export var worldSize:int = 20 #current "stage/max map size in rings from center
 
+@export var dampTexture:Texture2D
+@export var fertileTexture:Texture2D
+
 var updateOrder:Array[Vector2i] #Add tile coords to this array to add them to the update queue
 var entityOrder:Array[Entity]
+var changedOrder:Array[Vector2i]
+var stackedOrder:Array[Vector2i]
 
 var availableWorkers:int = 1
 var workerMax:int = 1
-var honey:int = 0
+@export var honey:int = 0
 #@export var wait:bool
 #@export var turnIcon:Texture2D
 #var turnTracker:Sprite2D
@@ -49,10 +54,26 @@ func WorldSetup():
 		elif flip == 1:
 			newTopper.flip_h = true
 		newTopper.y_sort_enabled = true
-		newTopper.z_index = 1
+		newTopper.z_index = 4
 		#print("Topper position: ", newTopper.position, " Topper Texture: ", newTopper.texture)
 		newHex.topper = newTopper
 		newHex.topperPosition = newTopper.position
+		var dampRing:Sprite2D = Sprite2D.new()
+		add_child(dampRing)
+		dampRing.hide()
+		dampRing.texture = dampTexture
+		dampRing.position = to_global(map_to_local(tile)) + (Vector2(0,-40+(float(newHex.stackCount-1)* -20)))
+		dampRing.y_sort_enabled = true
+		dampRing.z_index = 1
+		var fertileRing:Sprite2D = Sprite2D.new()
+		add_child(fertileRing)
+		fertileRing.hide()
+		fertileRing.texture = fertileTexture
+		fertileRing.position = to_global(map_to_local(tile)) + (Vector2(0,-40+(float(newHex.stackCount-1)* -20)))
+		fertileRing.y_sort_enabled = true
+		fertileRing.z_index = 2
+		newHex.dampIndicator = dampRing
+		newHex.fertileIndicator = fertileRing
 		newHex.UpdateHexSprite(self)
 		#if newHex.stackCount > 3: Might not need this edge case, but leaving it here anyways
 			#newHex.tags["Open"] = false
@@ -60,19 +81,29 @@ func WorldSetup():
 		hexDatabase[tile] = newHex
 	ChangeEntity(Vector2i(0,0), HexTypes.entity["Hive"], true)
 	ChangeEntity(Vector2i(0,-3), HexTypes.entity["Sapling Goal"], true)
-	ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
-	ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
+	#ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
+	#ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
 	#print(hexDatabase)
 
 func WorldTurn():
 	#frameTracker = 0
 	updateOrder = GetAllHexes(worldSize)
+	
 	#print(updateOrder)
 	#if wait:
 		#turnTracker.show()
 	UpdateWorld()
 	for tile in GetAllHexes(worldSize):
 		hexDatabase[tile].alreadyChanged = false
+	print("Current Honey Stocks: ", honey)
+	#$ChangedPlayer.UpdateBacklog(self, changedOrder.duplicate())
+	#$StackedPlayer.UpdateBacklog(self, stackedOrder.duplicate())
+	#if changedOrder.size() > 0:
+		#$ChangedPlayer.PlayBacklog()
+	#if stackedOrder.size() > 0:
+		#$StackedPlayer.PlayBacklog()
+	#changedOrder.clear()
+	#stackedOrder.clear()
 
 func UpdateWorld(): #This is a loop that iterates through every hex, in priority order
 	while updateOrder.size() > 0:
@@ -193,6 +224,8 @@ func GetAllHexes(mapSize:int) -> Array:
 		currentHex = get_neighbor_cell(currentHex, TileSet.CELL_NEIGHBOR_TOP_SIDE)
 		if get_cell_tile_data(0, currentHex) != null and !hexes.has(currentHex):
 			hexes.append(currentHex)
+			if hexDatabase.has(currentHex):
+				hexDatabase[currentHex].ring = currentRing
 		#print("New Ring! Starting at: ", currentHex)
 		for direction in directionOrder:
 			#print("New Direction! Aiming towards: ", direction)
@@ -201,6 +234,8 @@ func GetAllHexes(mapSize:int) -> Array:
 				#print(currentHex)
 				if get_cell_tile_data(0, currentHex) != null and !hexes.has(currentHex):
 					hexes.append(currentHex)
+					if hexDatabase.has(currentHex):
+						hexDatabase[currentHex].ring = currentRing
 					#print("Found new hex, adding: ", currentHex)
 		currentRing += 1
 		#frameThreshold = 0.5 / currentRing
@@ -231,6 +266,7 @@ func ChangeStack(coords:Vector2i, amount:int):
 		targetTile.stackCount = targetTile.tileType.stackMax
 		#print("Tile at Maximum Stacks!")
 		#MaxStackTrig(targetTile)
+	stackedOrder.append(coords)
 	set_cell(0, coords, 0, targetTile.tileType.tileIndex + Vector2i(targetTile.stackCount-1, 0))
 	targetTile.UpdateHexSprite(self)
 
@@ -270,6 +306,7 @@ func ChangeTile(coords:Vector2i, type:TileRuleset, stacks:int=1, soft:bool=false
 		#if targetTile.counter != -1:
 			#print("Counter: ", targetTile.counter)
 		#Keep tile graphic atlas to tile types going vertical, stacks going horizontal. New columns OK
+		changedOrder.append(coords)
 		set_cell(0, coords, 0, type.tileIndex + Vector2i(targetTile.stackCount-1, 0))
 		ChangeTags(coords, type.tagsDatabase)
 		targetTile.UpdateHexSprite(self)

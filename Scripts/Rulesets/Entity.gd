@@ -15,7 +15,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite.texture = spriteResource
 	entitySprite.position = map.to_global(map.map_to_local(coords)) + spriteOffset
 	entitySprite.y_sort_enabled = true
-	entitySprite.z_index = 1
+	entitySprite.z_index = 5
 	#map.entityOrder.append(self)
 
 func UpdateEntity(map:WorldMap):

@@ -1,6 +1,12 @@
-[gd_resource type="Resource" script_class="GardenRules" load_steps=2 format=3 uid="uid://dlp0pqk6dlk5a"]
+[gd_resource type="Resource" script_class="GardenRules" load_steps=8 format=3 uid="uid://dlp0pqk6dlk5a"]
 
 [ext_resource type="Script" path="res://Scripts/Rulesets/Tiles/GardenRules.gd" id="1_xtmyt"]
+[ext_resource type="AudioStream" uid="uid://dupm3awka5ov4" path="res://Assets/Sound Files/Garden/C5 Garden.ogg" id="2_64lc3"]
+[ext_resource type="AudioStream" uid="uid://q8f2m8axhiyn" path="res://Assets/Sound Files/Garden/D5 Garden.ogg" id="3_qm4p5"]
+[ext_resource type="AudioStream" uid="uid://1jgwpicgvppa" path="res://Assets/Sound Files/Garden/E5 Garden.ogg" id="4_5ote2"]
+[ext_resource type="AudioStream" uid="uid://dbhc8v3gr148c" path="res://Assets/Sound Files/Garden/G5 Garden.ogg" id="5_qewvl"]
+[ext_resource type="AudioStream" uid="uid://c0opled1ttvv2" path="res://Assets/Sound Files/Garden/A5 Garden.ogg" id="6_wpdx5"]
+[ext_resource type="AudioStream" uid="uid://biai62vlowra0" path="res://Assets/Sound Files/Garden/C6 Garden.ogg" id="7_u4ict"]
 
 [resource]
 script = ExtResource("1_xtmyt")
@@ -8,7 +14,7 @@ name = "Garden"
 tileIndex = Vector2i(0, 2)
 stackMax = 3
 counterStart = -1
-soundScale = []
+soundScale = [ExtResource("2_64lc3"), ExtResource("3_qm4p5"), ExtResource("4_5ote2"), ExtResource("5_qewvl"), ExtResource("6_wpdx5"), ExtResource("7_u4ict")]
 tagsDatabase = {
 "Blocked": false,
 "Damp": false,
