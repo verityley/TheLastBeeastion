@@ -58,11 +58,11 @@ func WorldSetup():
 			#newHex.tags["Blocked"] = true
 		hexDatabase[tile] = newHex
 	ChangeEntity(Vector2i(0,0), HexTypes.entity["Hive"], true)
-	ChangeEntity(Vector2i(3,-2), HexTypes.entity["Treeflower"], true)
-	ChangeEntity(Vector2i(-3,-2), HexTypes.entity["Treeflower"], true)
-	ChangeEntity(Vector2i(0,-3), HexTypes.entity["Treeflower"], true)
-	ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
-	ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
+	ChangeEntity(Vector2i(3,-2), HexTypes.entity["Forest Goal"], true)
+	ChangeEntity(Vector2i(-3,-2), HexTypes.entity["Forest Goal"], true)
+	#ChangeEntity(Vector2i(0,-3), HexTypes.entity["Treeflower"], true)
+	#ChangeEntity(Vector2i(-9,4), HexTypes.entity["Geyser"], true)
+	#ChangeEntity(Vector2i(15,-8), HexTypes.entity["Volcano"], true)
 	#print(hexDatabase)
 
 func WorldTurn():
@@ -80,8 +80,8 @@ func UpdateWorld(): #This is a loop that iterates through every hex, in priority
 		var tile = updateOrder.pop_front()
 		if hexDatabase.has(tile):
 			#print("Current Updating Tile: ", tile, " Current Tile Type: ", hexDatabase[tile].tileType.name)
-			hexDatabase[tile].tileType.UpdateOnTile(self, tile)
 			hexDatabase[tile].tileType.UpdateHex(self, tile)
+			hexDatabase[tile].tileType.UpdateOnTile(self, tile)
 			hexDatabase[tile].UpdateHexSprite(self)
 			#if wait == true:
 				#turnTracker.position = to_global(map_to_local(tile))

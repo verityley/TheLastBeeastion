@@ -1,8 +1,7 @@
 extends Entity
-class_name TreeFlowerEntity
+class_name SaplingGoalEntity
 
 @export var forestRing:Array[Vector2i]
-@export var eternalTree:Vector2i
 var grown:bool = false
 var stageComplete:bool = false
 
@@ -15,21 +14,25 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite.y_sort_enabled = true
 	entitySprite.z_index = 1
 	entityTags["Irreplaceable"] = true
+	map.ChangeTile(coords, HexTypes.type["Garden"], 1)
 	map.AddRemoveTag(coords, "Irreplaceable", true)
 	forestRing = map.GetHexRing(Vector2i(0,0), 5)
 
 func EntityActions(map:WorldMap, hex:Hex):
-	var tile:Vector2i = hex.gridCoords
+	var coords:Vector2i = hex.gridCoords
+	var neighbors = map.GetAllAdjacent(coords)
 	if stageComplete == true:
-		map.ChangeEntity(tile, null, true)
+		map.ChangeEntity(coords, null, true)
 	if grown == true:
 		return
 	if hex.stackCount >= 2:
-		for ringtile in forestRing:
-			if map.hexDatabase[ringtile].tileType.name == "Stone":
-				map.ChangeTile(ringtile, HexTypes.type["Forest"], 1)
+		for tile in forestRing:
+			if map.hexDatabase[tile].tileType.name == "Stone":
+				map.ChangeTile(tile, HexTypes.type["Forest"], 1)
 			else:
-				map.ChangeStack(ringtile, 1)
+				map.ChangeStack(tile, 1)
+		for tile in neighbors:
+			map.ChangeTile(tile, HexTypes.type["Forest"], 1)
 		grown = true
 #Need a "ring check"
 #When garden beneath reaches stack 2, increase stack of forest ring by 1, if stone, turn to forest
