@@ -1,0 +1,436 @@
+[gd_scene load_steps=35 format=3 uid="uid://opfbk5a8d8ar"]
+
+[ext_resource type="Script" path="res://Scripts/UI/IngameOverlay.gd" id="1_do2g3"]
+[ext_resource type="Texture2D" uid="uid://cvr5jlr740qfn" path="res://Assets/UI Overlay/Pause Sprite.png" id="2_vfpej"]
+[ext_resource type="Texture2D" uid="uid://k32q5qhqylg4" path="res://Assets/UI Overlay/Turn Sprite.png" id="3_7lir1"]
+[ext_resource type="Texture2D" uid="uid://bmb553m0h5s4g" path="res://Assets/UI Overlay/Honey Sprite.png" id="4_p7uq0"]
+[ext_resource type="Texture2D" uid="uid://d2tkkyf58h6eb" path="res://Assets/UI Overlay/Bee Count Sprite.png" id="5_4p67b"]
+[ext_resource type="Texture2D" uid="uid://cjxbfw7408vky" path="res://Assets/UI Overlay/Auto Sprite.png" id="6_mbvk6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_46bbj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmpvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t04rl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wl6kc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl5ve"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8ugq"]
+bg_color = Color(0.717647, 0.580392, 0.207843, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjap0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrsct"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qakt8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_815a4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nti5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00nea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00n8e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33m8s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5x7jl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cds5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kv6mm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31q7b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukig2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n786"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7i608"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3hn5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsxy1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ld6m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp547"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nagv7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yo15o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5muex"]
+
+[node name="In-gameOverlay" type="Control" node_paths=PackedStringArray("PauseOverlay")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_do2g3")
+PauseOverlay = NodePath("Pause Overlay")
+
+[node name="Pause Menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -988.0
+offset_bottom = -549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_46bbj")
+
+[node name="Pause Button" type="Button" parent="Pause Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.202
+offset_top = -10.0
+offset_right = -33.0
+offset_bottom = 0.0019989
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qmpvr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t04rl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wl6kc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kl5ve")
+icon = ExtResource("2_vfpej")
+flat = true
+expand_icon = true
+
+[node name="Pause Overlay" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 420.0
+offset_top = 200.0
+offset_right = -366.0
+offset_bottom = -318.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="Button" parent="Pause Overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -612.0
+grow_horizontal = 2
+text = "Options"
+metadata/_edit_use_anchors_ = true
+
+[node name="Show Tutorial" type="Button" parent="Pause Overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 33.0
+offset_bottom = -556.0
+grow_horizontal = 2
+text = "Show Tutorial"
+metadata/_edit_use_anchors_ = true
+
+[node name="Return to Title" type="Button" parent="Pause Overlay"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 66.0
+offset_bottom = 97.0
+grow_horizontal = 2
+text = "Return to Title"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit Game" type="Button" parent="Pause Overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 99.0
+offset_bottom = -490.0
+grow_horizontal = 2
+text = "Quit Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="Summary" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 591.0
+offset_right = -717.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
+
+[node name="Summary Tab" type="Button" parent="Summary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Turn Tracker" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 992.0
+offset_top = 496.0
+offset_right = -1.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vjap0")
+
+[node name="End Turn Button" type="Button" parent="Turn Tracker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -20.0
+offset_right = 34.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hrsct")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qakt8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_815a4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nti5a")
+icon = ExtResource("3_7lir1")
+flat = true
+expand_icon = true
+
+[node name="TextEdit" type="TextEdit" parent="Turn Tracker"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 23.0
+offset_right = 207.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_00nea")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_00n8e")
+text = "End
+Turn"
+autowrap_mode = 2
+
+[node name="Honey Tracker" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 831.0
+offset_top = 538.0
+offset_right = -157.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_33m8s")
+
+[node name="Button" type="Button" parent="Honey Tracker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = 22.0
+offset_right = 46.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5x7jl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6cds5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kv6mm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_31q7b")
+icon = ExtResource("4_p7uq0")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="Honey Tracker"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 66.0
+offset_right = 169.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "123456"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bee Tracker" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1022.0
+offset_top = 351.0
+offset_right = -1.0
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ukig2")
+
+[node name="Button" type="Button" parent="Bee Tracker"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -23.0
+offset_right = 5.0
+offset_bottom = 44.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0n786")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7i608")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w3hn5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xsxy1")
+icon = ExtResource("5_4p67b")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="Bee Tracker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 52.0
+offset_right = -35.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Toggle" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 965.0
+offset_top = 468.0
+offset_right = -89.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ld6m")
+
+[node name="Auto Toggle Button" type="Button" parent="Auto Toggle"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = 71.0
+offset_right = 24.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.706858
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xp547")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nagv7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yo15o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5muex")
+icon = ExtResource("6_mbvk6")
+flat = true
+expand_icon = true
+
+[node name="Worker Type A" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1081.0
+offset_top = 257.0
+offset_bottom = -322.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
+
+[node name="Worker Button A" type="Button" parent="Worker Type A"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Worker Type B" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1081.0
+offset_top = 183.0
+offset_bottom = -396.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
+
+[node name="Worker Button B" type="Button" parent="Worker Type B"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Worker Type C" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1081.0
+offset_top = 109.0
+offset_bottom = -470.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8ugq")
+
+[node name="Worker Button C" type="Button" parent="Worker Type C"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Pause Menu/Pause Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Pause Overlay/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Pause Overlay/Show Tutorial" to="." method="_on_show_tutorial_pressed"]
+[connection signal="pressed" from="Pause Overlay/Return to Title" to="." method="_on_return_to_title_pressed"]
+[connection signal="pressed" from="Pause Overlay/Quit Game" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Turn Tracker/End Turn Button" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="Auto Toggle/Auto Toggle Button" to="." method="_on_auto_toggle_pressed"]
+[connection signal="pressed" from="Worker Type B/Worker Button B" to="." method="_on_worker_button_pressed" binds= [2]]
+[connection signal="pressed" from="Worker Type C/Worker Button C" to="." method="_on_worker_button_pressed" binds= [3]]
