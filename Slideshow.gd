@@ -18,7 +18,7 @@ func _input(event):
 			elif toFinale == true:
 				get_tree().quit()
 			else:
-				get_tree().get_root().queue_free()
+				get_parent().remove_child(self)
 		else:
 			$SlideshowPanel.texture = slides[currentSlide]
 

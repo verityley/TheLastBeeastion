@@ -11,6 +11,7 @@ func OnPlace(map:WorldMap, coords:Vector2i):
 	entitySprite.position = map.to_global(map.map_to_local(coords)) + spriteOffset
 	entitySprite.y_sort_enabled = true
 	entitySprite.z_index = 5
+	map.honeyMax += 50
 	map.entityOrder.append(self)
 	var workerHexes = map.GetRadiusHexes(entityPos, range)
 	var neighbors = map.GetAllAdjacent(entityPos)

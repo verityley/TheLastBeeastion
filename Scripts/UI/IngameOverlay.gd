@@ -9,7 +9,7 @@ extends Node
 @export var GardenPrice:Node
 @export var WorkerPrice:Node
 @export var BuilderPrice:Node
-var tutorialScene = preload("res://Tutorial.tscn")
+var tutorialScene = preload("res://Tutorial.tscn").instantiate()
 var paused:bool = false
 var PauseShown:bool = false
 
@@ -46,9 +46,13 @@ func _on_pause_button_pressed():
 		PauseOverlay.show()
 		PauseShown = true
 		worldMap.auto = false
+		worldMap.paused = true
+		paused = true
 	else:
 		PauseOverlay.hide()
 		PauseShown = false
+		worldMap.paused = false
+		paused = false
 
 
 func _on_quit_pressed():
@@ -100,7 +104,8 @@ func _on_options_pressed():
 
 
 func _on_show_tutorial_pressed():
-	get_tree().root.add_child(tutorialScene)
+	get_parent().add_child(tutorialScene)
+	tutorialScene.currentSlide = 0
 
 
 func _on_return_to_title_pressed():

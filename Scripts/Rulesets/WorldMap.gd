@@ -91,13 +91,14 @@ func WorldSetup():
 func WorldTurn():
 	#frameTracker = 0
 	updateOrder = GetAllHexes(worldSize)
-	honey = clampi(honey, 0, honeyMax)
+	
 	#print(updateOrder)
 	#if wait:
 		#turnTracker.show()
 	UpdateWorld()
 	for tile in GetAllHexes(worldSize):
 		hexDatabase[tile].alreadyChanged = false
+	honey = clampi(honey, 0, honeyMax)
 	#print("Current Honey Stocks: ", honey)
 	#$ChangedPlayer.UpdateBacklog(self, changedOrder.duplicate())
 	#$StackedPlayer.UpdateBacklog(self, stackedOrder.duplicate())
